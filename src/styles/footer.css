@@ -111,10 +111,13 @@
 
 /* ---------------------------------------------------------- destinations -- */
 
+/* The brand orange, matching the section eyebrows on the rest of the site.
+   Set directly rather than through --f-accent, which stays the deeper orange
+   the footer's links use on hover. */
 .footer-col-title {
   margin: 0 0 16px;
-  color: var(--f-accent);
-  font-size: 0.72rem;
+  color: #ff6b2c;
+  font-size: 0.75rem;
   font-weight: 800;
   letter-spacing: 0.13em;
   text-transform: uppercase;
@@ -213,7 +216,7 @@
   padding: 4px 12px;
   border: 1px solid var(--f-line);
   border-radius: 999px;
-  font-size: 0.74rem;
+  font-size: 0.75rem;
   font-weight: 650;
   letter-spacing: 0.04em;
   color: var(--f-muted);

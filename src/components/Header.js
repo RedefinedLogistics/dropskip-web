@@ -25,7 +25,21 @@ export default function Header() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [openGroup, setOpenGroup] = useState(null);
+  const [scrolled, setScrolled] = useState(false);
   const navRef = useRef(null);
+
+  /**
+   * The header is sticky and sits on the same cream as the page, so content
+   * used to slide underneath it with nothing marking the edge. Past the first
+   * few pixels it takes a shadow and a firmer border, which is the only thing
+   * that separates it from whatever is scrolling behind.
+   */
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   // Escape closes the mobile panel, as in the source design.
   useEffect(() => {
@@ -84,7 +98,7 @@ export default function Header() {
         </div>
       ) : null}
 
-      <header>
+      <header className={scrolled ? "is-scrolled" : undefined}>
         <div className="wrap nav">
           <Link className="brand" href="/" aria-label="DropSkip home" onClick={close}>
             <Image

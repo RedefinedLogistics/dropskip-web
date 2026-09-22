@@ -796,7 +796,7 @@ export default function ShopifyPage() {
               Install the app. Connect the operation. Start making clearer decisions.
             </h2>
             <div style={{ marginTop: "24px" }}>
-              <a className="btn btn-primary" href="index.html#demo">
+              <a className="btn btn-primary" href="#getting-started">
                 Install the Shopify App <span className="arrow">↗</span>
               </a>
             </div>
@@ -846,9 +846,9 @@ export default function ShopifyPage() {
               You do not necessarily need another enterprise transformation. You need a clearer way
               to connect Shopify activity with the inventory decisions that follow.
             </p>
-            <a className="btn btn-dark" href="index.html#demo">
+            <BookDemoButton className="btn btn-dark">
               Schedule an Intro Call <span className="arrow">↗</span>
-            </a>
+            </BookDemoButton>
           </div>
 
           <div className="checklist-card">
@@ -993,7 +993,7 @@ export default function ShopifyPage() {
             purchasing, then make the final decision with the reasoning visible.
           </p>
           <div className="closing-actions">
-            <a className="btn btn-primary" href="index.html#demo">
+            <a className="btn btn-primary" href="#getting-started">
               Install the Shopify App <span className="arrow">↗</span>
             </a>
             <BookDemoButton

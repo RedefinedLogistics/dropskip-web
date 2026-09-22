@@ -132,9 +132,25 @@ header {
   left: 0;
   right: 0;
   color: var(--t-heading);
-  background: rgba(246, 243, 236, 0.97);
+  /* Through the token, so light and dark are defined in the same place as
+     every other surface rather than one being hardcoded here. */
+  background: var(--c-header-bg);
   backdrop-filter: blur(14px);
-  border-bottom: 1px solid rgba(7, 28, 45, 0.12);
+  border-bottom: 1px solid transparent;
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+/* Only once the page has moved. At rest the header is part of the page; in
+   motion it becomes a surface above it. */
+header.is-scrolled {
+  border-bottom-color: var(--c-header-line);
+  box-shadow: 0 6px 24px rgba(4, 25, 39, 0.07);
+}
+
+[data-theme="dark"] header.is-scrolled {
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.5);
 }
 .nav {
   height: 82px;

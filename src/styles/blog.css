@@ -285,7 +285,7 @@
   border: 1px solid var(--b-line);
   border-radius: 999px;
   color: var(--orange);
-  font-size: 0.7rem;
+  font-size: 0.75rem;
   font-weight: 800;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -569,7 +569,7 @@
 .post-tags-label {
   margin-right: 4px;
   color: var(--t-muted);
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;

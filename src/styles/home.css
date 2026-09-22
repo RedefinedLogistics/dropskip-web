@@ -268,7 +268,7 @@
   border-radius: 14px;
   padding: 13px 16px;
   box-shadow: var(--shadow);
-  font-size: 0.73rem;
+  font-size: 0.75rem;
   font-weight: 800;
 }
 .home-page .chip-top {
@@ -391,7 +391,7 @@
   font-size: 0.86rem;
 }
 .home-page .stock-head span {
-  font-size: 0.7rem;
+  font-size: 0.75rem;
   color: var(--t-muted);
 }
 .home-page .sku-line {
@@ -536,7 +536,7 @@
   display: block;
 }
 .home-page .flow-kicker {
-  font-size: 0.7rem;
+  font-size: 0.75rem;
   color: var(--orange);
   text-transform: uppercase;
   letter-spacing: 0.12em;
@@ -780,7 +780,7 @@
   background: var(--s-card);
   padding: 10px 14px;
   border-radius: 9px;
-  font-size: 0.7rem;
+  font-size: 0.75rem;
   font-weight: 800;
 }
 .home-page .rec-actions .primary {
@@ -828,7 +828,7 @@
 }
 .home-page .adopt-num {
   color: var(--orange);
-  font-size: 0.7rem;
+  font-size: 0.75rem;
   font-weight: 850;
 }
 .home-page .adopt-item h3 {
@@ -891,7 +891,7 @@
   border: 1px solid rgba(255, 255, 255, 0.45);
   border-radius: 99px;
   padding: 8px 12px;
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   font-weight: 750;
 }
 .home-page .closing-note {
