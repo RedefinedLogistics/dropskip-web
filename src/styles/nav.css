@@ -1,0 +1,227 @@
+/* Resources dropdown in the primary nav. Opens on hover and on keyboard focus;
+   the trigger button also toggles it on click, which is what touch uses. */
+
+.nav-group {
+  position: relative;
+}
+
+.nav-group-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  opacity: 0.82;
+  cursor: pointer;
+  transition:
+    opacity 0.25s ease,
+    color 0.25s ease;
+}
+
+.nav-group-trigger::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--orange);
+  border-radius: 2px;
+  transition: width 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nav-group.open .nav-group-trigger,
+.nav-group:focus-within .nav-group-trigger {
+  opacity: 1;
+  color: var(--orange);
+}
+
+.nav-group.open .nav-group-trigger::after,
+.nav-group:focus-within .nav-group-trigger::after {
+  width: 100%;
+}
+
+/* The trigger takes the colour while one of the pages inside it is open, and
+   no underline, matching the top-level links. The chevron is left alone: it
+   reports whether the menu is expanded, not where you are. */
+.nav-group.current .nav-group-trigger {
+  opacity: 1;
+  color: var(--orange);
+}
+
+/* :focus-within already opens the menu and lights the trigger; this is the ring
+   that says which element the keyboard is actually on. */
+.nav-group-trigger:focus-visible {
+  outline: 2px solid var(--orange);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+.nav-chevron {
+  width: 11px;
+  height: 7px;
+  transition: transform 0.25s ease;
+}
+
+.nav-group.open .nav-chevron,
+.nav-group:focus-within .nav-chevron {
+  transform: rotate(180deg);
+}
+
+.submenu {
+  position: absolute;
+  top: calc(100% + 14px);
+  left: 50%;
+  z-index: 120;
+  width: 288px;
+  margin: 0;
+  padding: 8px;
+  list-style: none;
+  border: 1px solid var(--b-line);
+  border-radius: 16px;
+  background: var(--s-card);
+  box-shadow: var(--shadow);
+  opacity: 0;
+  visibility: hidden;
+  transform: translate(-50%, -8px);
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease,
+    visibility 0.2s;
+}
+
+/* A hover bridge, so the pointer can cross the gap without the menu closing. */
+.submenu::before {
+  content: "";
+  position: absolute;
+  inset: -16px 0 auto;
+  height: 16px;
+}
+
+.nav-group:focus-within .submenu,
+.nav-group.open .submenu {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, 0);
+}
+
+/* Opening on hover is for pointers only. A touch tap fires emulated hover as
+   well as the trigger's click, and that phantom hover outlives the tap that
+   closes the menu — so on a tablet the dropdown looked stuck open. Touch goes
+   through the click toggle, which works on its own. */
+@media (hover: hover) {
+  .nav-group:hover .nav-group-trigger {
+    opacity: 1;
+    color: var(--orange);
+  }
+
+  .nav-group:hover .nav-group-trigger::after {
+    width: 100%;
+  }
+
+  .nav-group:hover .nav-chevron {
+    transform: rotate(180deg);
+  }
+
+  .nav-group:hover .submenu {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, 0);
+  }
+}
+
+.submenu a {
+  display: block;
+  padding: 11px 13px;
+  border-radius: 10px;
+  color: var(--t-heading);
+  opacity: 1;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.submenu a:hover,
+.submenu a:focus-visible {
+  background: var(--s-page);
+  color: var(--orange);
+}
+
+.submenu a[aria-current="page"] {
+  color: var(--orange);
+}
+
+.submenu-label {
+  display: block;
+  font-size: 0.92rem;
+  font-weight: 700;
+}
+
+.submenu-blurb {
+  display: block;
+  margin-top: 2px;
+  color: var(--t-muted);
+  font-size: 0.8rem;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.submenu a:hover .submenu-blurb,
+.submenu a:focus-visible .submenu-blurb {
+  color: var(--t-muted);
+}
+
+/* In the mobile panel the group flattens into a labelled section. Matches the
+   1024px switch in site.css, where the nav becomes the hamburger panel — if
+   these two breakpoints drift apart the dropdown renders as a floating card
+   inside the stacked panel. */
+@media (max-width: 1024px) {
+  .nav-links.open .nav-group {
+    position: static;
+  }
+
+  .nav-links.open .nav-group-trigger {
+    width: 100%;
+    justify-content: space-between;
+    padding: 12px 14px;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    opacity: 1;
+  }
+
+  .nav-links.open .nav-group-trigger::after {
+    display: none;
+  }
+
+  .nav-links.open .submenu {
+    position: static;
+    width: auto;
+    margin: 2px 0 6px 12px;
+    padding: 0 0 0 12px;
+    border: 0;
+    border-left: 2px solid var(--b-line);
+    border-radius: 0;
+    background: none;
+    box-shadow: none;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    display: none;
+  }
+
+  .nav-links.open .nav-group.open .submenu {
+    display: block;
+  }
+
+  .nav-links.open .submenu a {
+    text-align: left;
+  }
+
+  .nav-links.open .submenu-blurb {
+    display: none;
+  }
+}

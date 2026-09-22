@@ -1,0 +1,436 @@
+[
+  {
+    "title": "A recommendation you cannot explain is not a decision",
+    "slug": "reading-a-recommendation",
+    "shortDescription": "Operators are accountable for inventory calls in front of finance and leadership. That sets a floor on what a model is allowed to hide.",
+    "content": [
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Planning teams do not get to say the model suggested it. They have to explain what changed, why it matters and what they did about it — usually to someone who controls the cash."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "children": [
+          {
+            "type": "text",
+            "text": "What a recommendation owes you"
+          }
+        ]
+      },
+      {
+        "type": "list",
+        "format": "unordered",
+        "children": [
+          {
+            "type": "list-item",
+            "children": [
+              {
+                "type": "text",
+                "text": "The signal that triggered it, with the numbers behind it"
+              }
+            ]
+          },
+          {
+            "type": "list-item",
+            "children": [
+              {
+                "type": "text",
+                "text": "What the consequence is if nothing happens"
+              }
+            ]
+          },
+          {
+            "type": "list-item",
+            "children": [
+              {
+                "type": "text",
+                "text": "What the proposed action is meant to address"
+              }
+            ]
+          },
+          {
+            "type": "list-item",
+            "children": [
+              {
+                "type": "text",
+                "text": "What it assumes, so you can disagree with the assumption rather than the output"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "A system that surfaces those four things turns a recommendation into something a person can approve, adjust or reject on the merits. A system that hides them produces confident numbers nobody is willing to defend."
+          }
+        ]
+      }
+    ],
+    "author": "Surajbhan Satpathy",
+    "category": "Operator control",
+    "tags": "",
+    "publishedDate": "2025-07-30",
+    "seoTitle": "A recommendation you cannot explain is not a decision",
+    "seoDescription": "Operators are accountable for inventory calls in front of finance and leadership. That sets a floor on what a model is allowed to hide.",
+    "readTime": "3 min read",
+    "cover": "trend"
+  },
+  {
+    "title": "Tariff Turbulence: How to Survive and Win in the New Trade War Era",
+    "slug": "tariff-turbulence",
+    "shortDescription": "Tariffs move landed cost faster than most planning cycles can react. The brands that hold margin are the ones that see the exposure before the invoice arrives.",
+    "content": [
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "A tariff change does not arrive as a planning input. It arrives as a number on an invoice, weeks after the purchase order was committed, and by then the decision that mattered has already been made."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "children": [
+          {
+            "type": "text",
+            "text": "The exposure is decided at the PO, not at the port"
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "By the time duty is assessed, the quantity, the supplier and the origin are fixed. The only remaining levers are price and promotion, both of which cost margin. The useful question is which open commitments carry exposure, and which of them can still be changed."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "That means treating country of origin as a planning attribute rather than a compliance field. When it sits alongside demand and coverage, a buyer can see that a category is both over-committed and newly expensive, and act while the order is still open."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "children": [
+          {
+            "type": "text",
+            "text": "What to watch weekly"
+          }
+        ]
+      },
+      {
+        "type": "list",
+        "format": "unordered",
+        "children": [
+          {
+            "type": "list-item",
+            "children": [
+              {
+                "type": "text",
+                "text": "Open POs by origin, with the cash committed against each"
+              }
+            ]
+          },
+          {
+            "type": "list-item",
+            "children": [
+              {
+                "type": "text",
+                "text": "Categories where landed cost has moved more than the price you can realistically take"
+              }
+            ]
+          },
+          {
+            "type": "list-item",
+            "children": [
+              {
+                "type": "text",
+                "text": "Alternative nodes that already hold stock you have paid duty on"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "None of this removes the tariff. It moves the decision earlier, which is usually where the margin is."
+          }
+        ]
+      }
+    ],
+    "author": "Nita Lathia",
+    "category": "Trade & tariffs",
+    "tags": "",
+    "publishedDate": "2025-05-22",
+    "seoTitle": "Tariff Turbulence: How to Survive and Win in the New Trade War Era",
+    "seoDescription": "Tariffs move landed cost faster than most planning cycles can react. The brands that hold margin are the ones that see the exposure before the invoice arrives.",
+    "readTime": "4 min read",
+    "cover": "trend"
+  },
+  {
+    "title": "Why a transfer often beats a new purchase order",
+    "slug": "transfer-before-purchase-order",
+    "shortDescription": "When one node runs short while another sits long, the cheapest fix is usually stock you already own. It is also the one most planning cycles miss.",
+    "content": [
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "A coverage gap looks like a buying problem, so it gets solved with a purchase order. Often there is a cheaper answer sitting in another warehouse: units you have already paid for, already received, and are currently paying to hold."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "children": [
+          {
+            "type": "text",
+            "text": "The comparison nobody runs"
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Transferring is not automatically right. It costs freight and time, and it can create a gap at the source node. But the comparison is rarely made at all, because the two options live in different systems and different teams."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "The test is simple: does the source node stay above target coverage after the transfer, and does the stock arrive before the destination runs out? If both are true, the transfer is almost always the lower-capital path."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Run that test every cycle and a meaningful share of purchase orders stop being necessary."
+          }
+        ]
+      }
+    ],
+    "author": "Rajeeb Mohapatra",
+    "category": "Inventory positioning",
+    "tags": "",
+    "publishedDate": "2025-04-09",
+    "seoTitle": "Why a transfer often beats a new purchase order",
+    "seoDescription": "When one node runs short while another sits long, the cheapest fix is usually stock you already own. It is also the one most planning cycles miss.",
+    "readTime": "4 min read",
+    "cover": "network"
+  },
+  {
+    "title": "What to buy, how much, when, and where",
+    "slug": "what-to-buy-how-much-when-where",
+    "shortDescription": "Four questions decide a replenishment cycle. Most planning tools answer the first two and leave the last two to a spreadsheet.",
+    "content": [
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "A replenishment cycle only has four questions in it. What to buy, how much, when, and where. Answer all four for every SKU and location and the cycle is done. Answer two of them well and the other two get decided by whoever is closest to the problem on the day."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "children": [
+          {
+            "type": "text",
+            "text": "Where is the one that gets skipped"
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Most forecasting produces a national number. That number is useful right up until you have to decide which warehouse receives the container, at which point it tells you nothing. Coverage is a per-node question, and a brand can be comfortably stocked overall while a node runs dry."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "children": [
+          {
+            "type": "text",
+            "text": "When is the one that costs the most"
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Order-by dates depend on supplier lead time, transit and receiving. When those are held in three different places, the date gets estimated, and estimates drift late. A late order does not show up as a planning failure — it shows up as an expedite fee or a stockout."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Neither of these needs better forecasting. They need the four answers held in the same view."
+          }
+        ]
+      }
+    ],
+    "author": "Kevin Nohl",
+    "category": "Inventory planning",
+    "tags": "",
+    "publishedDate": "2025-02-18",
+    "seoTitle": "What to buy, how much, when, and where",
+    "seoDescription": "Four questions decide a replenishment cycle. Most planning tools answer the first two and leave the last two to a spreadsheet.",
+    "readTime": "5 min read",
+    "cover": "bars"
+  },
+  {
+    "title": "Navigating Tariff Shifts: What DTC Brands and Retailers Need to Know",
+    "slug": "navigating-tariff-shifts",
+    "shortDescription": "Sourcing decisions made two quarters ago set the cost base you are living with now. Here is how to read a tariff shift as an inventory decision rather than a finance problem.",
+    "content": [
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Most teams treat a tariff shift as something finance absorbs. In practice it is an inventory decision, because the response is almost always about what you buy next and where you hold it."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "children": [
+          {
+            "type": "text",
+            "text": "Three questions worth answering first"
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Before repricing anything, establish what is already committed, what is still movable, and what the change does to the economics of holding rather than buying. Those three answers usually narrow the response to one or two actions."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Brands with multiple fulfilment nodes have an extra option that single-node brands do not: rebalancing stock they already own, at a cost they have already paid, instead of committing new capital at a higher rate."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "The work is unglamorous. It is also the difference between a quarter where the tariff shows up in the P&L and one where it shows up in a planning meeting and gets handled."
+          }
+        ]
+      }
+    ],
+    "author": "Rajeeb Mohapatra",
+    "category": "Trade & tariffs",
+    "tags": "",
+    "publishedDate": "2024-11-12",
+    "seoTitle": "Navigating Tariff Shifts: What DTC Brands and Retailers Need to Know",
+    "seoDescription": "Sourcing decisions made two quarters ago set the cost base you are living with now. Here is how to read a tariff shift as an inventory decision rather than a finance prob",
+    "readTime": "3 min read",
+    "cover": "network"
+  },
+  {
+    "title": "The Strategic Chess Game of Temu and Shein in US E-commerce",
+    "slug": "temu-shein-chess-game",
+    "shortDescription": "Two players changed what customers expect from price and delivery speed. The interesting part is not their catalogue — it is how they finance inventory.",
+    "content": [
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "It is tempting to read the rise of Temu and Shein as a pricing story. The more useful reading is an inventory one: both models are built to commit as little capital as possible before demand is proven."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "children": [
+          {
+            "type": "text",
+            "text": "Small commitments, fast feedback"
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Short production runs, quick reorders and tight feedback loops mean less cash sitting in stock that may not sell. That is not a structural advantage you can copy wholesale, but the underlying principle transfers: the smaller the commitment you can make while still protecting availability, the less you are exposed when demand moves."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "For most DTC brands the practical version is not a supply-chain rebuild. It is buying closer to the signal, in smaller increments, with a clear view of what is already in the network."
+          }
+        ]
+      }
+    ],
+    "author": "Surajbhan Satpathy",
+    "category": "Market shifts",
+    "tags": "",
+    "publishedDate": "2024-09-12",
+    "seoTitle": "The Strategic Chess Game of Temu and Shein in US E-commerce",
+    "seoDescription": "Two players changed what customers expect from price and delivery speed. The interesting part is not their catalogue — it is how they finance inventory.",
+    "readTime": "2 min read",
+    "cover": "bars"
+  }
+]

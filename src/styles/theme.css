@@ -1,0 +1,225 @@
+/* Light/dark theming.
+ *
+ * The ported stylesheets use one token for two jobs (--navy is both a heading
+ * colour and a dark section background, --white is both a card surface and text
+ * on those sections). Flipping those tokens directly would make headings vanish.
+ * So each usage was split into a semantic alias below. In light mode every alias
+ * resolves back to the page's own token, which leaves the ported pages byte for
+ * byte as they were. Dark mode redefines only the aliases.
+ *
+ * The fallbacks let one block serve every page, since the stylesheets do not all
+ * name their tokens the same way (--muted vs --copy, --navy vs --deep).
+ */
+
+:root,
+.home-page,
+.about-page,
+.product-page,
+.shopify-page,
+.inventory-page,
+.contact-page,
+.thanks-page,
+.blog-page,
+.tw-page {
+  --t-heading: var(--navy, var(--deep, #071c2d));
+  --t-body: var(--ink, #14212a);
+  --t-muted: var(--muted, var(--copy, #63717a));
+  --t-soft: var(--soft, #d9ddd9);
+
+  --s-page: var(--paper, #f6f3ec);
+  --s-card: var(--white, #ffffff);
+  --s-dark: var(--deep, var(--navy, #071c2d));
+  --s-dark-2: var(--navy-2, var(--navy2, #0b2b43));
+  --s-line: var(--line, #d9ddd9);
+  --s-soft: var(--soft, #eef0ec);
+
+  --b-line: var(--line, #d9ddd9);
+  --b-strong: var(--line-strong, #c2cdd4);
+  --b-dark: var(--navy, var(--deep, #071c2d));
+
+  /* Footer surface: a touch deeper than the page, so the closing band separates
+     without becoming a second colour. */
+  --s-footer: #ece7d9;
+
+  /* Light tints the ported pages use for fields and soft surfaces. */
+  --s-field: #faf9f6;
+  --s-field-alt: #faf8f5;
+  --s-accent-wash: #fff8f5;
+  --b-field: #b7c2cc;
+  --b-soft: #edf0ed;
+
+  /* Chrome, which sits outside every page wrapper. */
+  --c-header-bg: rgba(246, 243, 236, 0.97);
+  --c-header-line: rgba(7, 28, 45, 0.12);
+}
+
+/* ---------------------------------------------------------------- dark ---- */
+
+[data-theme="dark"] :root,
+[data-theme="dark"],
+[data-theme="dark"] .home-page,
+[data-theme="dark"] .about-page,
+[data-theme="dark"] .product-page,
+[data-theme="dark"] .shopify-page,
+[data-theme="dark"] .inventory-page,
+[data-theme="dark"] .contact-page,
+[data-theme="dark"] .thanks-page,
+[data-theme="dark"] .blog-page,
+[data-theme="dark"] .tw-page {
+  color-scheme: dark;
+
+  --t-heading: #f2f5f8;
+  --t-body: #dce1e7;
+  --t-muted: #97a1ac;
+  --t-soft: #b6bec7;
+
+  --s-page: #0e1013;
+  --s-card: #171a20;
+  --s-dark: #070809;
+  --s-dark-2: #101419;
+  --s-line: #1b1f25;
+  --s-soft: #14171c;
+
+  --b-line: #272c34;
+  --b-strong: #3a424c;
+  --b-dark: #39414a;
+
+  --s-footer: #060709;
+
+  --s-field: #10131a;
+  --s-field-alt: #10131a;
+  --s-accent-wash: #2b1710;
+  --b-field: #3c444e;
+  --b-soft: #262c34;
+
+  --c-header-bg: rgba(14, 16, 19, 0.94);
+  --c-header-line: rgba(255, 255, 255, 0.1);
+
+  /* Single-purpose tokens, safe to flip outright. */
+  --orange-text: #ff6b2c;
+  --orangeText: #ff6b2c;
+  --blue: #7ea2ff;
+  --mint: #12251d;
+  --ice: #12251d;
+  --mint-text: #6fd6ac;
+  --mint-line: #1f4335;
+  --orange-wash: #2a1710;
+  --orange-wash-border: #4a2a18;
+  --blue-wash: #121a2b;
+  --navy-line: #2b333c;
+  --navy-line-soft: #4a545f;
+  --darkline: #2b333c;
+  --chart-1: #4a2a18;
+  --chart-2: #7a4423;
+  --chart-3: #c2602f;
+  --shadow: 0 24px 70px rgba(0, 0, 0, 0.55);
+  --card-shadow: 0 12px 36px rgba(0, 0, 0, 0.4);
+}
+
+/* Header and footer live outside the page wrappers. */
+[data-theme="dark"] header {
+  color: var(--t-heading);
+  background: var(--c-header-bg);
+  border-bottom-color: var(--c-header-line);
+}
+
+[data-theme="dark"] .nav-links > a:not(.btn) {
+  color: var(--t-body);
+}
+
+[data-theme="dark"] .nav-links.open {
+  background: var(--s-card);
+  color: var(--t-body);
+}
+
+[data-theme="dark"] .nav-links.open a {
+  color: var(--t-body);
+}
+
+[data-theme="dark"] .nav-links.open a:hover {
+  background: var(--s-soft);
+}
+
+/* The wordmark is a flat PNG, so lift it rather than recolour it. */
+[data-theme="dark"] .brand-logo,
+[data-theme="dark"] .footer-logo-img {
+  filter: brightness(0) invert(1);
+}
+
+[data-theme="dark"] .brand-logo {
+  opacity: 0.95;
+}
+
+/* ------------------------------------------------------------ the toggle -- */
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 1px solid var(--b-line);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--t-heading);
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.theme-toggle:hover {
+  border-color: var(--orange);
+  color: var(--orange);
+  transform: translateY(-1px);
+}
+
+.theme-toggle:focus-visible {
+  outline: 2px solid var(--orange);
+  outline-offset: 3px;
+  border-color: var(--orange);
+  color: var(--orange);
+}
+
+.theme-toggle svg {
+  width: 18px;
+  height: 18px;
+}
+
+.theme-toggle .icon-moon {
+  display: none;
+}
+
+[data-theme="dark"] .theme-toggle .icon-sun {
+  display: none;
+}
+
+[data-theme="dark"] .theme-toggle .icon-moon {
+  display: block;
+}
+
+/* On small screens it sits next to the hamburger rather than inside the panel. */
+.header-tools {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+@media (max-width: 720px) {
+  .theme-toggle {
+    width: 38px;
+    height: 38px;
+  }
+}
+
+/* The tools group is the new last child of the header row, so the links need
+   to be pushed right themselves rather than by space-between. */
+.nav-links {
+  margin-left: auto;
+}
+
+.header-tools {
+  margin-left: 14px;
+}

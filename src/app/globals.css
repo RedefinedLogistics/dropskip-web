@@ -1,26 +1,45 @@
-@import "tailwindcss";
+/* Tailwind without Preflight: the ported design CSS supplies its own reset, and
+   Preflight's heading/margin resets would silently change it. Utilities and the
+   theme are still available to the pages that have not been ported yet. */
+@layer theme, base, components, utilities;
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities);
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --color-ink: #071c2d;
+  --color-ink-deep: #061826;
+  --color-ink-soft: #0b2b43;
+  --color-ink-line: #345064;
+  --color-mist: #c7d0d6;
+  --color-cream: #f6f3ec;
+  --color-brand: #ff6b2c;
+  --color-brand-dark: #ff8c52;
+  --color-brand-tint: #fff4ee;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* Minimal reset for the pages still built with utility classes. */
+.tw-page :is(h1, h2, h3, h4, p, dl, dd, figure, blockquote) {
+  margin: 0;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+.tw-page :is(ul, ol) {
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+.tw-page :is(input, select, textarea, button) {
+  font: inherit;
+  color: inherit;
+}
+
+.tw-page :is(input, select, textarea) {
+  background-color: transparent;
+}
+
+/* Display headings on the not-yet-ported pages, matching the design's tone. */
+.tw-page .font-display {
+  font-weight: 700;
+  line-height: 1.04;
+  letter-spacing: -0.045em;
 }

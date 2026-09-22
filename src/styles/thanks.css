@@ -1,0 +1,296 @@
+/* Thank-you page styles, ported from thank-you.html and scoped to the route. */
+
+.thanks-page {
+  --navy: #071c2d;
+  --navy-2: #0b2b43;
+  --ink: #14212a;
+  --muted: #63717a;
+  --paper: #f6f3ec;
+  --white: #ffffff;
+  --orange: #ff6b2c;
+  --orange-2: #ff8c52;
+  --orange-text: #ff6b2c;
+  --mint: #dff3ea;
+  --mint-text: #0e5b41;
+  --line: #d9ddd9;
+  --max: 1180px;
+  --radius: 24px;
+  --shadow: 0 24px 70px rgba(7, 28, 45, 0.08);
+  --font:
+    var(--font-inter), Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+}
+.thanks-page * {
+  box-sizing: border-box;
+}
+.thanks-page {
+  scroll-behavior: smooth;
+  scroll-padding-top: 88px;
+}
+.thanks-page {
+  margin: 0;
+  background: var(--s-page);
+  color: var(--t-body);
+  font-family: var(--font);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+.thanks-page .wrap {
+  width: min(calc(100% - 48px), var(--max));
+  margin: 0 auto;
+}
+/* Sticky Header */
+.thanks-page header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(246, 243, 236, 0.95);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--b-line);
+}
+.thanks-page .header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 80px;
+}
+.thanks-page .brand {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+}
+.thanks-page .brand-logo {
+  width: 154px;
+  height: auto;
+  display: block;
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
+}
+.thanks-page .brand-logo:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+.thanks-page .nav-links {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+.thanks-page .nav-links a {
+  color: var(--t-heading);
+  font-size: 0.94rem;
+  font-weight: 550;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+.thanks-page .nav-links a:hover {
+  color: var(--orange);
+}
+.thanks-page .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border-radius: 99px;
+  font-size: 0.94rem;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 1px solid transparent;
+  line-height: 1;
+}
+.thanks-page .btn-primary {
+  background: var(--orange);
+  color: var(--white);
+  box-shadow: 0 4px 14px rgba(255, 107, 44, 0.28);
+}
+.thanks-page .btn-primary:hover {
+  background: var(--orange-2);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(255, 107, 44, 0.38);
+}
+.thanks-page .btn-secondary {
+  background: var(--s-card);
+  color: var(--t-heading);
+  border: 1.5px solid var(--b-line);
+}
+.thanks-page .btn-secondary:hover {
+  border-color: var(--b-dark);
+  background: var(--s-field-alt);
+  transform: translateY(-2px);
+}
+.thanks-page .btn .arrow {
+  transition: transform 0.2s ease;
+}
+.thanks-page .btn:hover .arrow {
+  transform: translate(2px, -2px);
+}
+.thanks-page .menu-btn {
+  display: none;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  padding: 8px;
+}
+.thanks-page .menu-btn span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--s-dark);
+  margin: 5px 0;
+  border-radius: 2px;
+}
+@media (max-width: 820px) {
+  .thanks-page .nav-links {
+    display: none;
+  }
+  .thanks-page .menu-btn {
+    display: block;
+  }
+  .thanks-page .nav-links.open {
+    display: flex;
+    position: absolute;
+    top: 80px;
+    left: 16px;
+    right: 16px;
+    background: var(--s-card);
+    border: 1px solid var(--b-line);
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+    flex-direction: column;
+    align-items: stretch;
+    gap: 6px;
+    padding: 20px;
+  }
+  .thanks-page .nav-links.open a {
+    padding: 10px 14px;
+    border-radius: 8px;
+  }
+  .thanks-page .nav-links.open a:hover {
+    background: var(--s-page);
+  }
+  .thanks-page .nav-links.open .btn {
+    margin-top: 10px;
+    text-align: center;
+  }
+}
+/* Main Thank You Section */
+/* The page wrapper takes the <main> layout, since <main> lives in the root layout. */
+.thanks-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 70px 0 90px;
+}
+.thanks-page .thank-card {
+  background: var(--s-card);
+  border: 1px solid var(--b-line);
+  border-radius: var(--radius);
+  padding: 56px 48px;
+  max-width: 680px;
+  width: 100%;
+  text-align: center;
+  box-shadow: var(--shadow);
+  position: relative;
+  overflow: hidden;
+  animation: cardAppear 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+@keyframes cardAppear {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.thanks-page .thank-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background: linear-gradient(90deg, var(--orange), #2459e0);
+}
+.thanks-page .check-icon {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: var(--mint);
+  color: var(--mint-text);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.2rem;
+  font-weight: 800;
+  margin-bottom: 24px;
+  box-shadow: 0 10px 25px rgba(14, 91, 65, 0.15);
+}
+.thanks-page .thank-badge {
+  display: inline-block;
+  font-size: 0.8125rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--orange-text);
+  margin-bottom: 12px;
+}
+.thanks-page h1 {
+  margin: 0 0 16px;
+  font-size: clamp(2rem, 3.8vw, 2.7rem);
+  line-height: 1.15;
+  letter-spacing: -0.035em;
+  font-weight: 750;
+  color: var(--t-heading);
+}
+.thanks-page p.lead-copy {
+  margin: 0 auto 28px;
+  font-size: 1.12rem;
+  color: var(--t-muted);
+  line-height: 1.65;
+  max-width: 520px;
+}
+.thanks-page .action-row {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 34px;
+}
+.thanks-page .contact-note-box {
+  border-top: 1px solid var(--b-line);
+  padding-top: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  font-size: 0.88rem;
+  color: var(--t-muted);
+  flex-wrap: wrap;
+}
+.thanks-page .contact-note-box a {
+  color: var(--t-heading);
+  font-weight: 650;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.thanks-page .contact-note-box a:hover {
+  color: var(--orange);
+}
+@media (max-width: 600px) {
+  .thanks-page .thank-card {
+    padding: 40px 24px;
+  }
+  .thanks-page .action-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+@media (max-width: 760px) {
+}

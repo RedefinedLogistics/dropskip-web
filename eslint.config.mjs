@@ -10,6 +10,9 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Strapi is a separate application with its own conventions; the Next
+    // lint rules do not apply to it.
+    "cms/**",
   ]),
 ]);
 

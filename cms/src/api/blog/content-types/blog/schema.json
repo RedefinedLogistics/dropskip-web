@@ -1,0 +1,92 @@
+{
+  "kind": "collectionType",
+  "collectionName": "blogs",
+  "info": {
+    "singularName": "blog",
+    "pluralName": "blogs",
+    "displayName": "Blog",
+    "description": "Blog posts shown on dropskip.ai/blogs"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "maxLength": 160
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title",
+      "required": true
+    },
+    "featuredImage": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "shortDescription": {
+      "type": "text",
+      "required": false,
+      "maxLength": 300
+    },
+    "content": {
+      "type": "blocks",
+      "required": true
+    },
+    "author": {
+      "type": "string",
+      "required": true,
+      "maxLength": 120
+    },
+    "category": {
+      "type": "enumeration",
+      "enum": [
+        "Inventory planning",
+        "Inventory positioning",
+        "Trade & tariffs",
+        "Market shifts",
+        "Operator control"
+      ],
+      "default": "Inventory planning",
+      "required": true
+    },
+    "tags": {
+      "type": "string",
+      "maxLength": 255,
+      "description": "Comma separated, e.g. tariffs, sourcing, cash"
+    },
+    "publishedDate": {
+      "type": "date",
+      "required": true
+    },
+    "seoTitle": {
+      "type": "string",
+      "maxLength": 70
+    },
+    "seoDescription": {
+      "type": "text",
+      "maxLength": 170
+    },
+    "readTime": {
+      "type": "string",
+      "default": "3 min read",
+      "maxLength": 40
+    },
+    "cover": {
+      "type": "enumeration",
+      "enum": [
+        "trend",
+        "network",
+        "bars"
+      ],
+      "default": "trend",
+      "description": "Fallback artwork used when no featured image is set"
+    }
+  }
+}

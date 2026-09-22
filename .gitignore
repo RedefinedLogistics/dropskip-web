@@ -39,3 +39,8 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# keep the template committed
+!.env.example
+
+# Strapi's local SQLite database and build output are ignored by cms/.gitignore

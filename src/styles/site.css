@@ -1,0 +1,366 @@
+/* Shared chrome: base reset, tokens, header, footer, buttons. From index.html. */
+
+:root {
+  --navy: #071c2d;
+  --navy-2: #0b2b43;
+  --ink: #14212a;
+  --muted: #63717a;
+  --paper: #f6f3ec;
+  --white: #fff;
+  --orange: #ff6b2c;
+  --orange-2: #ff8c52;
+  --blue: #2459e0;
+  --line: #d9ddd9;
+  --mint: #dff3ea;
+  --max: 1180px;
+  --radius: 22px;
+  --shadow: 0 24px 70px rgba(4, 25, 39, 0.12);
+  /* Extended tokens: functional tints derived from the approved brand palette */
+  --orange-text: #ff6b2c;
+  --line-strong: #c2cdd4;
+  --muted-inverse: #c7d0d6;
+  --muted-soft: #8a959a;
+  --navy-line: #345064;
+  --navy-line-soft: #6d849a;
+  --mint-text: #0e5b41;
+  --orange-wash: #fff4ee;
+  --orange-wash-border: #ffd2b8;
+  --blue-wash: #eaf1fd;
+  --chart-1: #ffd7c5;
+  --chart-2: #ffbb9c;
+  --chart-3: #ff9463;
+  --live-green: #48ad87;
+}
+* {
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 96px;
+}
+body {
+  margin: 0;
+  background: var(--s-page);
+  color: var(--t-body);
+  font-family:
+    var(--font-inter),
+    Inter,
+    ui-sans-serif,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+  font-size: 16px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+button {
+  font: inherit;
+}
+svg {
+  display: block;
+  max-width: 100%;
+}
+.wrap {
+  width: min(calc(100% - 40px), var(--max));
+  margin-inline: auto;
+}
+.btn {
+  min-height: 48px;
+  padding: 13px 22px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 0.92rem;
+  font-weight: 750;
+  transition:
+    transform 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+    background 0.22s ease,
+    box-shadow 0.22s ease;
+  cursor: pointer;
+}
+.btn-primary {
+  color: white;
+  background: var(--orange);
+}
+/* The demo popup's trigger borrows each page's own .button class, and a real
+   <button> does not get the pointer cursor a link would. */
+button.button {
+  cursor: pointer;
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+  background: var(--orange-2);
+  box-shadow: 0 10px 24px rgba(255, 107, 44, 0.32);
+}
+.arrow {
+  display: inline-block;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.btn:hover .arrow {
+  transform: translate(3px, -3px);
+}
+.btn-ghost {
+  color: white;
+  border-color: rgba(255, 255, 255, 0.28);
+}
+.btn-ghost:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+.btn-dark {
+  background: var(--s-dark);
+  color: white;
+}
+.btn-dark:hover {
+  transform: translateY(-2px);
+  background: var(--s-dark-2);
+}
+.arrow {
+  font-size: 1.1em;
+}
+header {
+  position: sticky;
+  z-index: 50;
+  top: 0;
+  left: 0;
+  right: 0;
+  color: var(--t-heading);
+  background: rgba(246, 243, 236, 0.97);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(7, 28, 45, 0.12);
+}
+.nav {
+  height: 82px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.brand {
+  display: inline-flex;
+  align-items: center;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+  box-shadow: none;
+}
+.brand-logo {
+  display: block;
+  width: 162px;
+  height: auto;
+}
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+.nav-links > a:not(.btn) {
+  opacity: 0.82;
+  position: relative;
+  padding: 6px 0;
+  transition:
+    opacity 0.25s ease,
+    color 0.25s ease;
+}
+.nav-links > a:not(.btn)::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--orange);
+  border-radius: 2px;
+  transition: width 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.nav-links > a:not(.btn):hover {
+  opacity: 1;
+  color: var(--orange);
+}
+.nav-links > a:not(.btn):hover::after {
+  width: 100%;
+}
+/* The page you are on is marked by colour alone. The underline belongs to
+   hover and focus, so it stays a response to what the pointer or keyboard is
+   doing rather than a second permanent mark. aria-current is set by the
+   header, so the styling and what a screen reader announces cannot drift. */
+.nav-links > a:not(.btn)[aria-current="page"] {
+  opacity: 1;
+  color: var(--orange);
+}
+/* Keyboard focus in the header. The submenu links already had a focus state;
+   these are the rest of the header, so tabbing across it no longer alternates
+   between a designed state and the browser's default outline. The ring sits
+   outside the element, which leaves the underline and the current-page colour
+   readable underneath it. */
+.nav-links > a:not(.btn):focus-visible,
+.nav-links .btn:focus-visible,
+.brand:focus-visible,
+.menu:focus-visible {
+  outline: 2px solid var(--orange);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+.nav-links > a:not(.btn):focus-visible {
+  opacity: 1;
+  color: var(--orange);
+}
+.nav-links > a:not(.btn):focus-visible::after {
+  width: 100%;
+}
+.menu {
+  display: none;
+  border: 0;
+  background: none;
+  color: var(--t-heading);
+  padding: 10px;
+}
+.menu span {
+  display: block;
+  width: 23px;
+  height: 2px;
+  background: currentColor;
+  margin: 5px;
+}
+/* The nav is a row, not a paragraph: "Inventory Planning" and "Book a Demo"
+   were breaking onto a second line as soon as the bar got tight, which threw
+   the whole header out of alignment. */
+.nav-links > a:not(.btn),
+.nav-links .btn,
+.nav-group-trigger {
+  white-space: nowrap;
+}
+@keyframes navSlideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+/* Laptops and small desktops: the full nav still fits, but only just, so the
+   row tightens before it is given up altogether. */
+@media (max-width: 1180px) {
+  .nav-links {
+    gap: 20px;
+  }
+  .brand-logo {
+    width: 148px;
+  }
+  .nav-links .btn {
+    padding: 12px 17px;
+  }
+  .header-tools {
+    margin-left: 10px;
+  }
+}
+
+/* Tablets and below. Measured rather than guessed: the six links, the demo
+   button, the logo and the toggle need about 1160px of bar, so anything
+   narrower was squeezing them. The hamburger takes over here instead of
+   waiting for 720px. */
+@media (max-width: 1024px) {
+  .nav-links {
+    display: none;
+  }
+  .menu {
+    display: block;
+    cursor: pointer;
+  }
+  .nav-links.open {
+    display: flex;
+    position: absolute;
+    top: 90px;
+    left: 14px;
+    right: 14px;
+    background: var(--s-card);
+    color: var(--t-heading);
+    padding: 18px;
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+    flex-direction: column;
+    gap: 6px;
+    animation: navSlideDown 0.25s ease;
+    z-index: 100;
+  }
+  .nav-links.open a {
+    padding: 12px 14px;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--t-heading);
+    transition:
+      background 0.2s ease,
+      color 0.2s ease;
+  }
+  .nav-links.open a:hover {
+    background: var(--s-page);
+    color: var(--orange);
+  }
+  .nav-links.open a[aria-current="page"] {
+    color: var(--orange);
+  }
+  .nav-links.open .btn {
+    margin-top: 6px;
+    color: #fff;
+  }
+}
+
+@media (max-width: 720px) {
+  .wrap {
+    width: min(calc(100% - 28px), var(--max));
+  }
+  .nav {
+    height: 72px;
+  }
+  .brand-logo {
+    width: 142px;
+  }
+  /* The bar is shorter here, so the panel starts higher. */
+  .nav-links.open {
+    top: 76px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *:before,
+  *:after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+/* Tokens the ported pages expect from index.html's palette. */
+:root {
+  --card-shadow: 0 10px 30px rgba(4, 25, 39, 0.05);
+  --font-family:
+    var(--font-inter), Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+}
+/* Short pages still push the footer to the bottom of the viewport. */
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+main {
+  display: flex;
+  flex-direction: column;
+  flex: 1 0 auto;
+}
+main > * {
+  flex: 1 0 auto;
+}
