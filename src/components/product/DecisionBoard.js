@@ -45,8 +45,9 @@ export default function DecisionBoard() {
             <p className="eyebrow">Recommendation</p>
             <h3>Review replenishment before missed sales increase.</h3>
             <p>
-              Demand is above the operating plan while current coverage is shorter than the supplier
-              lead time. The proposed action fits the current purchasing plan.
+              Demand is above the operating plan while current coverage is
+              shorter than the supplier lead time. The proposed action fits the
+              current purchasing plan.
             </p>
             <div className="decision-context">
               <div>
@@ -81,7 +82,7 @@ export default function DecisionBoard() {
                   className={item.className}
                   type="button"
                   disabled={decision !== null}
-                  onClick={() => choose(item.value)}
+                  // onClick={() => choose(item.value)}
                 >
                   {item.label}
                 </button>
@@ -90,14 +91,20 @@ export default function DecisionBoard() {
           </aside>
         </div>
         <div className="decision-receipt" hidden={decision === null}>
-          <span>{decision ? `${decision} by operator · no order submitted` : ""}</span>
+          <span>
+            {decision ? `${decision} by operator · no order submitted` : ""}
+          </span>
           <button type="button" onClick={reset}>
             Reset example
           </button>
         </div>
       </div>
 
-      <div className={toast ? "toast show" : "toast"} role="status" aria-live="polite">
+      <div
+        className={toast ? "toast show" : "toast"}
+        role="status"
+        aria-live="polite"
+      >
         {toast}
       </div>
     </>
