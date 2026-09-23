@@ -33,7 +33,15 @@ export const viewport = {
  */
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={inter.variable} suppressHydrationWarning>
+    // data-scroll-behavior tells Next the smooth scrolling in site.css is
+    // deliberate, so it can suspend it during route transitions and land a
+    // new page at the top instantly instead of gliding there.
+    <html
+      lang="en"
+      className={inter.variable}
+      data-scroll-behavior="smooth"
+      suppressHydrationWarning
+    >
       <head>
         {/* Sets the theme before first paint so there is no light flash. */}
         <script
