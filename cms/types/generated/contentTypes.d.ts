@@ -460,17 +460,6 @@ export interface ApiBlogBlog extends Struct.CollectionTypeSchema {
       Schema.Attribute.SetMinMaxLength<{
         maxLength: 120;
       }>;
-    category: Schema.Attribute.Enumeration<
-      [
-        'Inventory planning',
-        'Inventory positioning',
-        'Trade & tariffs',
-        'Market shifts',
-        'Operator control',
-      ]
-    > &
-      Schema.Attribute.Required &
-      Schema.Attribute.DefaultTo<'Inventory planning'>;
     content: Schema.Attribute.Blocks & Schema.Attribute.Required;
     cover: Schema.Attribute.Enumeration<['trend', 'network', 'bars']> &
       Schema.Attribute.DefaultTo<'trend'>;
@@ -495,10 +484,6 @@ export interface ApiBlogBlog extends Struct.CollectionTypeSchema {
     seoTitle: Schema.Attribute.String &
       Schema.Attribute.SetMinMaxLength<{
         maxLength: 70;
-      }>;
-    shortDescription: Schema.Attribute.Text &
-      Schema.Attribute.SetMinMaxLength<{
-        maxLength: 300;
       }>;
     slug: Schema.Attribute.UID<'title'> & Schema.Attribute.Required;
     tags: Schema.Attribute.String &

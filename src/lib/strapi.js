@@ -128,10 +128,9 @@ function fromStrapiBlocks(blocks) {
 }
 
 /**
- * The opening of the article, trimmed to a sentence or so. Used only as the
- * last resort for a search description: Short Description is optional, and a
- * post with neither it nor an SEO Description would otherwise go out with an
- * empty <meta description> and blank link previews.
+ * The opening of the article, trimmed to a sentence or so. It stands in for a
+ * search description when a post has no SEO Description: without it the page
+ * would go out with an empty <meta description> and blank link previews.
  */
 function openingOf(body, limit = 160) {
   const text =
@@ -156,8 +155,6 @@ function normalise(entry) {
   return {
     slug: a.slug,
     title: a.title,
-    excerpt: a.shortDescription ?? "",
-    category: a.category ?? "Inventory planning",
     author: a.author ?? "DropSkip",
     date: (a.publishedDate ?? a.publishedAt ?? "").slice(0, 10),
     readTime: a.readTime ?? "3 min read",
@@ -167,7 +164,7 @@ function normalise(entry) {
       .map((tag) => tag.trim())
       .filter(Boolean),
     seoTitle: a.seoTitle || a.title,
-    seoDescription: a.seoDescription || a.shortDescription || openingOf(body),
+    seoDescription: a.seoDescription || openingOf(body),
     image: image?.url
       ? {
           url: mediaUrl(image.url),

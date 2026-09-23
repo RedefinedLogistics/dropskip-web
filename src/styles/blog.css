@@ -388,17 +388,6 @@
   text-wrap: balance;
 }
 
-/* Sits between the title and the byline as a summary, so it is set quieter
-   than the body but larger than the meta. */
-.post-lede {
-  margin: 16px 0 0;
-  max-width: 62ch;
-  color: var(--t-muted);
-  font-size: 1.08rem;
-  line-height: 1.6;
-  text-wrap: pretty;
-}
-
 .post-byline {
   margin-top: 22px;
   padding-top: 18px;

@@ -30,11 +30,6 @@
         "images"
       ]
     },
-    "shortDescription": {
-      "type": "text",
-      "required": false,
-      "maxLength": 300
-    },
     "content": {
       "type": "blocks",
       "required": true
@@ -43,18 +38,6 @@
       "type": "string",
       "required": true,
       "maxLength": 120
-    },
-    "category": {
-      "type": "enumeration",
-      "enum": [
-        "Inventory planning",
-        "Inventory positioning",
-        "Trade & tariffs",
-        "Market shifts",
-        "Operator control"
-      ],
-      "default": "Inventory planning",
-      "required": true
     },
     "tags": {
       "type": "string",

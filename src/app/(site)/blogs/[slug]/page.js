@@ -54,19 +54,6 @@ export default async function BlogDetailPage({ params }) {
 
   const others = (await getBlogs()).filter((p) => p.slug !== blog.slug).slice(0, 2);
 
-  // Editors often paste the opening paragraph into Short Description. It earns
-  // its place on the cards and in search results, but printing it directly
-  // above the identical first paragraph reads as a mistake, so drop it here.
-  const firstParagraph =
-    blog.body
-      .find((block) => block.type === "p")
-      ?.content.map((n) => n.text)
-      .join("") ?? "";
-  const ledeRepeatsOpening =
-    blog.excerpt.length > 40 &&
-    firstParagraph.slice(0, 40).trim() === blog.excerpt.slice(0, 40).trim();
-  const showLede = blog.excerpt && !ledeRepeatsOpening;
-
   // Tells search engines this is an article rather than a marketing page.
   const jsonLd = {
     "@context": "https://schema.org",
@@ -94,7 +81,6 @@ export default async function BlogDetailPage({ params }) {
             <span aria-hidden="true">←</span> All posts
           </Link>
           <h1>{blog.title}</h1>
-          {showLede ? <p className="post-lede">{blog.excerpt}</p> : null}
 
           <div className="post-byline">
             <div className="post-meta">
