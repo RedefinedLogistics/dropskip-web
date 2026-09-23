@@ -1,0 +1,358 @@
+/* The 404 page, ported from the design's 404.html and scoped to the route.
+   The literal colours in the source have been swapped for the semantic tokens
+   the rest of the site uses, so this page follows the theme toggle like every
+   other page rather than staying light. */
+
+.notfound-page {
+  --red-soft: #fde8e8;
+  --red-text: #b91c1c;
+
+  position: relative;
+  overflow: hidden;
+  padding: 72px 0 96px;
+  background: var(--s-page);
+  color: var(--t-body);
+}
+
+[data-theme="dark"] .notfound-page {
+  --red-soft: #2b1414;
+  --red-text: #f08b8b;
+}
+
+.error-layout {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 56px;
+  align-items: center;
+}
+
+/* ----------------------------------------------------------- left copy -- */
+
+.error-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 20px;
+  padding: 6px 14px;
+  border: 1px solid rgba(185, 28, 28, 0.2);
+  border-radius: 99px;
+  background: var(--red-soft);
+  color: var(--red-text);
+  font-size: 0.8125rem;
+  font-weight: 750;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.badge-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--red-text);
+  animation: pulseAlert 1.8s infinite ease-in-out;
+}
+
+@keyframes pulseAlert {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.4;
+    transform: scale(0.85);
+  }
+}
+
+.error-title {
+  margin: 0 0 20px;
+  color: var(--t-heading);
+  font-size: clamp(2.4rem, 4.4vw, 3.8rem);
+  line-height: 1.08;
+  letter-spacing: -0.045em;
+  font-weight: 750;
+}
+
+.error-title .accent-orange {
+  color: var(--orange);
+}
+
+.error-desc {
+  margin: 0 0 32px;
+  max-width: 520px;
+  color: var(--t-muted);
+  font-size: 1.12rem;
+  line-height: 1.65;
+}
+
+.actions-group {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 30px;
+}
+
+.notfound-page .btn-secondary {
+  background: var(--s-card);
+  color: var(--t-heading);
+  border: 1.5px solid var(--b-line);
+}
+
+.notfound-page .btn-secondary:hover {
+  border-color: var(--b-strong);
+  background: var(--s-soft);
+  transform: translateY(-2px);
+}
+
+.reroute-bar {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 14px;
+  border: 1px solid var(--b-line);
+  border-radius: 10px;
+  background: var(--s-card);
+  color: var(--t-muted);
+  font-size: 0.875rem;
+}
+
+.reroute-bar a {
+  color: var(--t-heading);
+  font-weight: 650;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 0.2s ease;
+}
+
+.reroute-bar a:hover {
+  color: var(--orange);
+}
+
+/* ------------------------------------------------- right diagnostic card -- */
+
+.console-card {
+  position: relative;
+  padding: 32px;
+  border: 1px solid var(--b-line);
+  border-radius: 24px;
+  background: var(--s-card);
+  box-shadow: var(--card-shadow);
+}
+
+.console-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  border-radius: 24px 24px 0 0;
+  background: linear-gradient(90deg, var(--orange), var(--blue));
+}
+
+.console-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 22px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--b-line);
+}
+
+.console-label {
+  color: var(--t-muted);
+  font-size: 0.82rem;
+  font-weight: 750;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border: 1px solid rgba(255, 107, 44, 0.25);
+  border-radius: 99px;
+  background: var(--orange-wash);
+  color: var(--orange-text);
+  font-size: 0.78rem;
+  font-weight: 750;
+}
+
+.metric-table {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.metric-cell {
+  padding: 14px 12px;
+  border: 1px solid var(--b-line);
+  border-radius: 14px;
+  background: var(--s-field);
+  text-align: center;
+}
+
+.metric-cell small {
+  display: block;
+  margin-bottom: 4px;
+  color: var(--t-muted);
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.metric-cell strong {
+  display: block;
+  color: var(--t-heading);
+  font-size: 1.2rem;
+  font-weight: 750;
+}
+
+.metric-cell.alert strong {
+  color: var(--red-text);
+}
+
+.metric-cell.good strong {
+  color: var(--mint-text);
+}
+
+.diagnostic-box {
+  margin-bottom: 22px;
+  padding: 18px;
+  border: 1.5px dashed var(--b-strong);
+  border-radius: 14px;
+  background: var(--s-field-alt);
+}
+
+.diag-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+  color: var(--t-heading);
+  font-size: 0.92rem;
+  font-weight: 700;
+}
+
+.diag-head svg {
+  width: 18px;
+  height: 18px;
+  color: var(--orange);
+}
+
+.diag-desc {
+  margin: 0;
+  color: var(--t-muted);
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
+/* ------------------------------------------------------ reroute control -- */
+
+.sim-action-box {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-top: 18px;
+  border-top: 1px solid var(--b-line);
+}
+
+.sim-button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 12px 18px;
+  border: 0;
+  border-radius: 12px;
+  background: var(--s-dark);
+  color: #fff;
+  font: inherit;
+  font-size: 0.92rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.sim-button:hover:not(:disabled) {
+  background: var(--s-dark-2);
+  transform: translateY(-1px);
+}
+
+.sim-button:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.sim-button:disabled {
+  cursor: default;
+  opacity: 0.85;
+}
+
+.sim-button:focus-visible {
+  outline: 2px solid var(--orange);
+  outline-offset: 3px;
+}
+
+.progress-bar-wrap {
+  height: 6px;
+  margin-top: 4px;
+  border-radius: 99px;
+  background: var(--s-soft);
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  width: 0%;
+  background: var(--orange);
+  transition: width 0.05s linear;
+}
+
+.sim-feedback {
+  margin: 0;
+  color: var(--t-muted);
+  font-size: 0.82rem;
+  text-align: center;
+}
+
+/* -------------------------------------------------------------- narrow -- */
+
+@media (max-width: 960px) {
+  .error-layout {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .console-card {
+    padding: 24px;
+  }
+}
+
+@media (max-width: 560px) {
+  .notfound-page {
+    padding: 48px 0 64px;
+  }
+
+  .metric-table {
+    grid-template-columns: 1fr;
+  }
+
+  .actions-group .btn {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .badge-dot {
+    animation: none;
+  }
+}
