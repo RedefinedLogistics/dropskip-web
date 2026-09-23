@@ -43,7 +43,42 @@ function strapiImagePatterns() {
   return patterns;
 }
 
+/**
+ * Hosts allowed to load dev-server assets from a different origin.
+ *
+ * `next dev` answers a request for /_next/static/* with 403 when the browser's
+ * Origin is not the host the server is bound to. Reaching the dev server
+ * through a tunnel (ngrok, Cloudflare, a LAN IP) is exactly that case: the
+ * page HTML loads, every script is refused, React never hydrates, and the
+ * result is a site that looks right but where nothing clickable works — the
+ * theme toggle, the Book a Demo popup, the mobile menu, all inert.
+ *
+ * Production builds are unaffected; this applies to `next dev` only.
+ * Set ALLOWED_DEV_ORIGINS to a comma-separated list of hostnames.
+ */
+const TUNNEL_HOSTS = [
+  "*.ngrok-free.dev",
+  "*.ngrok-free.app",
+  "*.ngrok.app",
+  "*.ngrok.io",
+  "*.trycloudflare.com",
+  "*.loca.lt",
+  // Private ranges, for testing from a phone on the same network.
+  "192.168.*.*",
+  "10.*.*.*",
+];
+
+const allowedDevOrigins = [
+  ...TUNNEL_HOSTS,
+  ...(process.env.ALLOWED_DEV_ORIGINS ?? "")
+    .split(",")
+    .map((host) => host.trim().replace(/^https?:\/\//, "").replace(/\/.*$/, ""))
+    .filter(Boolean),
+];
+
 const nextConfig = {
+  allowedDevOrigins,
+
   // Hide the floating Next.js dev-tools badge in the corner during `next dev`.
   // It never appears in a production build.
   devIndicators: false,
