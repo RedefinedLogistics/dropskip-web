@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import BookDemoButton from "@/components/BookDemoButton";
 import "@/styles/about.css";
@@ -9,6 +10,35 @@ export const metadata = {
   description:
     "Meet the operators and technologists behind DropSkip, and the experience and principles shaping what we build.",
 };
+
+// Photos live in public/team. The initials stay as the alt text's fallback
+// shape: if an image ever fails to load the card still reads correctly.
+const team = [
+  {
+    name: "Rajeeb Mohapatra",
+    role: "Founder & CEO",
+    photo: "/team/rajeeb-mohapatra.jpg",
+    width: 400,
+    height: 400,
+    bio: "Rajeeb has spent 20+ years leading retail, ecommerce, logistics, and global supply chains. He previously held leadership roles at Quince, Pitney Bowes, and Office Depot, with additional experience at PayPal and Dell.",
+  },
+  {
+    name: "Kevin Nohl",
+    role: "Co-Founder & COO",
+    photo: "/team/kevin-nohl.jpg",
+    width: 800,
+    height: 800,
+    bio: "Kevin brings 20+ years in global supply-chain operations, including leadership roles at Aterian, Rent the Runway, Bed Bath & Beyond, and Amazon.",
+  },
+  {
+    name: "Surajbhan Satpathy",
+    role: "Co-Founder & CTO",
+    photo: "/team/surajbhan-satpathy.jpg",
+    width: 800,
+    height: 800,
+    bio: "Surajbhan is an AI/ML leader and published researcher with 15+ years building fintech, edtech, and supply-chain platforms. A former Morgan Stanley technology leader, he founded Kaman.AI and leads DropSkip's engineering and agentic AI infrastructure.",
+  },
+];
 
 const principles = [
   {
@@ -125,42 +155,22 @@ export default function AboutPage() {
             <h2>Experience across operations, supply chain, and AI.</h2>
           </div>
           <div className="team-grid">
-            <div className="team-card">
-              <span className="avatar" title="Rajeeb Mohapatra">
-                RM
-              </span>
-              <span className="name">Rajeeb Mohapatra</span>
-              <span className="role">Founder &amp; CEO</span>
-              <p>
-                Rajeeb has spent 20+ years leading retail, ecommerce, logistics, and global supply
-                chains. He previously held leadership roles at Quince, Pitney Bowes, and Office
-                Depot, with additional experience at PayPal and Dell.
-              </p>
-            </div>
-            <div className="team-card">
-              <span className="avatar" title="Kevin Nohl">
-                KN
-              </span>
-              <span className="name">Kevin Nohl</span>
-              <span className="role">Co-Founder &amp; COO</span>
-              <p>
-                Kevin brings 20+ years in global supply-chain operations, including leadership roles
-                at Aterian, Rent the Runway, Bed Bath &amp; Beyond, and Amazon.
-              </p>
-            </div>
-            <div className="team-card">
-              <span className="avatar" title="Surajbhan Satpathy">
-                SS
-              </span>
-              <span className="name">Surajbhan Satpathy</span>
-              <span className="role">Co-Founder &amp; CTO</span>
-              <p>
-                Surajbhan is an AI/ML leader and published researcher with 15+ years building
-                fintech, edtech, and supply-chain platforms. A former Morgan Stanley technology
-                leader, he founded Kaman.AI and leads DropSkip&apos;s engineering and agentic AI
-                infrastructure.
-              </p>
-            </div>
+            {team.map((person) => (
+              <div className="team-card" key={person.name}>
+                <span className="avatar">
+                  <Image
+                    src={person.photo}
+                    alt={person.name}
+                    width={person.width}
+                    height={person.height}
+                    sizes="80px"
+                  />
+                </span>
+                <span className="name">{person.name}</span>
+                <span className="role">{person.role}</span>
+                <p>{person.bio}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
