@@ -13,7 +13,7 @@
    Scoped here so nothing outside the footer moves. */
 .footer {
   --f-muted: #556169;
-  --f-accent: #ad3f0e;
+  --f-accent: #ff6b2c;
   --f-line: #c3bdaa;
 
   position: relative;
@@ -26,7 +26,6 @@
 
 [data-theme="dark"] .footer {
   --f-muted: var(--t-muted);
-  --f-accent: var(--orange);
   --f-line: #2f353e;
 }
 
@@ -112,11 +111,11 @@
 /* ---------------------------------------------------------- destinations -- */
 
 /* The brand orange, matching the section eyebrows on the rest of the site.
-   Set directly rather than through --f-accent, which stays the deeper orange
-   the footer's links use on hover. */
+   --f-accent carries the same value, so the headings, the link hover, the mail
+   icon and the focus ring are all one colour. */
 .footer-col-title {
   margin: 0 0 16px;
-  color: #ff6b2c;
+  color: var(--f-accent);
   font-size: 0.75rem;
   font-weight: 800;
   letter-spacing: 0.13em;
