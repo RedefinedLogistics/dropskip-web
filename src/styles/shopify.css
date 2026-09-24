@@ -13,12 +13,11 @@
   --blue: #2459e0;
   --mint: #dff3ea;
   --line: #d9ddd9;
-  --max: 1180px;
   --radius: 20px;
   --shadow: 0 24px 70px rgba(7, 28, 45, 0.09);
   --font:
-    var(--font-inter), Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont,
-    "Segoe UI", sans-serif;
+    var(--font-inter), Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
 
   /* Extended tokens: functional tints derived from the approved brand palette */
   --line-strong: #c2cdd4;
@@ -42,7 +41,7 @@
   background: var(--s-page);
   color: var(--t-body);
   font-family: var(--font);
-  font-size: 16px;
+  font-size: clamp(16px, calc(15.609px + 0.109vw), 17px);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
 }
@@ -61,7 +60,6 @@
   display: none !important;
 }
 .shopify-page .wrap {
-  width: min(calc(100% - 48px), var(--max));
   margin-inline: auto;
 }
 /* Skip Link */
@@ -204,7 +202,7 @@
   align-items: center;
   justify-content: center;
   gap: 10px;
-  font-size: 0.93rem;
+  font-size: 0.95rem;
   font-weight: 700;
   transition:
     transform 0.22s cubic-bezier(0.16, 1, 0.3, 1),
@@ -277,7 +275,7 @@
   color: var(--orange-text);
 }
 .shopify-page .section {
-  padding: 96px 0;
+  padding: var(--section-pad) 0;
 }
 .shopify-page .section-title {
   max-width: 780px;
@@ -439,7 +437,7 @@
   background: var(--s-card);
   margin-bottom: 20px;
 }
-.shopify-page .position-block h4 {
+.shopify-page .position-block h2 {
   margin: 0 0 14px;
   font-size: 0.85rem;
   color: var(--t-muted);
@@ -654,7 +652,7 @@
 }
 .shopify-page .flow-card h3 {
   margin: 0 0 6px;
-  font-size: 1.35rem;
+  font-size: clamp(18.36px, calc(17.092px + 0.352vw), 21.6px);
   font-weight: 700;
 }
 .shopify-page .flow-tagline {
@@ -750,7 +748,7 @@
 }
 .shopify-page .sim-panel-head h3 {
   margin: 0 0 8px;
-  font-size: 1.5rem;
+  font-size: clamp(18.72px, calc(16.654px + 0.574vw), 24px);
   font-weight: 750;
   color: var(--t-heading);
 }
@@ -781,7 +779,7 @@
 .shopify-page .sim-data-card strong {
   display: block;
   margin-top: 4px;
-  font-size: 1.25rem;
+  font-size: clamp(17px, calc(15.826px + 0.326vw), 20px);
   font-weight: 750;
   color: var(--t-heading);
 }
@@ -794,7 +792,7 @@
   font-size: 0.95rem;
   line-height: 1.65;
 }
-.shopify-page .calc-drawer h4 {
+.shopify-page .calc-drawer h2 {
   margin: 0 0 12px;
   font-size: 0.85rem;
   font-weight: 800;
@@ -809,9 +807,9 @@
   margin-top: 24px;
 }
 .shopify-page .sim-controls .btn {
-  min-height: 42px;
-  padding: 10px 20px;
-  font-size: 0.88rem;
+  min-height: 44px;
+  padding: 9px 16px;
+  font-size: 0.9rem;
 }
 /* 6. Network View */
 .shopify-page .network-section {
@@ -909,7 +907,7 @@
 }
 .shopify-page .move-card h3 {
   margin: 0 0 10px;
-  font-size: 1.25rem;
+  font-size: clamp(17px, calc(15.826px + 0.326vw), 20px);
   font-weight: 700;
   color: var(--t-heading);
 }
@@ -996,12 +994,14 @@
 }
 .shopify-page .action-button-group {
   display: flex;
+  flex-wrap: wrap;
   gap: 10px;
 }
-.shopify-page .action-button-group .btn {
-  min-height: 42px;
-  padding: 10px 20px;
-  font-size: 0.88rem;
+.shopify-page .action-button-group .btn,
+.shopify-page .action-box .btn {
+  min-height: 44px;
+  padding: 9px 16px;
+  font-size: 0.9rem;
 }
 /* 9. Integrations Section */
 .shopify-page .integrations-sec {
@@ -1110,7 +1110,7 @@
 }
 .shopify-page .step-card h3 {
   margin: 0 0 6px;
-  font-size: 1.25rem;
+  font-size: clamp(17px, calc(15.826px + 0.326vw), 20px);
   font-weight: 750;
   color: var(--t-heading);
 }
@@ -1233,11 +1233,7 @@
   width: 500px;
   height: 500px;
   border-radius: 50%;
-  background: radial-gradient(
-    circle,
-    rgba(255, 107, 44, 0.12) 0%,
-    transparent 70%
-  );
+  background: radial-gradient(circle, rgba(255, 107, 44, 0.12) 0%, transparent 70%);
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -1311,12 +1307,6 @@
   }
 }
 @media (max-width: 720px) {
-  .shopify-page .wrap {
-    width: min(calc(100% - 32px), var(--max));
-  }
-  .shopify-page .section {
-    padding: 64px 0;
-  }
   .shopify-page .nav {
     display: none;
   }
@@ -1384,5 +1374,47 @@
   .shopify-page .action-box {
     flex-direction: column;
     align-items: flex-start;
+  }
+}
+
+/* ---------------------------------------------- large desktop (1440px+) --
+   Display headings hit their ceiling around 1400px, so on a 1920px screen
+   they were the same size as on a laptop while the container around them
+   grew. This lifts each ceiling by 10% between 1440px and 1920px. It is a
+   min-width block on purpose: at 1440px and below nothing here applies and
+   the existing sizes are untouched. */
+@media (min-width: 1440px) {
+  .shopify-page .section-title {
+    font-size: clamp(61px, calc(42.7px + 1.27vw), 67.1px);
+  }
+  .shopify-page .hero h1 {
+    font-size: clamp(74px, calc(51.8px + 1.54vw), 81.4px);
+  }
+  .shopify-page .closing-cta h2 {
+    font-size: clamp(61px, calc(42.7px + 1.27vw), 67.1px);
+  }
+}
+
+/* ------------------------------------------------ tablet (768-991px) --
+   Card grids were either collapsing to a single full-width card or being
+   squeezed to 180-240px columns at tablet size. Two columns is the right
+   density here and matches what .post-grid already does. */
+@media (min-width: 768px) and (max-width: 991px) {
+  .shopify-page .steps-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* --------------------------------------------------- touch devices --
+   A touch screen fires :hover on tap and leaves it applied until the
+   visitor taps elsewhere, so the card lift sticks. Card hover is a
+   pointer-only affordance; buttons keep their feedback either way. */
+@media (hover: none) {
+  .shopify-page .cap-item:hover,
+  .shopify-page .flow-card:hover,
+  .shopify-page .node-card:hover,
+  .shopify-page .move-card:hover,
+  .shopify-page .step-card:hover {
+    transform: none;
   }
 }

@@ -211,7 +211,7 @@
 .metric-cell strong {
   display: block;
   color: var(--t-heading);
-  font-size: 1.2rem;
+  font-size: clamp(16.32px, calc(15.193px + 0.313vw), 19.2px);
   font-weight: 750;
 }
 
@@ -354,5 +354,17 @@
 @media (prefers-reduced-motion: reduce) {
   .badge-dot {
     animation: none;
+  }
+}
+
+/* ---------------------------------------------- large desktop (1440px+) --
+   Display headings hit their ceiling around 1400px, so on a 1920px screen
+   they were the same size as on a laptop while the container around them
+   grew. This lifts each ceiling by 10% between 1440px and 1920px. It is a
+   min-width block on purpose: at 1440px and below nothing here applies and
+   the existing sizes are untouched. */
+@media (min-width: 1440px) {
+  .error-title {
+    font-size: clamp(61px, calc(42.7px + 1.27vw), 67.1px);
   }
 }

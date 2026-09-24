@@ -19,16 +19,15 @@
   --line: #d9ddd9;
   --darkline: #345064;
   --display:
-    var(--font-inter), Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont,
-    "Segoe UI", sans-serif;
+    var(--font-inter), Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
   --body:
-    var(--font-inter), Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont,
-    "Segoe UI", sans-serif;
+    var(--font-inter), Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
   --mono:
-    var(--font-inter), Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont,
-    "Segoe UI", sans-serif;
-  --content: 1200px;
-  --section: 70px;
+    var(--font-inter), Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  --section: var(--section-pad);
   --line-strong: #c2cdd4;
   --navy-line-soft: #6d849a;
   --muted-inverse: #d0deeb;
@@ -97,7 +96,6 @@
   display: none !important;
 }
 .inventory-page .wrap {
-  width: min(calc(100% - 64px), var(--content));
   margin-inline: auto;
 }
 .inventory-page .section {
@@ -158,10 +156,10 @@
   align-items: center;
   justify-content: center;
   gap: 20px;
-  padding: 12px 20px;
+  padding: 12px 24px;
   border: 1px solid transparent;
   border-radius: 999px;
-  font-size: 14px;
+  font-size: 0.95rem;
   font-weight: 700;
   text-decoration: none;
   transition:
@@ -440,7 +438,7 @@
 }
 .inventory-page .hero-foot > strong {
   font-family: var(--display);
-  font-size: 20px;
+  font-size: clamp(17px, calc(15.826px + 0.326vw), 20px);
   letter-spacing: -0.025em;
   padding-right: 18px;
 }
@@ -533,7 +531,7 @@
   color: var(--t-soft);
 }
 .inventory-page .position-node h3 {
-  font-size: 36px;
+  font-size: clamp(25.92px, calc(21.976px + 1.096vw), 36px);
   line-height: 1.05;
   letter-spacing: -0.04em;
   margin: 14px 0;
@@ -564,7 +562,7 @@
   color: var(--orange);
 }
 .inventory-page .action-card h3 {
-  font-size: 23px;
+  font-size: clamp(17.94px, calc(15.96px + 0.55vw), 23px);
   letter-spacing: -0.03em;
   margin: 10px 0 6px;
 }
@@ -709,8 +707,9 @@
   margin-top: 20px;
 }
 .inventory-page .decision-controls .button {
-  min-height: 42px;
-  padding: 9px 14px;
+  min-height: 44px;
+  padding: 9px 16px;
+  font-size: 0.9rem;
 }
 .inventory-page .quiet {
   border-color: transparent;
@@ -789,7 +788,7 @@
   margin-top: 20px;
 }
 .inventory-page .operator-line strong {
-  font: 600 22px var(--display);
+  font: 600 22px/1.25 var(--display);
   letter-spacing: -0.03em;
 }
 .inventory-page .operator-line span {
@@ -967,7 +966,7 @@
   color: var(--orange);
 }
 .inventory-page .risk h3 {
-  font-size: 27px;
+  font-size: clamp(21.06px, calc(18.736px + 0.646vw), 27px);
   letter-spacing: -0.035em;
   margin: 13px 0 10px;
 }
@@ -1039,7 +1038,7 @@
   border-bottom: 1px solid var(--b-line);
 }
 .inventory-page .horizon-header h3 {
-  font-size: 31px;
+  font-size: clamp(22.32px, calc(18.923px + 0.943vw), 31px);
   letter-spacing: -0.04em;
 }
 .inventory-page .horizon-header span {
@@ -1256,9 +1255,6 @@
   transform: translate(-50%, 0);
 }
 @media (max-width: 980px) {
-  .inventory-page .wrap {
-    width: calc(100% - 48px);
-  }
   .inventory-page .hero-grid {
     gap: 40px;
     grid-template-columns: minmax(0, 1fr) minmax(360px, 0.9fr);
@@ -1291,10 +1287,6 @@
 }
 @media (max-width: 760px) {
   .inventory-page {
-    --section: 43px;
-  }
-  .inventory-page .wrap {
-    width: calc(100% - 36px);
   }
   .inventory-page .header-inner {
     min-height: 68px;
@@ -1319,7 +1311,7 @@
     gap: 32px;
   }
   .inventory-page .hero h1 {
-    font-size: clamp(43px, 11.2vw, 60px);
+    font-size: clamp(43px, 11.2vw, 50px);
     max-width: 650px;
   }
   .inventory-page .hero-lede {
@@ -1643,7 +1635,7 @@
   padding-block: 23px;
 }
 .inventory-page .hero-foot > strong {
-  font-size: 22px;
+  font-size: clamp(18.7px, calc(17.409px + 0.359vw), 22px);
 }
 .inventory-page .question-board {
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
@@ -1669,7 +1661,7 @@
   padding-left: 30px;
 }
 .inventory-page .outcome-strip h3 {
-  font-size: 25px;
+  font-size: clamp(19.5px, calc(17.348px + 0.598vw), 25px);
   line-height: 1.2;
   letter-spacing: -0.035em;
   margin-top: 10px;
@@ -1708,7 +1700,8 @@
   color: var(--orange);
 }
 .inventory-page .journey-flow h3 {
-  font-size: 32px;
+  font-size: clamp(23.04px, calc(19.534px + 0.974vw), 32px);
+  line-height: 1.2;
   letter-spacing: -0.04em;
   margin: 13px 0 10px;
 }
@@ -1966,7 +1959,7 @@
   margin-bottom: 14px;
 }
 .inventory-page .capability-brief h3 {
-  font-size: 25px;
+  font-size: clamp(19.5px, calc(17.348px + 0.598vw), 25px);
   line-height: 1.2;
   letter-spacing: -0.035em;
 }
@@ -2365,4 +2358,56 @@
   }
 }
 @media (max-width: 760px) {
+}
+
+/* ---------------------------------------------- large desktop (1440px+) --
+   Display headings hit their ceiling around 1400px, so on a 1920px screen
+   they were the same size as on a laptop while the container around them
+   grew. This lifts each ceiling by 10% between 1440px and 1920px. It is a
+   min-width block on purpose: at 1440px and below nothing here applies and
+   the existing sizes are untouched. */
+@media (min-width: 1440px) {
+  .inventory-page .section-head h2 {
+    font-size: clamp(58px, calc(40.6px + 1.21vw), 63.8px);
+  }
+  .inventory-page .hero h1 {
+    font-size: clamp(78px, calc(54.6px + 1.62vw), 85.8px);
+  }
+  .inventory-page .console h2 {
+    font-size: clamp(42px, calc(29.4px + 0.88vw), 46.2px);
+  }
+  .inventory-page .problem-copy h2 {
+    font-size: clamp(68px, calc(47.6px + 1.42vw), 74.8px);
+  }
+  .inventory-page .position-node h3 {
+    font-size: clamp(36px, calc(25.2px + 0.75vw), 39.6px);
+  }
+  .inventory-page .decision-main h3 {
+    font-size: clamp(44px, calc(30.8px + 0.92vw), 48.4px);
+  }
+  .inventory-page .feature-copy h3 {
+    font-size: clamp(46px, calc(32.2px + 0.96vw), 50.6px);
+  }
+  .inventory-page .systems h2 {
+    font-size: clamp(54px, calc(37.8px + 1.12vw), 59.4px);
+  }
+  .inventory-page .closing h2 {
+    font-size: clamp(64px, calc(44.8px + 1.33vw), 70.4px);
+  }
+}
+
+/* ------------------------------------------------ tablet (768-991px) --
+   Card grids were either collapsing to a single full-width card or being
+   squeezed to 180-240px columns at tablet size. Two columns is the right
+   density here and matches what .post-grid already does. */
+@media (min-width: 768px) and (max-width: 991px) {
+  .inventory-page .capability-briefs {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .inventory-page .outcome-strip {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .inventory-page .journey-flow {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }

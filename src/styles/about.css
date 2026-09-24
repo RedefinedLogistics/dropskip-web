@@ -11,8 +11,8 @@
   justify-content: center;
   gap: 10px;
   font-family: var(--font-family);
-  font-size: 0.9rem;
-  font-weight: 750;
+  font-size: 0.95rem;
+  font-weight: 700;
   transition: 0.2s ease;
   cursor: pointer;
   text-decoration: none;
@@ -59,7 +59,7 @@
 .about-page {
   line-height: 1.6;
   scroll-padding-top: 90px;
-  --section: 84px;
+  --section: var(--section-pad);
 }
 
 /* About.html's eyebrow is inline-flex so centered sections can center it. */
@@ -234,7 +234,7 @@
 }
 
 .about-page .hero-aside strong {
-  font-size: 1.35rem;
+  font-size: clamp(18.36px, calc(17.092px + 0.352vw), 21.6px);
   font-weight: 700;
   color: var(--t-heading);
   letter-spacing: -0.025em;
@@ -363,7 +363,7 @@
 
 .about-page .team-card .name {
   display: block;
-  font-size: 1.25rem;
+  font-size: clamp(17px, calc(15.826px + 0.326vw), 20px);
   font-weight: 700;
   color: var(--t-heading);
   letter-spacing: -0.02em;
@@ -448,10 +448,6 @@
     padding: 50px 0 30px;
   }
 
-  .about-page .section {
-    padding: 56px 0;
-  }
-
   .about-page .principles-grid {
     grid-template-columns: 1fr;
   }
@@ -464,5 +460,41 @@
   .about-page .about-closing .hero-actions {
     flex-direction: column;
     align-items: stretch;
+  }
+}
+
+/* ---------------------------------------------- large desktop (1440px+) --
+   Display headings hit their ceiling around 1400px, so on a 1920px screen
+   they were the same size as on a laptop while the container around them
+   grew. This lifts each ceiling by 10% between 1440px and 1920px. It is a
+   min-width block on purpose: at 1440px and below nothing here applies and
+   the existing sizes are untouched. */
+@media (min-width: 1440px) {
+  .about-page h1 {
+    font-size: clamp(67px, calc(46.9px + 1.4vw), 73.7px);
+  }
+  .about-page h2 {
+    font-size: clamp(48px, calc(33.6px + 1vw), 52.8px);
+  }
+}
+
+/* ------------------------------------------------ tablet (768-991px) --
+   Card grids were either collapsing to a single full-width card or being
+   squeezed to 180-240px columns at tablet size. Two columns is the right
+   density here and matches what .post-grid already does. */
+@media (min-width: 768px) and (max-width: 991px) {
+  .about-page .team-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* --------------------------------------------------- touch devices --
+   A touch screen fires :hover on tap and leaves it applied until the
+   visitor taps elsewhere, so the card lift sticks. Card hover is a
+   pointer-only affordance; buttons keep their feedback either way. */
+@media (hover: none) {
+  .about-page .principle:hover,
+  .about-page .team-card:hover {
+    transform: none;
   }
 }

@@ -12,7 +12,9 @@
   --blue: #2459e0;
   --line: #d9ddd9;
   --mint: #dff3ea;
-  --max: 1180px;
+  --max: clamp(1180px, calc(520px + 45.833vw), 1400px);
+  /* Section rhythm: ~44px small mobile, ~63px tablet, 100px desktop cap. */
+  --section-pad: clamp(44px, calc(29.8px + 4.32vw), 100px);
   --radius: 22px;
   --shadow: 0 24px 70px rgba(4, 25, 39, 0.12);
   /* Extended tokens: functional tints derived from the approved brand palette */
@@ -50,7 +52,7 @@ body {
     BlinkMacSystemFont,
     "Segoe UI",
     sans-serif;
-  font-size: 16px;
+  font-size: clamp(16px, calc(15.609px + 0.109vw), 17px);
   line-height: 1.55;
   -webkit-font-smoothing: antialiased;
 }
@@ -66,20 +68,44 @@ svg {
   max-width: 100%;
 }
 .wrap {
-  width: min(calc(100% - 40px), var(--max));
+  width: min(calc(100% - 32px), var(--max));
   margin-inline: auto;
+}
+
+/* Side gutters step with the breakpoint bands: small mobile 16px, mobile 20px,
+   tablet 24px, small laptop 28px, laptop and above 32px. Every page uses this
+   one rule, so the header, the page body and the footer share a left edge. */
+@media (min-width: 480px) {
+  .wrap {
+    width: min(calc(100% - 40px), var(--max));
+  }
+}
+@media (min-width: 768px) {
+  .wrap {
+    width: min(calc(100% - 48px), var(--max));
+  }
+}
+@media (min-width: 992px) {
+  .wrap {
+    width: min(calc(100% - 56px), var(--max));
+  }
+}
+@media (min-width: 1200px) {
+  .wrap {
+    width: min(calc(100% - 64px), var(--max));
+  }
 }
 .btn {
   min-height: 48px;
-  padding: 13px 22px;
+  padding: 12px 24px;
   border: 1px solid transparent;
   border-radius: 999px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
-  font-size: 0.92rem;
-  font-weight: 750;
+  font-size: 0.95rem;
+  font-weight: 700;
   transition:
     transform 0.22s cubic-bezier(0.16, 1, 0.3, 1),
     background 0.22s ease,
@@ -334,9 +360,6 @@ header.is-scrolled {
 }
 
 @media (max-width: 720px) {
-  .wrap {
-    width: min(calc(100% - 28px), var(--max));
-  }
   .nav {
     height: 72px;
   }
@@ -363,8 +386,8 @@ header.is-scrolled {
 :root {
   --card-shadow: 0 10px 30px rgba(4, 25, 39, 0.05);
   --font-family:
-    var(--font-inter), Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont,
-    "Segoe UI", sans-serif;
+    var(--font-inter), Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
 }
 /* Short pages still push the footer to the bottom of the viewport. */
 body {

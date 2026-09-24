@@ -69,7 +69,7 @@
 .demo-pitch {
   margin: 0 0 28px;
   color: #fff;
-  font-size: 1.36rem;
+  font-size: clamp(18.5px, calc(17.224px + 0.354vw), 21.76px);
   font-weight: 700;
   line-height: 1.28;
   letter-spacing: -0.025em;
@@ -182,7 +182,7 @@
 .demo-done h2 {
   margin: 0;
   color: var(--t-heading);
-  font-size: 1.62rem;
+  font-size: clamp(20.22px, calc(17.99px + 0.62vw), 25.92px);
   line-height: 1.2;
   letter-spacing: -0.028em;
   font-weight: 700;

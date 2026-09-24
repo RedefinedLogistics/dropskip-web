@@ -59,7 +59,7 @@ export default function BookDemoPage() {
       />
 
       <section className="bg-cream">
-        <div className="mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:px-6 sm:py-20 lg:grid-cols-[1fr_1.35fr] lg:gap-16 lg:px-8">
+        <div className="wrap grid gap-10 py-14 sm:py-20 lg:grid-cols-[1fr_1.35fr] lg:gap-16">
           <div>
             <h2 className="font-display text-[clamp(1.75rem,6vw,2.25rem)] text-ink">
               What to expect

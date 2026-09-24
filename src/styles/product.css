@@ -24,10 +24,9 @@
   --orange-wash: #fff4ee;
   --orange-wash-border: #ffd2b8;
   --font:
-    var(--font-inter), Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont,
-    "Segoe UI", sans-serif;
-  --content: 1200px;
-  --section: 96px;
+    var(--font-inter), Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  --section: var(--section-pad);
   --radius: 18px;
 }
 .product-page *,
@@ -80,7 +79,6 @@
   display: none !important;
 }
 .product-page .wrap {
-  width: min(calc(100% - 64px), var(--content));
   margin-inline: auto;
 }
 .product-page .section {
@@ -136,11 +134,11 @@
   align-items: center;
   justify-content: center;
   gap: 12px;
-  padding: 12px 22px;
+  padding: 12px 24px;
   border: 1px solid transparent;
   border-radius: 999px;
-  font-size: 0.92rem;
-  font-weight: 750;
+  font-size: 0.95rem;
+  font-weight: 700;
   text-decoration: none;
   transition:
     transform 0.22s cubic-bezier(0.16, 1, 0.3, 1),
@@ -525,7 +523,7 @@
 }
 .product-page .system-col h3 {
   margin: 13px 0 8px;
-  font-size: 23px;
+  font-size: clamp(17.94px, calc(15.96px + 0.55vw), 23px);
   line-height: 1.15;
 }
 .product-page .system-col p {
@@ -701,7 +699,7 @@
 }
 .product-page .cap-card h3 {
   margin: 22px 0 12px;
-  font-size: 27px;
+  font-size: clamp(21.06px, calc(18.736px + 0.646vw), 27px);
   line-height: 1.08;
 }
 .product-page .cap-card p {
@@ -821,8 +819,9 @@
   margin-top: 21px;
 }
 .product-page .operator-controls .button {
-  min-height: 41px;
-  padding: 8px 13px;
+  min-height: 44px;
+  padding: 9px 16px;
+  font-size: 0.9rem;
 }
 .product-page .decision-receipt {
   display: flex;
@@ -863,7 +862,7 @@
 }
 .product-page .control-step h3 {
   margin: 15px 0 8px;
-  font-size: 21px;
+  font-size: clamp(17.85px, calc(16.617px + 0.342vw), 21px);
 }
 .product-page .control-step p {
   color: var(--t-muted);
@@ -1021,7 +1020,6 @@
 }
 @media (max-width: 960px) {
   .product-page {
-    --section: 76px;
   }
   .product-page .hero-grid,
   .product-page .section-head,
@@ -1064,9 +1062,6 @@
   }
 }
 @media (max-width: 760px) {
-  .product-page .wrap {
-    width: min(calc(100% - 36px), var(--content));
-  }
   .product-page .brand-logo {
     width: 142px;
   }
@@ -1094,7 +1089,7 @@
     grid-template-columns: 1fr;
   }
   .product-page .hero h1 {
-    font-size: clamp(44px, 14vw, 64px);
+    font-size: clamp(44px, 14vw, 52px);
   }
   .product-page .decision-console {
     border-radius: 13px;
@@ -1166,9 +1161,10 @@
     border-top: 1px solid var(--b-line);
   }
   .product-page .signal-inner {
-    justify-content: flex-start;
-    overflow: hidden;
-    white-space: nowrap;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-block: 7px;
+    text-wrap: balance;
   }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -1179,5 +1175,61 @@
   .product-page *::before,
   .product-page *::after {
     transition: none !important;
+  }
+}
+
+/* ---------------------------------------------- large desktop (1440px+) --
+   Display headings hit their ceiling around 1400px, so on a 1920px screen
+   they were the same size as on a laptop while the container around them
+   grew. This lifts each ceiling by 10% between 1440px and 1920px. It is a
+   min-width block on purpose: at 1440px and below nothing here applies and
+   the existing sizes are untouched. */
+@media (min-width: 1440px) {
+  .product-page .hero h1 {
+    font-size: clamp(82px, calc(57.4px + 1.71vw), 90.2px);
+  }
+  .product-page .console-body h2 {
+    font-size: clamp(41px, calc(28.7px + 0.85vw), 45.1px);
+  }
+  .product-page .section-head h2 {
+    font-size: clamp(64px, calc(44.8px + 1.33vw), 70.4px);
+  }
+  .product-page .premise-close strong {
+    font-size: clamp(35px, calc(24.5px + 0.73vw), 38.5px);
+  }
+  .product-page .workflow-panel h3 {
+    font-size: clamp(49px, calc(34.3px + 1.02vw), 53.9px);
+  }
+  .product-page .action-main h3 {
+    font-size: clamp(49px, calc(34.3px + 1.02vw), 53.9px);
+  }
+  .product-page .integration h2 {
+    font-size: clamp(60px, calc(42px + 1.25vw), 66px);
+  }
+  .product-page .implementation h3 {
+    font-size: clamp(47px, calc(32.9px + 0.98vw), 51.7px);
+  }
+  .product-page .closing h2 {
+    font-size: clamp(70px, calc(49px + 1.46vw), 77px);
+  }
+}
+
+/* ------------------------------------------------ tablet (768-991px) --
+   Card grids were either collapsing to a single full-width card or being
+   squeezed to 180-240px columns at tablet size. Two columns is the right
+   density here and matches what .post-grid already does. */
+@media (min-width: 768px) and (max-width: 991px) {
+  .product-page .system-cols {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* --------------------------------------------------- touch devices --
+   A touch screen fires :hover on tap and leaves it applied until the
+   visitor taps elsewhere, so the card lift sticks. Card hover is a
+   pointer-only affordance; buttons keep their feedback either way. */
+@media (hover: none) {
+  .product-page .cap-card:hover {
+    transform: none;
   }
 }

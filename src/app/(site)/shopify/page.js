@@ -83,7 +83,7 @@ export default function ShopifyPage() {
               </div>
 
               <div className="position-block">
-                <h4>Inventory Position · Operating Context</h4>
+                <h2>Inventory Position · Operating Context</h2>
                 <div className="metric-grid">
                   <div className="metric-item">
                     <span>On hand</span>
@@ -126,7 +126,6 @@ export default function ShopifyPage() {
                 </div>
                 <button
                   className="btn btn-primary"
-                  style={{ minHeight: "40px", padding: "8px 18px", fontSize: "0.85rem" }}
                   type="button"
                   onClick={() =>
                     showToast("Replenishment recommendation approved: 90 units of Face Oil")
@@ -180,7 +179,7 @@ export default function ShopifyPage() {
               spreadsheets, supplier files, purchase orders, an ERP, WMS environments, and 3PL
               dashboards.
             </p>
-            <p style={{ fontWeight: "700", color: "var(--navy)", marginBottom: "24px" }}>
+            <p style={{ fontWeight: "700", color: "var(--t-heading)", marginBottom: "24px" }}>
               DropSkip connects those signals so your team can spend less time rebuilding the
               answer, and more time deciding.
             </p>
@@ -421,7 +420,7 @@ export default function ShopifyPage() {
                   </div>
                 </div>
                 <div className="calc-drawer">
-                  <h4>Signal Variance Analysis</h4>
+                  <h2>Signal Variance Analysis</h2>
                   <p>
                     Demand baseline: 3.50 units/day. Current Shopify 7-day trailing velocity: 4.13
                     units/day (+18%). At current rate, 25 units deplete in 6.05 days. Minimum lead
@@ -482,7 +481,7 @@ export default function ShopifyPage() {
                   id="calc-breakdown"
                   style={{ display: calcOpen ? undefined : "none" }}
                 >
-                  <h4>Calculation Breakdown</h4>
+                  <h2>Calculation Breakdown</h2>
                   <p>
                     1. 4.13 daily sales × 1.18 demand adjustment ={" "}
                     <strong>4.87 units per day</strong>.<br />
@@ -611,7 +610,7 @@ export default function ShopifyPage() {
             </div>
           </div>
 
-          <p style={{ marginTop: "28px", fontWeight: "700", color: "var(--navy)" }}>
+          <p style={{ marginTop: "28px", fontWeight: "700", color: "var(--t-heading)" }}>
             Move inventory closer to the demand it is expected to serve.
           </p>
         </div>
@@ -686,7 +685,7 @@ export default function ShopifyPage() {
               <span className="rationale-badge">Confidence: High</span>
             </div>
             <div className="rationale-body">
-              <h3 style={{ margin: "0 0 16px", fontSize: "1.25rem", color: "var(--navy)" }}>
+              <h3 style={{ margin: "0 0 16px", fontSize: "1.25rem", color: "var(--t-heading)" }}>
                 Why does Face Oil need replenishment now?
               </h3>
               <ul className="rationale-list">
@@ -742,7 +741,7 @@ export default function ShopifyPage() {
             decisions. No unnecessary rip and replace.
           </p>
 
-          <h3 style={{ margin: "32px 0 12px", fontSize: "1.15rem", color: "var(--navy)" }}>
+          <h3 style={{ margin: "32px 0 12px", fontSize: "1.15rem", color: "var(--t-heading)" }}>
             Connected Data Sources
           </h3>
           <div className="sources-cloud">
@@ -773,7 +772,7 @@ export default function ShopifyPage() {
             </div>
           </div>
 
-          <h3 style={{ margin: "28px 0 12px", fontSize: "1.1rem", color: "var(--navy)" }}>
+          <h3 style={{ margin: "28px 0 12px", fontSize: "1.1rem", color: "var(--t-heading)" }}>
             Supported Decision Actions
           </h3>
           <div className="supported-actions">

@@ -67,7 +67,7 @@
 /* ========================================================== sections ===== */
 
 .blog-page .section {
-  padding: 78px 0;
+  padding: var(--section-pad) 0;
 }
 
 /* The hero already gives the grid room to breathe. */
@@ -244,7 +244,7 @@
 .post-card-bottom h3 {
   margin: 0;
   color: #fff;
-  font-size: 1.22rem;
+  font-size: clamp(16.59px, calc(15.443px + 0.318vw), 19.52px);
   line-height: 1.26;
   letter-spacing: -0.02em;
   font-weight: 750;
@@ -310,13 +310,8 @@
   aspect-ratio: 16 / 9;
   border-radius: 16px;
   background:
-    radial-gradient(
-      120% 90% at 18% 8%,
-      rgba(255, 107, 44, 0.22),
-      transparent 62%
-    ),
-    radial-gradient(circle, rgba(255, 255, 255, 0.07) 1px, transparent 1.2px),
-    var(--s-dark);
+    radial-gradient(120% 90% at 18% 8%, rgba(255, 107, 44, 0.22), transparent 62%),
+    radial-gradient(circle, rgba(255, 255, 255, 0.07) 1px, transparent 1.2px), var(--s-dark);
   background-size:
     auto,
     20px 20px,
@@ -449,7 +444,7 @@
 .post-body > p:first-child {
   margin-bottom: 28px;
   color: var(--t-heading);
-  font-size: 1.2rem;
+  font-size: clamp(16.32px, calc(15.193px + 0.313vw), 19.2px);
   line-height: 1.62;
 }
 
@@ -461,7 +456,7 @@
   margin: 44px 0 16px;
   padding-top: 18px;
   color: var(--t-heading);
-  font-size: 1.5rem;
+  font-size: clamp(18.72px, calc(16.654px + 0.574vw), 24px);
   line-height: 1.25;
   letter-spacing: -0.026em;
   font-weight: 700;
@@ -605,10 +600,6 @@
     padding: 56px 0 4px;
   }
 
-  .blog-page .section {
-    padding: 56px 0;
-  }
-
   .post-grid,
   .related .post-grid {
     grid-template-columns: 1fr;
@@ -637,5 +628,30 @@
 
   .reading-progress {
     top: 72px;
+  }
+}
+
+/* ---------------------------------------------- large desktop (1440px+) --
+   Display headings hit their ceiling around 1400px, so on a 1920px screen
+   they were the same size as on a laptop while the container around them
+   grew. This lifts each ceiling by 10% between 1440px and 1920px. It is a
+   min-width block on purpose: at 1440px and below nothing here applies and
+   the existing sizes are untouched. */
+@media (min-width: 1440px) {
+  .blog-hero h1 {
+    font-size: clamp(64px, calc(44.8px + 1.33vw), 70.4px);
+  }
+  .post-head h1 {
+    font-size: clamp(38px, calc(26.6px + 0.79vw), 41.8px);
+  }
+}
+
+/* --------------------------------------------------- touch devices --
+   A touch screen fires :hover on tap and leaves it applied until the
+   visitor taps elsewhere, so the card lift sticks. Card hover is a
+   pointer-only affordance; buttons keep their feedback either way. */
+@media (hover: none) {
+  .post-card:hover {
+    transform: none;
   }
 }
