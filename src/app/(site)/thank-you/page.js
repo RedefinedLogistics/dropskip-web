@@ -5,6 +5,8 @@ export const metadata = {
   title: { absolute: "Thank You | DropSkip" },
   description:
     "Thank you for sharing your details. We have received your message and will get back to you ASAP.",
+  // A post-submission page: kept out of search results, not just the sitemap.
+  robots: { index: false, follow: true },
 };
 
 export default function ThankYouPage() {
