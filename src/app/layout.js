@@ -18,7 +18,36 @@ export const metadata = {
   },
   description:
     "DropSkip connects demand, inventory, and incoming supply so DTC operators can make confident supply-chain decisions.",
-  icons: { icon: "/favicon.png" },
+  // favicon.png is the 1254px master and is not served: a browser renders the
+  // tab icon at 32px, so shipping the full-size file cost 329KB on every page
+  // load for a 2KB result.
+  icons: { icon: "/favicon-32.png", apple: "/apple-icon.png" },
+
+  // Each route resolves "./" against its own URL, so every page gets a
+  // canonical pointing at itself without repeating the host per page.
+  alternates: { canonical: "./" },
+
+  // Without these, a link pasted into LinkedIn, Slack or a message renders as
+  // a bare URL. Per-page title and description flow in through the template
+  // above, so only the shared parts are declared here.
+  openGraph: {
+    type: "website",
+    siteName: "DropSkip",
+    locale: "en_US",
+    url: "./",
+    images: [
+      {
+        url: "/og.png",
+        width: 1200,
+        height: 630,
+        alt: "DropSkip",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: ["/og.png"],
+  },
 };
 
 export const viewport = {

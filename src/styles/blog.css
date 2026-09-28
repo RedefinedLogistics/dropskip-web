@@ -241,6 +241,7 @@
   color: rgba(255, 255, 255, 0.72);
 }
 
+.post-card-bottom h2,
 .post-card-bottom h3 {
   margin: 0;
   color: #fff;

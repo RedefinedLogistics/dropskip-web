@@ -167,7 +167,7 @@ export default async function BlogDetailPage({ params }) {
 
             <div className="post-grid">
               {others.map((other) => (
-                <PostCard key={other.slug} post={other} />
+                <PostCard key={other.slug} post={other} headingLevel={3} />
               ))}
             </div>
           </div>

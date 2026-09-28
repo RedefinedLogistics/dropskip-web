@@ -9,7 +9,7 @@ import PostCard from "./PostCard";
  * nothing happens when it is clicked and it should not be announced as an
  * action. Nothing here needs the browser, so this is a server component.
  */
-export default function PostGrid({ posts }) {
+export default function PostGrid({ posts, headingLevel = 2 }) {
   return (
     <>
       <div className="post-filters">
@@ -18,7 +18,7 @@ export default function PostGrid({ posts }) {
 
       <div className="post-grid">
         {posts.map((post) => (
-          <PostCard key={post.slug} post={post} />
+          <PostCard key={post.slug} post={post} headingLevel={headingLevel} />
         ))}
       </div>
     </>

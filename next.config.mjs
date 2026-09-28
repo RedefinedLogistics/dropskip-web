@@ -37,7 +37,9 @@ function strapiImagePatterns() {
       });
     }
   } catch {
-    console.warn(`[next.config] STRAPI_URL is not a valid URL: ${process.env.STRAPI_URL}`);
+    console.warn(
+      `[next.config] STRAPI_URL is not a valid URL: ${process.env.STRAPI_URL}`,
+    );
   }
 
   return patterns;
@@ -72,7 +74,13 @@ const allowedDevOrigins = [
   ...TUNNEL_HOSTS,
   ...(process.env.ALLOWED_DEV_ORIGINS ?? "")
     .split(",")
-    .map((host) => host.trim().replace(/^https?:\/\//, "").replace(/\/.*$/, ""))
+    .map((host) =>
+      host
+        .trim()
+        .replace(/^https?:\/\//, "")
+        .replace(/\/.*$/, ""),
+    )
+
     .filter(Boolean),
 ];
 

@@ -9,9 +9,13 @@ import { formatDate } from "@/lib/format";
  * and the title sits over the foot of the picture.
  *
  * Used by the listing and the related-posts section, so both stay identical
- * without a second component.
+ * without a second component. They sit at different depths in the document
+ * outline though -- on the listing the cards come straight after the page h1,
+ * while in "Related articles" they sit under that section's h2 -- so the
+ * heading level is a prop rather than hard-coded.
  */
-export default function PostCard({ post }) {
+export default function PostCard({ post, headingLevel = 2 }) {
+  const Heading = `h${headingLevel}`;
   return (
     <article className="post-card">
       <Link href={`/blogs/${post.slug}`} className="post-card-link">
@@ -40,7 +44,7 @@ export default function PostCard({ post }) {
         </div>
 
         <div className="post-card-bottom">
-          <h3>{post.title}</h3>
+          <Heading>{post.title}</Heading>
           <span className="post-card-rule" aria-hidden="true" />
           <span className="post-card-cta">
             Read the post <span aria-hidden="true">→</span>
