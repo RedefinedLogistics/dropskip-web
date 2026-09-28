@@ -3,11 +3,30 @@
 
    Wide layout: a dark panel on the left saying what the half hour buys, the
    form on the right. Below 900px the two stack and the panel shrinks to a
-   compact header, so the fields stay the first thing on a phone. */
+   compact header, so the fields stay the first thing on a phone.
+
+   The whole card is meant to fit the viewport with no scrolling inside it, so
+   the vertical rhythm is a set of custom properties that the height queries at
+   the bottom tighten step by step — padding, gaps, field and textarea height —
+   and on the shortest screens the left panel is trimmed and then dropped. The
+   card keeps overflow-y:auto only as a guard for a viewport too small for even
+   the tightest step (a zoomed-in browser, say); at every normal size it has
+   nothing to scroll. */
+
+/* Keep the page behind the popup still, and keep its scrollbar's space so the
+   page does not shift sideways when the scrollbar is hidden. */
+html:has(.demo-dialog[open]) {
+  overflow: hidden;
+  scrollbar-gutter: stable;
+}
 
 .demo-dialog {
-  width: min(calc(100% - 32px), 980px);
-  max-height: calc(100dvh - 48px);
+  --demo-edge: 16px;
+  width: min(calc(100% - 2 * var(--demo-edge)), 980px);
+  max-width: none;
+  max-height: calc(100vh - 2 * var(--demo-edge));
+  max-height: calc(100dvh - 2 * var(--demo-edge));
+  margin: auto;
   padding: 0;
   border: none;
   border-radius: 24px;
@@ -35,11 +54,27 @@
 }
 
 .demo-card {
+  /* The vertical rhythm, tightened by the height queries below. */
+  --pad-top: 38px;
+  --pad-x: 38px;
+  --pad-bottom: 32px;
+  --aside-pad-x: 32px;
+  --head-gap: 24px;
+  --row-gap: 16px;
+  --label-gap: 7px;
+  --field-pad-y: 13px;
+  --textarea-h: 104px;
+  --actions-gap: 22px;
+  --promise-gap: 18px;
+
   position: relative;
   display: grid;
   grid-template-columns: minmax(280px, 340px) 1fr;
-  max-height: calc(100dvh - 48px);
+  max-height: calc(100vh - 2 * var(--demo-edge));
+  max-height: calc(100dvh - 2 * var(--demo-edge));
   overflow: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
   border: 1px solid var(--b-line);
   border-radius: 24px;
   background: var(--s-card);
@@ -52,7 +87,7 @@
 .demo-aside {
   display: flex;
   flex-direction: column;
-  padding: 38px 32px 32px;
+  padding: var(--pad-top) var(--aside-pad-x) var(--pad-bottom);
   background: linear-gradient(165deg, #0b2b43 0%, #071c2d 62%, #061826 100%);
   color: #e6ecf1;
 }
@@ -67,7 +102,7 @@
 }
 
 .demo-pitch {
-  margin: 0 0 28px;
+  margin: 0 0 calc(var(--head-gap) + 4px);
   color: #fff;
   font-size: clamp(18.5px, calc(17.224px + 0.354vw), 21.76px);
   font-weight: 700;
@@ -77,7 +112,7 @@
 
 .demo-promises {
   display: grid;
-  gap: 18px;
+  gap: var(--promise-gap);
   margin: 0;
   padding: 0;
   list-style: none;
@@ -117,8 +152,8 @@
 }
 
 .demo-aside-foot {
-  margin: 28px 0 0;
-  padding-top: 20px;
+  margin: auto 0 0;
+  padding-top: calc(var(--row-gap) + 4px);
   border-top: 1px solid rgba(255, 255, 255, 0.12);
   color: #8fa0ae;
   font-size: 0.82rem;
@@ -135,9 +170,7 @@
 
 .demo-main {
   min-width: 0;
-  max-height: calc(100dvh - 48px);
-  overflow-y: auto;
-  padding: 38px 38px 32px;
+  padding: var(--pad-top) var(--pad-x) var(--pad-bottom);
 }
 
 .demo-close {
@@ -174,7 +207,7 @@
 }
 
 .demo-head {
-  margin-bottom: 24px;
+  margin-bottom: var(--head-gap);
   padding-right: 38px;
 }
 
@@ -200,7 +233,7 @@
 .demo-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 16px 18px;
+  gap: var(--row-gap) 18px;
 }
 
 .demo-field-full {
@@ -209,7 +242,7 @@
 
 .demo-field label {
   display: block;
-  margin-bottom: 7px;
+  margin-bottom: var(--label-gap);
   color: var(--t-heading);
   font-size: 0.87rem;
   font-weight: 650;
@@ -228,13 +261,14 @@
 .demo-field input,
 .demo-field textarea {
   width: 100%;
-  padding: 13px 15px;
+  padding: var(--field-pad-y) 15px;
   border: 1px solid var(--b-line);
   border-radius: 12px;
   background: var(--s-field);
   color: var(--t-body);
   font: inherit;
   font-size: 0.95rem;
+  line-height: 1.4;
   transition:
     border-color 0.2s ease,
     box-shadow 0.2s ease,
@@ -242,9 +276,18 @@
 }
 
 .demo-field textarea {
+  display: block;
+  height: var(--textarea-h);
+  min-height: 52px;
   resize: vertical;
-  min-height: 104px;
   line-height: 1.6;
+}
+
+/* On short screens the example text can run past the box; clip it rather
+   than give an empty field a scrollbar. Once the visitor types, the textarea
+   scrolls as usual. */
+.demo-field textarea:placeholder-shown {
+  overflow: hidden;
 }
 
 .demo-field input::placeholder,
@@ -282,8 +325,8 @@
   flex-wrap: wrap;
   align-items: center;
   gap: 8px 18px;
-  margin-top: 22px;
-  padding-top: 20px;
+  margin-top: var(--actions-gap);
+  padding-top: calc(var(--actions-gap) - 2px);
   border-top: 1px solid var(--b-line);
 }
 
@@ -328,33 +371,40 @@
   margin-top: 24px;
 }
 
-/* ----------------------------------------------------------- narrow ------ */
+/* ------------------------------------------------------ width: laptop ---- */
+
+@media (max-width: 1100px) {
+  .demo-card {
+    --pad-x: 32px;
+    --aside-pad-x: 28px;
+    grid-template-columns: minmax(260px, 300px) 1fr;
+  }
+}
+
+/* ------------------------------------------ width: tablet, one column --- */
 
 @media (max-width: 900px) {
   .demo-dialog {
-    width: min(calc(100% - 28px), 560px);
+    width: min(calc(100% - 2 * var(--demo-edge)), 600px);
   }
 
   .demo-card {
+    --pad-top: 28px;
+    --pad-x: 28px;
+    --pad-bottom: 26px;
+    --aside-pad-x: 28px;
     grid-template-columns: 1fr;
-    overflow-y: auto;
   }
 
-  .demo-main {
-    max-height: none;
-    overflow: visible;
-    padding: 28px 26px 26px;
-  }
-
-  /* On a phone the panel is a short banner, so the form stays above the fold. */
+  /* The panel becomes a short banner above the form. */
   .demo-aside {
-    padding: 26px 26px 24px;
+    padding: 24px var(--aside-pad-x) 22px;
   }
 
   .demo-pitch {
     margin-bottom: 0;
-    font-size: 1.16rem;
     padding-right: 40px;
+    font-size: 1.16rem;
   }
 
   .demo-promises,
@@ -362,6 +412,7 @@
     display: none;
   }
 
+  /* The close button now sits on the dark banner. */
   .demo-close {
     color: rgba(255, 255, 255, 0.72);
   }
@@ -386,20 +437,309 @@
   }
 }
 
+/* ------------------------------------------------------- width: phone ---- */
+
 @media (max-width: 560px) {
+  .demo-dialog {
+    --demo-edge: 12px;
+  }
+
+  .demo-card {
+    --pad-top: 22px;
+    --pad-x: 20px;
+    --pad-bottom: 20px;
+    --aside-pad-x: 20px;
+    --head-gap: 18px;
+    --row-gap: 12px;
+    --label-gap: 6px;
+    --field-pad-y: 11px;
+    --textarea-h: 84px;
+    --actions-gap: 18px;
+    border-radius: 20px;
+  }
+
+  .demo-dialog {
+    border-radius: 20px;
+  }
+
   .demo-grid {
     grid-template-columns: 1fr;
   }
 
-  .demo-main {
-    padding: 24px 20px 22px;
+  .demo-aside {
+    padding: 18px var(--aside-pad-x) 16px;
+  }
+
+  .demo-eyebrow {
+    margin-bottom: 8px;
+    font-size: 0.7rem;
+  }
+
+  .demo-pitch {
+    font-size: 1.02rem;
+  }
+
+  .demo-close {
+    top: 10px;
+    right: 10px;
+  }
+
+  .demo-head h2,
+  .demo-done h2 {
+    font-size: 1.3rem;
+  }
+
+  .demo-head p,
+  .demo-done p {
+    margin-top: 6px;
+    font-size: 0.88rem;
+    line-height: 1.5;
+  }
+
+  .demo-field label {
+    font-size: 0.84rem;
+  }
+
+  .demo-field input,
+  .demo-field textarea {
+    border-radius: 10px;
+  }
+
+  /* Full width and at least 48px tall: an easy thumb target. */
+  .demo-submit {
+    width: 100%;
+    min-height: 48px;
+    padding-inline: 16px;
+    justify-content: center;
+    white-space: nowrap;
+  }
+}
+
+/* Phones up to about 860px tall (iPhone X–15, 375×812 and 390×844): the
+   banner stays, the form is packed a little tighter. */
+@media (max-width: 560px) and (max-height: 860px) {
+  .demo-card {
+    --pad-top: 18px;
+    --pad-bottom: 16px;
+    --head-gap: 14px;
+    --row-gap: 10px;
+    --field-pad-y: 10px;
+    --textarea-h: 72px;
+    --actions-gap: 14px;
   }
 
   .demo-aside {
-    padding: 22px 20px 20px;
+    padding: 16px var(--aside-pad-x) 14px;
+  }
+}
+
+/* ------------------------------------------------------------------------
+   Height. The popup is sized to the height it has, not only the width, so
+   each step below trims vertical space until the form fits again. */
+
+/* Short laptop screens (1280×720 and similar). */
+@media (max-height: 760px) {
+  .demo-card {
+    --pad-top: 30px;
+    --pad-bottom: 26px;
+    --head-gap: 18px;
+    --row-gap: 13px;
+    --label-gap: 6px;
+    --field-pad-y: 11px;
+    --textarea-h: 84px;
+    --actions-gap: 18px;
+    --promise-gap: 14px;
+  }
+
+  .demo-head p {
+    margin-top: 8px;
+  }
+
+  .demo-promises li {
+    font-size: 0.82rem;
+    line-height: 1.48;
+  }
+}
+
+/* 1366×600, 1280×650, 1024×600: the full layout, packed tighter. */
+@media (max-height: 660px) {
+  .demo-card {
+    --pad-top: 24px;
+    --pad-bottom: 22px;
+    --head-gap: 14px;
+    --row-gap: 10px;
+    --label-gap: 5px;
+    --field-pad-y: 9px;
+    --textarea-h: 66px;
+    --actions-gap: 14px;
+    --promise-gap: 11px;
+  }
+
+  .demo-head p,
+  .demo-done p {
+    margin-top: 6px;
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  .demo-eyebrow {
+    margin-bottom: 10px;
+  }
+
+  .demo-pitch {
+    font-size: 1.12rem;
+  }
+
+  .demo-promises li {
+    font-size: 0.8rem;
+    line-height: 1.42;
+  }
+
+  .demo-promises strong {
+    font-size: 0.86rem;
+  }
+
+  .demo-done {
+    min-height: 0;
+  }
+}
+
+/* Two-column popup on a very short screen (a phone held sideways): the panel
+   keeps its heading and drops the list, and the form stays two to a row. */
+@media (min-width: 901px) and (max-height: 520px) {
+  .demo-promises,
+  .demo-aside-foot {
+    display: none;
+  }
+
+  .demo-card {
+    grid-template-columns: minmax(220px, 260px) 1fr;
+  }
+
+  .demo-aside {
+    justify-content: center;
+  }
+}
+
+/* One column with little height: a phone held sideways, or a small phone
+   upright. The banner is dropped so the form itself fits. */
+@media (max-width: 900px) and (max-height: 640px) {
+  .demo-aside {
+    display: none;
+  }
+
+  .demo-close {
+    color: var(--t-muted);
+  }
+
+  .demo-close:hover {
+    background: var(--s-soft);
+    color: var(--t-heading);
+  }
+
+  .demo-head {
+    padding-right: 40px;
+  }
+}
+
+/* Sideways phones are wide but short, so the popup takes the width and the
+   fields go three to a row: name, email, company, then phone beside the
+   decision box. */
+@media (min-width: 561px) and (max-width: 900px) and (max-height: 520px) {
+  .demo-dialog {
+    width: min(calc(100% - 2 * var(--demo-edge)), 860px);
+  }
+
+  .demo-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    column-gap: 14px;
+  }
+
+  .demo-field-full {
+    grid-column: span 2;
+  }
+}
+
+@media (min-width: 561px) and (max-height: 520px) {
+  .demo-dialog {
+    --demo-edge: 10px;
+  }
+
+  .demo-card {
+    --pad-top: 18px;
+    --pad-x: 24px;
+    --pad-bottom: 16px;
+    --head-gap: 10px;
+    --row-gap: 8px;
+    --label-gap: 4px;
+    --field-pad-y: 7px;
+    --textarea-h: 54px;
+    --actions-gap: 10px;
+  }
+
+  .demo-head h2,
+  .demo-done h2 {
+    font-size: 1.22rem;
+  }
+
+  .demo-head p,
+  .demo-done p {
+    margin-top: 4px;
+    max-width: none;
+    font-size: 0.84rem;
+    line-height: 1.45;
+  }
+
+  .demo-field label {
+    font-size: 0.82rem;
+  }
+
+  .demo-field input,
+  .demo-field textarea {
+    font-size: 0.9rem;
   }
 
   .demo-submit {
-    width: 100%;
+    min-height: 44px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+}
+
+/* The smallest upright phones (320×568). */
+@media (max-width: 560px) and (max-height: 640px) {
+  .demo-dialog {
+    --demo-edge: 10px;
+  }
+
+  .demo-card {
+    --pad-top: 16px;
+    --pad-x: 16px;
+    --pad-bottom: 14px;
+    --head-gap: 10px;
+    --row-gap: 6px;
+    --label-gap: 3px;
+    --field-pad-y: 7px;
+    --textarea-h: 50px;
+    --actions-gap: 8px;
+  }
+
+  .demo-head h2 {
+    font-size: 1.2rem;
+  }
+
+  .demo-head p {
+    margin-top: 4px;
+    font-size: 0.8rem;
+    line-height: 1.4;
+  }
+
+  .demo-field label {
+    font-size: 0.8rem;
+    line-height: 1.3;
+  }
+
+  .demo-submit {
+    min-height: 46px;
   }
 }

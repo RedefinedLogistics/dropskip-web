@@ -935,8 +935,10 @@
   color: var(--white);
   padding: 20px 28px;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
+  gap: 10px 16px;
 }
 .shopify-page .rationale-head strong {
   font-size: 1.08rem;
@@ -950,6 +952,7 @@
   font-size: 0.8125rem;
   text-transform: uppercase;
   letter-spacing: 0.06em;
+  white-space: nowrap;
 }
 .shopify-page .rationale-body {
   padding: 32px 36px;
@@ -1416,5 +1419,23 @@
   .shopify-page .move-card:hover,
   .shopify-page .step-card:hover {
     transform: none;
+  }
+}
+
+/* On a phone the four stages sit two to a row; the step numbers already give
+   the order, so the arrows between them are dropped rather than left to wrap
+   onto lines of their own. */
+@media (max-width: 560px) {
+  .shopify-page .pipeline-flow {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px 16px;
+    padding: 20px 22px;
+  }
+  .shopify-page .pipeline-flow > div:not(.pipeline-step) {
+    display: none;
+  }
+  .shopify-page .rationale-head {
+    padding: 18px 22px;
   }
 }
