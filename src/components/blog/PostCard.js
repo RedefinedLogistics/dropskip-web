@@ -25,6 +25,9 @@ export default function PostCard({ post, headingLevel = 2 }) {
               src={post.image.url}
               alt={post.image.alt}
               fill
+              // Already served from this site by /cms-media; the Next
+              // optimiser would need the CMS host allow-listed at build time.
+              unoptimized
               sizes="(max-width: 720px) 100vw, (max-width: 980px) 50vw, 380px"
             />
           ) : (

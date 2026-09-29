@@ -6,14 +6,25 @@
  * the CMS URL and token stay on the server too.
  */
 
+import { asset } from "./asset";
+
 const STRAPI_URL = process.env.STRAPI_URL?.replace(/\/$/, "");
 const STRAPI_TOKEN = process.env.STRAPI_TOKEN;
 const REVALIDATE = Number(process.env.STRAPI_REVALIDATE ?? 60);
 
 export const strapiConfigured = Boolean(STRAPI_URL);
 
-/** Absolute URL for a media file, which Strapi returns as a relative path. */
-const mediaUrl = (url) => (!url ? null : url.startsWith("http") ? url : `${STRAPI_URL}${url}`);
+/**
+ * Browser-facing URL for a media file. Strapi returns local uploads as
+ * /uploads/..., which are served through this site's /cms-media route (see
+ * src/app/cms-media/[...path]/route.js) because STRAPI_URL may be reachable
+ * only from this server. Absolute URLs, from an S3-style provider, pass through.
+ */
+const mediaUrl = (url) => {
+  if (!url) return null;
+  if (url.startsWith("http")) return url;
+  return url.startsWith("/uploads/") ? asset(`/cms-media/${url.slice("/uploads/".length)}`) : `${STRAPI_URL}${url}`;
+};
 
 async function strapiFetch(path, init = {}) {
   if (!STRAPI_URL) throw new Error("STRAPI_URL is not set");

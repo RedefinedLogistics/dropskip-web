@@ -100,6 +100,8 @@ export default async function BlogDetailPage({ params }) {
               width={blog.image.width}
               height={blog.image.height}
               sizes="(max-width: 1000px) 100vw, 880px"
+              // See PostCard: CMS images bypass the Next optimiser.
+              unoptimized
               priority
             />
           ) : (
