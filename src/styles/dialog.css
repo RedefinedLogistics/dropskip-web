@@ -162,8 +162,7 @@ html:has(.demo-dialog[open]) {
 .demo-aside-foot a {
   color: #fff;
   font-weight: 600;
-  text-decoration: underline;
-  text-underline-offset: 3px;
+  text-decoration: none;
 }
 
 /* ----------------------------------------------------------- right side -- */
