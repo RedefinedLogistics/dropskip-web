@@ -104,7 +104,7 @@ export default function ContactPage() {
             <div className="email-card">
               <h2>Prefer email?</h2>
               <p>You can reach our team directly at any time:</p>
-              <a className="mail-link" href="mailto:support@dropskip.ai">
+              <a className="mail-link" href="mailto:contact@dropskip.ai">
                 <svg
                   width={18}
                   height={18}
@@ -119,7 +119,7 @@ export default function ContactPage() {
                   <rect width={20} height={16} x="2" y="4" rx="2" />
                   <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
                 </svg>
-                Write to support@dropskip.ai
+                Write to contact@dropskip.ai
               </a>
               <p className="support-note">
                 For product support, include your store name and a short description of the issue.

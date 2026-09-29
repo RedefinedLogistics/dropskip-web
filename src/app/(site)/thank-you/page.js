@@ -37,7 +37,7 @@ export default function ThankYouPage() {
           <div className="contact-note-box">
             <span>Need immediate support?</span>
             <span>
-              Write directly to <a href="mailto:support@dropskip.ai">support@dropskip.ai</a>
+              Write directly to <a href="mailto:contact@dropskip.ai">contact@dropskip.ai</a>
             </span>
           </div>
         </div>

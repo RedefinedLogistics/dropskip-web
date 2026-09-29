@@ -455,7 +455,7 @@ export default function InventoryPlanningPage() {
                 ↗
               </span>
             </BookDemoButton>
-            <p className="closing-note">Contact our team at support@dropskip.ai</p>
+            <p className="closing-note">Contact our team at contact@dropskip.ai</p>
           </div>
         </div>
       </section>

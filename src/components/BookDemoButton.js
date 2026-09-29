@@ -69,7 +69,11 @@ const PROMISES = [
  * those scoped rules would otherwise repaint the popup. In <body> it inherits
  * only the :root tokens, so every placement opens the same dialog.
  */
-export default function BookDemoButton({ className = "btn btn-primary", style, children }) {
+export default function BookDemoButton({
+  className = "btn btn-primary",
+  style,
+  children,
+}) {
   const dialogRef = useRef(null);
   const [isOpen, setIsOpen] = useState(false);
   const [sending, setSending] = useState(false);
@@ -121,7 +125,8 @@ export default function BookDemoButton({ className = "btn btn-primary", style, c
         }),
       });
       const result = await response.json().catch(() => ({}));
-      if (!response.ok || !result.ok) throw new Error(result.error || "Something went wrong.");
+      if (!response.ok || !result.ok)
+        throw new Error(result.error || "Something went wrong.");
 
       form.reset();
       setSent(true);
@@ -141,7 +146,12 @@ export default function BookDemoButton({ className = "btn btn-primary", style, c
       onClose={() => setIsOpen(false)}
     >
       <div className="demo-card">
-        <button type="button" className="demo-close" onClick={close} aria-label="Close">
+        <button
+          type="button"
+          className="demo-close"
+          onClick={close}
+          aria-label="Close"
+        >
           <span aria-hidden="true">×</span>
         </button>
 
@@ -155,7 +165,12 @@ export default function BookDemoButton({ className = "btn btn-primary", style, c
             {PROMISES.map((promise) => (
               <li key={promise.title}>
                 <span className="demo-tick" aria-hidden="true">
-                  <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="2.4">
+                  <svg
+                    viewBox="0 0 20 20"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2.4"
+                  >
                     <path
                       d="M4.5 10.5 8.3 14.2 15.5 6.2"
                       strokeLinecap="round"
@@ -172,7 +187,7 @@ export default function BookDemoButton({ className = "btn btn-primary", style, c
           </ul>
 
           <p className="demo-aside-foot">
-            Prefer email? <a href="mailto:support@dropskip.ai">support@dropskip.ai</a>
+            Prefer email? <a href="mailto:info@dropskip.ai">info@dropskip.ai</a>
           </p>
         </aside>
 
@@ -180,16 +195,29 @@ export default function BookDemoButton({ className = "btn btn-primary", style, c
           {sent ? (
             <div className="demo-done">
               <span className="demo-done-mark" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
-                  <path d="M5 12.5 10 17.5 19 7" strokeLinecap="round" strokeLinejoin="round" />
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.2"
+                >
+                  <path
+                    d="M5 12.5 10 17.5 19 7"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
                 </svg>
               </span>
               <h2 id="demo-dialog-title">Thanks — we have your request.</h2>
               <p>
-                We will come back to you within one business day with a time and a short note on
-                what we will prepare.
+                We will come back to you within one business day with a time and
+                a short note on what we will prepare.
               </p>
-              <button type="button" className="btn btn-primary demo-submit" onClick={close}>
+              <button
+                type="button"
+                className="btn btn-primary demo-submit"
+                onClick={close}
+              >
                 Close
               </button>
             </div>
@@ -198,8 +226,8 @@ export default function BookDemoButton({ className = "btn btn-primary", style, c
               <div className="demo-head">
                 <h2 id="demo-dialog-title">Book a demo</h2>
                 <p>
-                  Tell us where to reach you and which decision to focus on. We come back within one
-                  business day.
+                  Tell us where to reach you and which decision to focus on. We
+                  come back within one business day.
                 </p>
               </div>
 
@@ -250,7 +278,11 @@ export default function BookDemoButton({ className = "btn btn-primary", style, c
                 ) : null}
 
                 <div className="demo-actions">
-                  <button type="submit" className="btn btn-primary demo-submit" disabled={sending}>
+                  <button
+                    type="submit"
+                    className="btn btn-primary demo-submit"
+                    disabled={sending}
+                  >
                     {sending ? "Sending…" : "Send my demo request"}
                     {sending ? null : <span className="arrow">↗</span>}
                   </button>

@@ -467,7 +467,7 @@ export default function ProductPage() {
                 ↗
               </span>
             </BookDemoButton>
-            <p className="closing-note">Contact support@dropskip.ai</p>
+            <p className="closing-note">Contact contact@dropskip.ai</p>
           </div>
         </div>
       </section>

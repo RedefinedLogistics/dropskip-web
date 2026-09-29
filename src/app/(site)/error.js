@@ -31,7 +31,7 @@ export default function SiteError({ reset }) {
           <div className="contact-note-box">
             <span>Still not working?</span>
             <span>
-              Write directly to <a href="mailto:support@dropskip.ai">support@dropskip.ai</a>
+              Write directly to <a href="mailto:contact@dropskip.ai">contact@dropskip.ai</a>
             </span>
           </div>
         </div>

@@ -13,7 +13,7 @@ import { createInquiry, strapiConfigured } from "@/lib/strapi";
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
-const GENERIC_ERROR = "We could not send that just now. Please email support@dropskip.ai.";
+const GENERIC_ERROR = "We could not send that just now. Please email contact@dropskip.ai.";
 
 export async function POST(request) {
   let body;

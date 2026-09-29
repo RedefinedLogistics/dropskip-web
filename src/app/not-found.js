@@ -64,7 +64,7 @@ export default function NotFound() {
                 <span>Need human guidance?</span>
                 <Link href="/contact">Connect with our team</Link>
                 <span>
-                  or write to <a href="mailto:support@dropskip.ai">support@dropskip.ai</a>
+                  or write to <a href="mailto:contact@dropskip.ai">contact@dropskip.ai</a>
                 </span>
               </div>
             </div>
