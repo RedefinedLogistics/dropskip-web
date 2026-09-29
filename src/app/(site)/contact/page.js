@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { asset } from "@/lib/asset";
 import "@/styles/contact.css";
 
 export default function ContactPage() {
@@ -29,7 +30,7 @@ export default function ContactPage() {
 
     const data = new FormData(form);
     try {
-      const response = await fetch("/api/contact", {
+      const response = await fetch(asset("/api/contact"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

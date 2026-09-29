@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { asset } from "@/lib/asset";
 import Link from "next/link";
 import BookDemoButton from "./BookDemoButton";
 import { footerGroups } from "@/lib/nav";
@@ -16,7 +17,7 @@ export default function Footer() {
             <Link className="footer-logo" href="/" aria-label="DropSkip home">
               <Image
                 className="footer-logo-img"
-                src="/dropskip-logo.png"
+                src={asset("/dropskip-logo.png")}
                 alt="DropSkip"
                 width={1774}
                 height={887}

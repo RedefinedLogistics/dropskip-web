@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
+import { asset } from "@/lib/asset";
 import "@/styles/dialog.css";
 
 // Laid out two to a row on wide screens, one per row below that.
@@ -111,7 +112,7 @@ export default function BookDemoButton({
     setError("");
 
     try {
-      const response = await fetch("/api/contact", {
+      const response = await fetch(asset("/api/contact"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

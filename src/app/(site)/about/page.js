@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { asset } from "@/lib/asset";
 import Link from "next/link";
 import BookDemoButton from "@/components/BookDemoButton";
 import "@/styles/about.css";
@@ -159,7 +160,7 @@ export default function AboutPage() {
               <div className="team-card" key={person.name}>
                 <span className="avatar">
                   <Image
-                    src={person.photo}
+                    src={asset(person.photo)}
                     alt={person.name}
                     width={person.width}
                     height={person.height}

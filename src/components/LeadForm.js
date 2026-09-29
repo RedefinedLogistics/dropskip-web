@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { asset } from "@/lib/asset";
 
 const inputClasses =
   "w-full rounded-xl border border-black/15 bg-white px-4 py-3.5 text-[15px] text-ink placeholder:text-ink/40 transition-colors focus:border-brand";
@@ -52,7 +53,7 @@ export default function LeadForm({
     setError("");
 
     try {
-      const response = await fetch("/api/contact", {
+      const response = await fetch(asset("/api/contact"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(toSubmission(form, fields, source, subject)),

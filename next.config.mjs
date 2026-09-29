@@ -84,6 +84,10 @@ const allowedDevOrigins = [
     .filter(Boolean),
 ];
 
+// See the basePath note below. Also handed to the app as NEXT_PUBLIC_BASE_PATH,
+// because Next does not prefix plain image paths itself (src/lib/asset.js).
+const basePath = process.env.NEXT_BASE_PATH || "";
+
 const nextConfig = {
   allowedDevOrigins,
 
@@ -95,11 +99,12 @@ const nextConfig = {
   // Temporary: the site is reachable at https://dropskip.app/dropskip-web
   // (a subpath on an existing, already-certificated domain) until dropskip.ai
   // itself is pointed at this server. Every internal link, redirect and
-  // /_next/static asset path is prefixed with this automatically — nothing
-  // else in the app needs to know about it. Baked in at build time (Next
+  // /_next/static asset path is prefixed with this automatically. Paths to
+  // files in public/ are not, so they go through asset() from src/lib/asset.js. Baked in at build time (Next
   // can't change basePath per-request), so removing it for the real domain
   // means rebuilding without NEXT_BASE_PATH set, not editing this file again.
-  basePath: process.env.NEXT_BASE_PATH || undefined,
+  basePath: basePath || undefined,
+  env: { NEXT_PUBLIC_BASE_PATH: basePath },
 
   // Hide the floating Next.js dev-tools badge in the corner during `next dev`.
   // It never appears in a production build.

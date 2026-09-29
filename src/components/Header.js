@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import { asset } from "@/lib/asset";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import BookDemoButton from "./BookDemoButton";
@@ -103,7 +104,7 @@ export default function Header() {
           <Link className="brand" href="/" aria-label="DropSkip home" onClick={close}>
             <Image
               className="brand-logo"
-              src="/dropskip-logo.png"
+              src={asset("/dropskip-logo.png")}
               alt="DropSkip"
               width={1774}
               height={887}

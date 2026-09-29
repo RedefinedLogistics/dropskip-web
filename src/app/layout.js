@@ -1,4 +1,5 @@
 import { Inter } from "next/font/google";
+import { asset } from "@/lib/asset";
 import "./globals.css";
 import "../styles/site.css";
 import "../styles/theme.css";
@@ -21,7 +22,7 @@ export const metadata = {
   // favicon.png is the 1254px master and is not served: a browser renders the
   // tab icon at 32px, so shipping the full-size file cost 329KB on every page
   // load for a 2KB result.
-  icons: { icon: "/favicon-32.png", apple: "/apple-icon.png" },
+  icons: { icon: asset("/favicon-32.png"), apple: asset("/apple-icon.png") },
 
   // Each route resolves "./" against its own URL, so every page gets a
   // canonical pointing at itself without repeating the host per page.
@@ -37,7 +38,7 @@ export const metadata = {
     url: "./",
     images: [
       {
-        url: "/og.png",
+        url: asset("/og.png"),
         width: 1200,
         height: 630,
         alt: "DropSkip",
@@ -46,7 +47,7 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    images: ["/og.png"],
+    images: [asset("/og.png")],
   },
 };
 
