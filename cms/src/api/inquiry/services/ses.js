@@ -11,8 +11,9 @@
  *   AWS_ACCESS_KEY_ID      omit on EC2/ECS to use the instance's IAM role
  *   AWS_SECRET_ACCESS_KEY
  *   AWS_REGION             the region your SES identity lives in
- *   SES_FROM_EMAIL         must be a verified SES identity
- *   SES_TO_EMAIL           where inquiries are received
+ *   SES_FROM_EMAIL         sender of every notification; a verified SES identity
+ *   SES_TO_EMAIL_DEMO      where Book a Demo requests are received
+ *   SES_TO_EMAIL_CONTACT   where contact-page inquiries are received
  */
 
 const { SESv2Client, SendEmailCommand } = require("@aws-sdk/client-sesv2");
@@ -60,15 +61,24 @@ function getClient() {
 const EMAIL_SHAPE = /^[^@\s,]+@[^@\s,]+\.[^@\s,]+$/;
 
 /**
- * SES_TO_EMAIL may name several recipients, separated by commas, so an inquiry
- * can reach a whole team rather than one inbox.
+ * Each form has exactly one recipient setting and there is no shared fallback,
+ * so a demo request can only ever reach SES_TO_EMAIL_DEMO and a contact inquiry
+ * only SES_TO_EMAIL_CONTACT. If a form's setting is empty, its notification is
+ * skipped (the inquiry is still saved) rather than sent somewhere else.
+ */
+const recipientSetting = (source) =>
+  source === "book-demo" ? "SES_TO_EMAIL_DEMO" : "SES_TO_EMAIL_CONTACT";
+
+/**
+ * The recipient setting may name several addresses, separated by commas, so an
+ * inquiry can reach a whole team rather than one inbox.
  *
  * Entries that are not shaped like an address are dropped rather than passed
  * to SES, which would reject the entire request and lose the notification for
  * everyone on the list. A bare domain is the usual mistake.
  */
-function recipients() {
-  const listed = String(process.env.SES_TO_EMAIL ?? "")
+function recipients(source) {
+  const listed = String(process.env[recipientSetting(source)] ?? "")
     .split(",")
     .map((value) => value.trim())
     .filter(Boolean);
@@ -79,12 +89,12 @@ function recipients() {
   };
 }
 
-/** True when SES has everything it needs to send. */
-function sesConfigured() {
+/** True when SES has everything it needs to send an inquiry from `source`. */
+function sesConfigured(source) {
   return Boolean(
     process.env.AWS_REGION &&
     process.env.SES_FROM_EMAIL &&
-    recipients().valid.length,
+    recipients(source).valid.length,
   );
 }
 
@@ -291,18 +301,19 @@ function buildBody(inquiry) {
  * logged with the fix spelled out.
  */
 async function sendInquiryNotification(inquiry) {
-  if (!sesConfigured()) {
+  if (!sesConfigured(inquiry.source)) {
     strapi.log.info(
-      "[ses] not configured; inquiry saved, no email sent. Set AWS_REGION, SES_FROM_EMAIL and SES_TO_EMAIL.",
+      "[ses] not configured; inquiry saved, no email sent. Set AWS_REGION, " +
+        `SES_FROM_EMAIL and ${recipientSetting(inquiry.source)}.`,
     );
     return { sent: false, reason: "ses-not-configured" };
   }
 
-  const { valid: to, invalid } = recipients();
+  const { valid: to, invalid } = recipients(inquiry.source);
   if (invalid.length) {
     strapi.log.warn(
       `[ses] ignoring ${invalid.length} malformed entr${invalid.length === 1 ? "y" : "ies"} ` +
-        `in SES_TO_EMAIL: ${invalid.join(", ")} - each must be a full address`,
+        `in ${recipientSetting(inquiry.source)}: ${invalid.join(", ")} - each must be a full address`,
     );
   }
 
@@ -328,7 +339,9 @@ async function sendInquiryNotification(inquiry) {
       }),
     );
 
-    strapi.log.info(`[ses] inquiry ${inquiry.id} notified to ${to.join(", ")}`);
+    strapi.log.info(
+      `[ses] inquiry ${inquiry.id} sent from ${process.env.SES_FROM_EMAIL} to ${to.join(", ")}`,
+    );
     return { sent: true };
   } catch (error) {
     strapi.log.error(`[ses] notification failed: ${describe(error)}`);

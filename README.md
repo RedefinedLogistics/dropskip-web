@@ -20,7 +20,8 @@ Strapi  POST /api/inquiries
         ↓  afterCreate lifecycle
 Amazon SES
         ↓
-Business inbox (SES_TO_EMAIL)
+Business inbox: demo requests to SES_TO_EMAIL_DEMO,
+                contact inquiries to SES_TO_EMAIL_CONTACT
 ```
 
 ## Running it locally
@@ -106,9 +107,16 @@ Set these in `cms/.env` — this is the only place AWS credentials exist:
 AWS_ACCESS_KEY_ID=
 AWS_SECRET_ACCESS_KEY=
 AWS_REGION=us-east-1
-SES_FROM_EMAIL=no-reply@dropskip.ai
-SES_TO_EMAIL=support@dropskip.ai
+SES_FROM_EMAIL=product@redefinedlogistics.com
+SES_TO_EMAIL_DEMO=info@dropskip.ai
+SES_TO_EMAIL_CONTACT=contact@dropskip.ai
 ```
+
+Both forms send from `SES_FROM_EMAIL`. Book a Demo requests (the popup and the
+/book-demo page) go only to `SES_TO_EMAIL_DEMO`; contact-page inquiries go only
+to `SES_TO_EMAIL_CONTACT`. There is no shared fallback: if a form's recipient
+is empty, its email is skipped (the inquiry is still saved) rather than sent to
+the other inbox.
 
 On EC2, ECS or App Runner, leave the key and secret blank and attach an IAM role
 with the `ses:SendEmail` permission instead — then there is no secret to store or
@@ -126,7 +134,7 @@ rotate.
 **The sandbox.** A new SES account can only send *to* verified addresses, and is
 rate limited. Until you request production access (SES console → Account
 dashboard → Request production access), notifications only arrive if
-`SES_TO_EMAIL` is verified too. Do this before launch.
+the recipient addresses are verified too. Do this before launch.
 
 **Reply-To, not From.** The email is sent from your verified address, with the
 visitor's address as `Reply-To`, so replying in your mail client answers them
