@@ -1,0 +1,47 @@
+# dropskip-cms — the Strapi admin/API half of dropskip-web, served under the
+# /cms subpath on the same domain as the website (config/server.js's `url`
+# reads PUBLIC_URL, which must be set to the full public address including
+# that path — e.g. https://dropskip.ai/cms — both at build time, so the admin
+# panel's compiled assets reference the right base path, and at runtime).
+#
+# Secrets (APP_KEYS, JWT secrets, AWS creds, DB credentials) are never build
+# args — they're only ever read from the running container's real
+# environment (Swarm secrets), set at `docker service create` time.
+
+FROM node:20-alpine AS build
+WORKDIR /opt/app
+
+# better-sqlite3 needs to compile a native addon.
+RUN apk add --no-cache python3 make g++
+
+COPY package.json package-lock.json ./
+RUN npm ci
+COPY . .
+
+# Only the address itself — not a secret — needs to be present for `strapi
+# build` to compile the admin panel's asset paths correctly.
+ARG PUBLIC_URL
+ENV PUBLIC_URL=$PUBLIC_URL
+ENV NODE_ENV=production
+
+RUN npm run build
+
+# ── run ──────────────────────────────────────────────────────────────
+FROM node:20-alpine AS runner
+WORKDIR /opt/app
+RUN apk add --no-cache vips-dev
+ENV NODE_ENV=production
+
+RUN addgroup --system --gid 1001 strapi \
+  && adduser --system --uid 1001 strapi
+
+COPY --from=build --chown=strapi:strapi /opt/app ./
+
+# Data survives a redeploy only if this is a Swarm named volume, not the
+# container's own writable layer — see the service definition.
+RUN mkdir -p /opt/app/.tmp && chown strapi:strapi /opt/app/.tmp
+
+USER strapi
+EXPOSE 1337
+
+CMD ["npm", "run", "start"]

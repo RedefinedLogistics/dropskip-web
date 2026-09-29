@@ -1,0 +1,48 @@
+# dropskip-web — Next.js website (public site). The Strapi CMS in ./cms is a
+# separate deployable with its own cms/Dockerfile.production.
+#
+# Build-time args are limited to what next.config.mjs's strapiImagePatterns()
+# needs at compile time; everything else (STRAPI_URL, STRAPI_TOKEN, ...) is
+# read at request time from the container's real environment (Swarm secrets /
+# service env), never baked into the image.
+
+# ── deps ─────────────────────────────────────────────────────────────
+FROM node:20-alpine AS deps
+WORKDIR /app
+COPY package.json package-lock.json ./
+RUN npm ci
+
+# ── build ────────────────────────────────────────────────────────────
+FROM node:20-alpine AS builder
+WORKDIR /app
+COPY --from=deps /app/node_modules ./node_modules
+COPY . .
+
+ARG STRAPI_URL
+ENV STRAPI_URL=$STRAPI_URL
+ENV NEXT_TELEMETRY_DISABLED=1
+
+RUN npm run build
+
+# ── run ──────────────────────────────────────────────────────────────
+FROM node:20-alpine AS runner
+WORKDIR /app
+ENV NODE_ENV=production
+ENV NEXT_TELEMETRY_DISABLED=1
+ENV PORT=3000
+ENV HOSTNAME=0.0.0.0
+
+RUN addgroup --system --gid 1001 nodejs \
+  && adduser --system --uid 1001 nextjs
+
+# `output: "standalone"` (next.config.mjs) traces exactly the deps this app
+# uses into .next/standalone, so the runtime image needs nothing from
+# node_modules directly — no `npm ci` here, no full source tree.
+COPY --from=builder --chown=nextjs:nodejs /app/public ./public
+COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
+COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
+
+USER nextjs
+EXPOSE 3000
+
+CMD ["node", "server.js"]

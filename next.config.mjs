@@ -87,6 +87,11 @@ const allowedDevOrigins = [
 const nextConfig = {
   allowedDevOrigins,
 
+  // Self-contained production build (server + only the deps it actually uses,
+  // copied into .next/standalone) — that's what the production Dockerfile
+  // runs. Doesn't affect `next dev`.
+  output: "standalone",
+
   // Hide the floating Next.js dev-tools badge in the corner during `next dev`.
   // It never appears in a production build.
   devIndicators: false,

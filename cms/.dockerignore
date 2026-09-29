@@ -1,0 +1,10 @@
+node_modules
+build
+dist
+.tmp
+.cache
+.git
+.env*
+!.env.example
+npm-debug.log
+README.md
