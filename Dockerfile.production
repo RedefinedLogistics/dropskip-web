@@ -22,6 +22,11 @@ ARG STRAPI_URL
 ENV STRAPI_URL=$STRAPI_URL
 ENV NEXT_TELEMETRY_DISABLED=1
 
+# Temporary subpath deployment (see next.config.mjs) — e.g. /dropskip-web.
+# Leave unset/empty once the site has its own domain at the root.
+ARG BASE_PATH
+ENV NEXT_BASE_PATH=$BASE_PATH
+
 RUN npm run build
 
 # ── run ──────────────────────────────────────────────────────────────

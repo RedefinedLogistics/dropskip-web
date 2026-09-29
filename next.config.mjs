@@ -92,6 +92,15 @@ const nextConfig = {
   // runs. Doesn't affect `next dev`.
   output: "standalone",
 
+  // Temporary: the site is reachable at https://dropskip.app/dropskip-web
+  // (a subpath on an existing, already-certificated domain) until dropskip.ai
+  // itself is pointed at this server. Every internal link, redirect and
+  // /_next/static asset path is prefixed with this automatically — nothing
+  // else in the app needs to know about it. Baked in at build time (Next
+  // can't change basePath per-request), so removing it for the real domain
+  // means rebuilding without NEXT_BASE_PATH set, not editing this file again.
+  basePath: process.env.NEXT_BASE_PATH || undefined,
+
   // Hide the floating Next.js dev-tools badge in the corner during `next dev`.
   // It never appears in a production build.
   devIndicators: false,
