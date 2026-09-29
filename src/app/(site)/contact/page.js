@@ -64,9 +64,10 @@ export default function ContactPage() {
               <span className="eyebrow">Contact DropSkip</span>
               <h1>Let’s make your next inventory decision clearer.</h1>
               <p>
-                Tell us a little about your operation and what you are trying to solve. Whether you
-                want to explore DropSkip, install the Shopify app or ask a product question, we’ll
-                connect you with the right person.
+                Tell us a little about your operation and what you are trying to
+                solve. Whether you want to explore DropSkip, install the Shopify
+                app or ask a product question, we’ll connect you with the right
+                person.
               </p>
             </div>
 
@@ -76,7 +77,10 @@ export default function ContactPage() {
                 <div className="point-icon">✓</div>
                 <div className="point-text">
                   <strong>Fast human response</strong>
-                  <span>Direct conversation with operators who understand DTC supply chains.</span>
+                  <span>
+                    Direct conversation with operators who understand DTC supply
+                    chains.
+                  </span>
                 </div>
               </div>
               <div className="point-item">
@@ -84,8 +88,8 @@ export default function ContactPage() {
                 <div className="point-text">
                   <strong>Zero sales pressure</strong>
                   <span>
-                    Just straightforward discussions on your stock, systems, and operating
-                    questions.
+                    Just straightforward discussions on your stock, systems, and
+                    operating questions.
                   </span>
                 </div>
               </div>
@@ -94,7 +98,8 @@ export default function ContactPage() {
                 <div className="point-text">
                   <strong>Tailored recommendations</strong>
                   <span>
-                    Whether you run Shopify, multiple warehouses, or complex replenishment cycles.
+                    Whether you run Shopify, multiple warehouses, or complex
+                    replenishment cycles.
                   </span>
                 </div>
               </div>
@@ -104,7 +109,7 @@ export default function ContactPage() {
             <div className="email-card">
               <h2>Prefer email?</h2>
               <p>You can reach our team directly at any time:</p>
-              <a className="mail-link" href="mailto:contact@dropskip.ai">
+              <a className="mail-link" href="mailto:info@dropskip.ai">
                 <svg
                   width={18}
                   height={18}
@@ -122,7 +127,8 @@ export default function ContactPage() {
                 Write to contact@dropskip.ai
               </a>
               <p className="support-note">
-                For product support, include your store name and a short description of the issue.
+                For product support, include your store name and a short
+                description of the issue.
               </p>
             </div>
           </div>
@@ -181,8 +187,14 @@ export default function ContactPage() {
                 </div>
 
                 <div className="form-group">
-                  <label id="topic-label">What would you like to discuss?</label>
-                  <div className="topics-grid" role="radiogroup" aria-labelledby="topic-label">
+                  <label id="topic-label">
+                    What would you like to discuss?
+                  </label>
+                  <div
+                    className="topics-grid"
+                    role="radiogroup"
+                    aria-labelledby="topic-label"
+                  >
                     <div className="topic-option">
                       <input
                         type="radio"
@@ -245,7 +257,12 @@ export default function ContactPage() {
                       </label>
                     </div>
                     <div className="topic-option">
-                      <input type="radio" id="topic-other" name="topic" value="Something else" />
+                      <input
+                        type="radio"
+                        id="topic-other"
+                        name="topic"
+                        value="Something else"
+                      />
                       <label htmlFor="topic-other">
                         <span className="topic-bullet"></span>
                         <span>Something else</span>
@@ -256,8 +273,15 @@ export default function ContactPage() {
 
                 <div className="form-group">
                   <label htmlFor="message">Tell us a little more</label>
-                  <p style={{ fontSize: "0.84rem", color: "var(--muted)", margin: "0 0 8px" }}>
-                    What are you trying to understand, improve or decide? A few lines are enough.
+                  <p
+                    style={{
+                      fontSize: "0.84rem",
+                      color: "var(--muted)",
+                      margin: "0 0 8px",
+                    }}
+                  >
+                    What are you trying to understand, improve or decide? A few
+                    lines are enough.
                   </p>
                   <textarea
                     id="message"
@@ -267,12 +291,18 @@ export default function ContactPage() {
                 </div>
 
                 <div className="form-submit-row">
-                  <button type="submit" className="btn-submit" id="submit-btn" disabled={sending}>
+                  <button
+                    type="submit"
+                    className="btn-submit"
+                    id="submit-btn"
+                    disabled={sending}
+                  >
                     <span>{sending ? "Sending..." : "Send My Message"}</span>
                     {sending ? null : <span className="arrow">↗</span>}
                   </button>
                   <p className="form-note">
-                    No lengthy questionnaire. Just enough context to start a useful conversation.
+                    No lengthy questionnaire. Just enough context to start a
+                    useful conversation.
                   </p>
                   {error ? (
                     <p className="form-error" role="alert">
@@ -292,12 +322,19 @@ export default function ContactPage() {
             >
               <div className="success-icon">✓</div>
               <h2>Thanks. Your message is with us.</h2>
-              <p>We’ll review what you shared and connect you with the right person.</p>
+              <p>
+                We’ll review what you shared and connect you with the right
+                person.
+              </p>
               <div className="success-actions">
                 <Link className="btn btn-primary" href="/">
                   Return to the homepage <span className="arrow">→</span>
                 </Link>
-                <button type="button" className="btn btn-ghost" id="reset-form-btn">
+                <button
+                  type="button"
+                  className="btn btn-ghost"
+                  id="reset-form-btn"
+                >
                   Send another note
                 </button>
               </div>
