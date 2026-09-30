@@ -1,7 +1,6 @@
 export const navLinks = [
   { href: "/about", label: "About" },
   { href: "/product", label: "Product" },
-  { href: "/shopify", label: "Shopify" },
   { href: "/inventory-planning", label: "Inventory Planning" },
   {
     label: "Resources",
@@ -24,7 +23,6 @@ export const footerGroups = [
     links: [
       { href: "/product", label: "Product" },
       { href: "/inventory-planning", label: "Inventory Planning" },
-      { href: "/shopify", label: "Shopify" },
     ],
   },
   {

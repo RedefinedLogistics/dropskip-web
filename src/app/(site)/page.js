@@ -1,4 +1,6 @@
+import Image from "next/image";
 import Link from "next/link";
+import { asset } from "@/lib/asset";
 import BookDemoButton from "@/components/BookDemoButton";
 import WorkflowTabs from "@/components/WorkflowTabs";
 import "@/styles/home.css";
@@ -20,16 +22,17 @@ export default function Home() {
         <div className="wrap hero-grid">
           <div>
             <p className="eyebrow">
-              AI-enabled inventory positioning for DTC brands
+              AI-ENABLED SUPPLY CHAIN DECISION LAYER FOR DTC BRANDS
             </p>
             <h1>
               Supply-chain decisions that scale{" "}
               <span className="accent">cash flow and margins.</span>
             </h1>
             <p className="hero-copy">
-              DropSkip connects demand, inventory, and incoming supply to help
-              you decide what to buy, how much, when, and where. See what needs
-              attention, understand the reasoning, and act with confidence.
+              DropSkip connects for demand, sales, inventory and fulfillment to
+              help you decide what to buy, how much, when, and where. See what
+              needs attention, understand the reasoning, and act with
+              confidence.
             </p>
             <p className="capital-line">
               Put your capital behind the products and locations that need it.
@@ -48,7 +51,18 @@ export default function Home() {
             </p>
           </div>
 
-          <div
+          <div className="hero-visual">
+            <Image
+              src={asset("/hero.png")}
+              alt="DropSkip action feed showing a reorder recommendation for FaceOil and a delayed shipment alert"
+              width={1000}
+              height={794}
+              sizes="(max-width: 980px) min(100vw, 620px), 46vw"
+              priority
+            />
+          </div>
+
+          {/* <div
             className="product-stage"
             aria-label="Illustration of the DropSkip inventory decision interface"
           >
@@ -108,7 +122,7 @@ export default function Home() {
             <div className="floating-chip chip-bottom">
               <span>−$8.4k</span> new PO avoided
             </div>
-          </div>
+          </div> */}
         </div>
       </section>
 
@@ -147,8 +161,9 @@ export default function Home() {
               </svg>
               <h3>Visibility</h3>
               <p>
-                See demand, stock, and incoming supply across the network: what
-                is available, committed, and at risk.
+                See sales, returns, seasonality, inventory position and health,
+                and incoming supply across the network: what is available,
+                committed, and at risk.
               </p>
             </article>
 
@@ -165,12 +180,13 @@ export default function Home() {
               </svg>
               <h3>Insights</h3>
               <p>
-                Identify what needs attention, investigate the drivers, and see
-                the reasoning behind the next step.
+                Learn what changed in the supply chain and why, what needs
+                attention, the root causes and drivers, and the reasoning behind
+                the next steps.
               </p>
             </article>
 
-            <article className="pillar">
+            {/* <article className="pillar">
               <span className="pillar-num">03</span>
               <svg className="pillar-icon" viewBox="0 0 48 48" fill="none">
                 <path
@@ -191,10 +207,10 @@ export default function Home() {
                 Compare purchasing, stock placement, and allocation scenarios
                 before committing capital.
               </p>
-            </article>
+            </article> */}
 
             <article className="pillar">
-              <span className="pillar-num">04</span>
+              <span className="pillar-num">03</span>
               <svg className="pillar-icon" viewBox="0 0 48 48" fill="none">
                 <path
                   d="M9 35V20m10 15V13m10 22V24m10 11V8"
@@ -204,13 +220,14 @@ export default function Home() {
               </svg>
               <h3>Demand Planning &amp; Forecasting</h3>
               <p>
-                Anticipate demand by product, channel, and location before
-                shortages or excess build up.
+                Evaluate purchase options by product, channel, and location
+                against demand signals and supplier constraints, then commit
+                capital before shortages or excess inventory build up.
               </p>
             </article>
 
             <article className="pillar">
-              <span className="pillar-num">05</span>
+              <span className="pillar-num">04</span>
               <svg className="pillar-icon" viewBox="0 0 48 48" fill="none">
                 <path
                   d="M8 15 24 7l16 8-16 8-16-8Zm0 9 16 8 16-8M8 33l16 8 16-8"
@@ -220,8 +237,9 @@ export default function Home() {
               </svg>
               <h3>Inventory Positioning</h3>
               <p>
-                Align stock with expected demand using allocation and
-                rebalancing recommendations your team controls.
+                Align stock with expected demand and lock in purchase orders
+                using allocation and rebalancing recommendations your team can
+                act on right away
               </p>
             </article>
           </div>
@@ -251,6 +269,17 @@ export default function Home() {
             </div>
           </div>
 
+          <div className="problem-visual">
+            <Image
+              src={asset("/inventory-health.png")}
+              alt="DropSkip inventory health view showing SKUs by risk level and the products with the highest revenue at risk"
+              width={1200}
+              height={778}
+              sizes="(max-width: 980px) min(100vw, 720px), 46vw"
+            />
+          </div>
+
+          {/* Hidden for now; the section shows inventory-health.png instead.
           <div className="stock-visual">
             <div className="stock-head">
               <strong>Network stock position</strong>
@@ -292,7 +321,7 @@ export default function Home() {
                 <strong>Rebalance existing stock before purchasing more</strong>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </section>
 
@@ -498,12 +527,13 @@ export default function Home() {
             <div>
               <p className="eyebrow">Practical adoption</p>
               <h2 className="section-title">
-                Build on the systems you already use.
+                Build on top of the systems you already use
               </h2>
             </div>
             <p>
-              A focused route from connected data to useful inventory decisions,
-              without replacing the operational stack your team relies on.
+              A focused route from connected data to useful supply chain
+              decisions, without replacing the operational stack your team
+              relies on.
             </p>
           </div>
 

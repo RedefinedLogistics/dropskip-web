@@ -111,6 +111,20 @@
   position: relative;
   min-height: 510px;
 }
+/* min-width: 0 lets the grid column shrink below the image's natural width,
+   so the image never pushes the page into a horizontal scroll. */
+.home-page .hero-visual,
+.home-page .problem-visual {
+  min-width: 0;
+  width: 100%;
+}
+.home-page .hero-visual img,
+.home-page .problem-visual img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+}
 .home-page .map-card {
   position: absolute;
   inset: 20px 0 0 14px;
@@ -312,13 +326,14 @@
 }
 .home-page .pillar-grid {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   border-top: 1px solid var(--b-line);
   border-bottom: 1px solid var(--b-line);
 }
 .home-page .pillar {
   position: relative;
   padding: 33px 24px 38px;
+  text-align: center;
   border-right: 1px solid var(--b-line);
   transition: 0.25s ease;
 }
@@ -337,7 +352,8 @@
 .home-page .pillar-icon {
   width: 42px;
   height: 42px;
-  margin: 46px 0 28px;
+  display: block;
+  margin: 46px auto 28px;
   color: var(--orange);
 }
 .home-page .pillar h3 {
@@ -929,6 +945,16 @@
     min-height: 520px;
     width: min(100%, 620px);
   }
+  /* Stacked under the copy: centred, and capped so it doesn't balloon on tablets. */
+  .home-page .hero-visual {
+    width: min(100%, 620px);
+    margin: 0 auto;
+  }
+  /* The inventory table is wider and denser, so it gets a little more room. */
+  .home-page .problem-visual {
+    width: min(100%, 720px);
+    margin: 0 auto;
+  }
   .home-page .question-row {
     grid-template-columns: 1fr;
     gap: 16px;
@@ -941,9 +967,6 @@
   }
   .home-page .pillar:nth-child(2n) {
     border-right: 0;
-  }
-  .home-page .pillar:last-child {
-    grid-column: 1/-1;
   }
   .home-page .workflow-shell {
     grid-template-columns: 250px 1fr;
@@ -1020,7 +1043,7 @@
     grid-column: auto;
   }
   .home-page .pillar-icon {
-    margin: 25px 0 20px;
+    margin: 25px auto 20px;
   }
   .home-page .problem-grid,
   .home-page .reason-grid {
