@@ -133,6 +133,8 @@ const nextConfig = {
       { source: "/blog", destination: "/blogs", permanent: true },
       { source: "/blog/all", destination: "/blogs", permanent: true },
       { source: "/blog/:slug", destination: "/blogs/:slug", permanent: true },
+      // The Inventory Planning page was renamed Why DropSkip.
+      { source: "/inventory-planning", destination: "/why-dropskip", permanent: true },
     ];
   },
 };

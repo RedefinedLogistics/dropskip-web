@@ -6,8 +6,6 @@ import { footerGroups } from "@/lib/nav";
 
 // The four words the product is organised around, repeated here as the closing
 // note. They are the same four used across the marketing pages.
-const RHYTHM = ["Visibility", "Insights", "Plan", "Act"];
-
 export default function Footer() {
   return (
     <footer className="footer">
@@ -69,12 +67,7 @@ export default function Footer() {
         </div>
 
         <div className="footer-base">
-          <span>© {new Date().getFullYear()} DropSkip</span>
-          <ul className="footer-rhythm">
-            {RHYTHM.map((word) => (
-              <li key={word}>{word}</li>
-            ))}
-          </ul>
+          <span>© {new Date().getFullYear()} DropSkip®</span>
         </div>
       </div>
     </footer>

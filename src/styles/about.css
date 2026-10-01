@@ -186,6 +186,21 @@
   margin: 12px auto 16px;
 }
 
+/* The team heading is long, so it gets the full width and a smaller size
+   to sit on exactly two lines, one span per line. */
+.about-page .section-heading.center h2.team-heading {
+  max-width: none;
+  font-size: clamp(28px, 2.9vw, 42px);
+}
+.about-page .team-heading span {
+  display: block;
+}
+@media (max-width: 720px) {
+  .about-page .team-heading span {
+    display: inline;
+  }
+}
+
 .about-page .section-heading.center > p {
   max-width: 640px;
   margin: 0 auto;
@@ -322,6 +337,7 @@
 }
 
 .about-page .team-card {
+  position: relative;
   border: 1px solid var(--b-line);
   border-radius: 18px;
   background: var(--s-card);
@@ -331,6 +347,32 @@
   transition:
     transform 0.25s ease,
     box-shadow 0.25s ease;
+}
+
+/* LinkedIn link, top-right of the card beside the photo, in the brand
+   orange tile used for the site's other icons. */
+.about-page .team-linkedin {
+  position: absolute;
+  top: 28px;
+  right: 24px;
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  color: var(--orange);
+  background: rgba(255, 107, 44, 0.1);
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+.about-page .team-linkedin:hover {
+  color: #fff;
+  background: var(--orange);
+}
+.about-page .team-linkedin svg {
+  width: 18px;
+  height: 18px;
 }
 
 .about-page .team-card:hover {
@@ -496,5 +538,31 @@
   .about-page .principle:hover,
   .about-page .team-card:hover {
     transform: none;
+  }
+}
+
+/* ------------------------------------------------------ hero type --
+   Headline and subheading match the home page hero, so every page opens
+   with the same type. This sits last so it overrides the hero sizes above,
+   including the tablet, phone and 1440px+ ones. */
+.about-page .about-hero h1 {
+  font-size: clamp(52px, 4.5vw, 76px);
+  line-height: 0.98;
+  letter-spacing: -0.065em;
+  font-weight: 620;
+}
+.about-page .about-hero .hero-lede {
+  font-size: 1.13rem;
+  line-height: 1.6;
+}
+@media (max-width: 980px) {
+  .about-page .about-hero h1 {
+    font-size: clamp(46px, 6.6vw, 60px);
+  }
+}
+@media (max-width: 720px) {
+  .about-page .about-hero h1 {
+    font-size: clamp(38px, 10.5vw, 48px);
+    line-height: 1;
   }
 }

@@ -172,7 +172,7 @@
 }
 .inventory-page .primary {
   background: var(--orange);
-  color: var(--t-heading);
+  color: #fff;
 }
 .inventory-page .primary:hover {
   background: var(--orange-2);
@@ -303,6 +303,20 @@
 }
 .inventory-page .hero h1 span {
   color: var(--t-heading);
+}
+/* The headline sits on exactly two lines, one span per line, so it gets
+   the full width and a size the longer first line fits at. */
+@media (min-width: 981px) {
+  .inventory-page .hero.flow-hero .hero-intro {
+    max-width: 1240px;
+  }
+  .inventory-page .hero.flow-hero h1 {
+    max-width: none;
+    font-size: clamp(44px, 4.4vw, 68px);
+  }
+  .inventory-page .hero.flow-hero h1 span {
+    display: block;
+  }
 }
 .inventory-page .hero-lede {
   max-width: 680px;
@@ -1609,8 +1623,10 @@
   }
 }
 /* Flow revision: original DropSkip tokens, typefaces, brand assets and controls. */
+/* Bottom padding replaces the strip that used to close the hero. */
 .inventory-page .flow-hero {
   padding-top: 76px;
+  padding-bottom: clamp(72px, 7vw, 112px);
 }
 .inventory-page .hero-intro {
   max-width: 1040px;
@@ -2410,4 +2426,459 @@
   .inventory-page .journey-flow {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+}
+
+/* ------------------------------------------------------ hero type --
+   Headline and subheading match the home page hero, so every page opens
+   with the same type. This sits last so it overrides the hero sizes above,
+   including the tablet, phone and 1440px+ ones. */
+.inventory-page .hero.flow-hero h1 {
+  line-height: 0.98;
+  letter-spacing: -0.065em;
+  font-weight: 620;
+}
+.inventory-page .flow-hero .hero-lede {
+  font-size: 1.13rem;
+  line-height: 1.6;
+}
+
+/* ------------------------------------------------- hero additions -- */
+/* Short leading rule on the hero label, as on the home page. */
+.inventory-page .flow-hero .eyebrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.inventory-page .flow-hero .eyebrow::before {
+  content: "";
+  width: 25px;
+  height: 2px;
+  flex: 0 0 auto;
+  background: currentColor;
+}
+/* The impact images have transparent backgrounds, so the shadow follows
+   each card's rounded shape rather than a rectangle. */
+/* Two cards, sized in proportion to each image so they share one height. */
+.inventory-page .hero-impact {
+  display: grid;
+  grid-template-columns: 1049fr 991fr;
+  gap: 16px;
+  max-width: 1180px;
+  margin: clamp(48px, 5vw, 72px) auto 0;
+}
+.inventory-page .hero-impact img {
+  display: block;
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 18px 36px rgba(4, 25, 39, 0.12));
+}
+@media (max-width: 760px) {
+  .inventory-page .flow-hero .eyebrow {
+    justify-content: flex-start;
+  }
+  .inventory-page .hero-impact {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+}
+
+/* ----------------------------------- the inventory planning problem --
+   Laid out like the product page's "Works with your existing systems":
+   the hero's column split, columns stretched to one height (copy centred,
+   the question list spreading its rows), and the same type sizes. This
+   sits last so it overrides the earlier problem-section rules, including
+   their tablet, phone and 1440px+ variants. */
+.inventory-page .problem .question-board {
+  grid-template-columns: minmax(0, 1.04fr) minmax(0, 0.96fr);
+  gap: clamp(40px, 5vw, 88px);
+  align-items: stretch;
+}
+.inventory-page .problem .problem-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.inventory-page .problem .problem-copy .eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.inventory-page .problem .problem-copy .eyebrow::before {
+  content: "";
+  width: 25px;
+  height: 2px;
+  flex: 0 0 auto;
+  background: currentColor;
+}
+.inventory-page .problem .problem-copy h2 {
+  max-width: 12em;
+  margin: 18px 0 0;
+  font-size: clamp(40px, 3.5vw, 52px);
+  line-height: 1.02;
+  letter-spacing: -0.045em;
+  font-weight: 650;
+  text-wrap: balance;
+}
+.inventory-page .problem .problem-copy p.copy {
+  max-width: 600px;
+  margin-top: 24px;
+  font-size: 1.13rem;
+  line-height: 1.6;
+}
+.inventory-page .problem .questions {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  border-top: 0;
+}
+.inventory-page .problem .questions .question {
+  align-items: baseline;
+  padding-block: 16px;
+  color: var(--t-heading);
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+.inventory-page .problem .questions .question:last-child {
+  border-bottom: 0;
+}
+.inventory-page .problem .question .mono {
+  padding-top: 0;
+  color: var(--orange);
+  font-size: 0.8rem;
+  font-weight: 800;
+}
+/* Availability / Working capital / Margin: card-title and body sizes used
+   on the product page's cards. */
+.inventory-page .problem .outcome-strip h3 {
+  font-size: clamp(17.41px, calc(16.209px + 0.334vw), 20.48px);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+.inventory-page .problem .outcome-strip p {
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+@media (max-width: 980px) {
+  .inventory-page .problem .question-board {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}
+@media (max-width: 720px) {
+  .inventory-page .problem .problem-copy h2 {
+    font-size: clamp(32px, 9vw, 42px);
+  }
+}
+
+
+/* Short leading rule on the "From signals to decisions" label. */
+.inventory-page .position .section-head .eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.inventory-page .position .section-head .eyebrow::before {
+  content: "";
+  width: 25px;
+  height: 2px;
+  flex: 0 0 auto;
+  background: currentColor;
+}
+
+/* "Inventory planning capabilities": a leading rule on the label, and the
+   heading on exactly two lines (one span each), at the 52px cap used for
+   the site's other two-line section headings. */
+.inventory-page .capability-section .flow-centered {
+  max-width: 1240px;
+}
+.inventory-page .capability-section .flow-centered .eyebrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.inventory-page .capability-section .flow-centered .eyebrow::before {
+  content: "";
+  width: 25px;
+  height: 2px;
+  flex: 0 0 auto;
+  background: currentColor;
+}
+.inventory-page .capability-section .flow-centered h2 {
+  font-size: clamp(40px, 3.5vw, 52px);
+  line-height: 1.04;
+}
+.inventory-page .capability-section .flow-centered h2 span {
+  display: block;
+}
+@media (max-width: 760px) {
+  .inventory-page .capability-section .flow-centered .eyebrow {
+    justify-content: flex-start;
+  }
+  .inventory-page .capability-section .flow-centered h2 {
+    font-size: clamp(32px, 9vw, 42px);
+  }
+  .inventory-page .capability-section .flow-centered h2 span {
+    display: inline;
+  }
+}
+
+/* ------------------------- Inventory and demand / Location-level planning --
+   Same treatment as "The inventory planning problem": the hero's column
+   split (mirrored on the alternating row), columns stretched to one height
+   with the copy centred, a leading rule on the label, and matching type. */
+@media (min-width: 761px) {
+  .inventory-page .alternating-features .feature {
+    grid-template-columns: minmax(0, 1.04fr) minmax(0, 0.96fr);
+    gap: clamp(40px, 5vw, 88px);
+    align-items: stretch;
+  }
+  .inventory-page .alternating-features .feature:nth-child(even) {
+    grid-template-columns: minmax(0, 0.96fr) minmax(0, 1.04fr);
+  }
+}
+.inventory-page .alternating-features .feature-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+/* The table card fills its column, its rows sharing any spare height.
+   The network card keeps its natural height and centres beside the copy,
+   since stretching its two tiles only adds empty space. */
+.inventory-page .alternating-features .product-mini {
+  display: flex;
+  flex-direction: column;
+}
+.inventory-page .alternating-features .feature:nth-child(even) .product-mini {
+  align-self: center;
+}
+.inventory-page .alternating-features .coverage-rows {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+.inventory-page .alternating-features .feature-copy .eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.inventory-page .alternating-features .feature-copy .eyebrow::before {
+  content: "";
+  width: 25px;
+  height: 2px;
+  flex: 0 0 auto;
+  background: currentColor;
+}
+.inventory-page .alternating-features .feature-copy h3 {
+  max-width: 12em;
+  margin: 18px 0 0;
+  font-size: clamp(40px, 3.5vw, 52px);
+  line-height: 1.02;
+  letter-spacing: -0.045em;
+  font-weight: 650;
+  text-wrap: balance;
+}
+.inventory-page .alternating-features .feature-copy p.copy {
+  max-width: 600px;
+  margin-top: 24px;
+  font-size: 1.13rem;
+  line-height: 1.6;
+}
+.inventory-page .alternating-features .feature-points span {
+  font-size: 0.9rem;
+}
+@media (max-width: 720px) {
+  .inventory-page .alternating-features .feature-copy h3 {
+    font-size: clamp(32px, 9vw, 42px);
+  }
+}
+
+/* "Product in action" and the FAQ: the product page's centred heading block — label
+   rule, two-line heading at the 52px cap, 1.13rem description, and the
+   same space before the example below. */
+.inventory-page .decision .flow-centered ,
+.inventory-page .faq .flow-centered {
+  max-width: 1240px;
+  margin-bottom: 72px;
+}
+.inventory-page .decision .flow-centered .eyebrow ,
+.inventory-page .faq .flow-centered .eyebrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.inventory-page .decision .flow-centered .eyebrow::before ,
+.inventory-page .faq .flow-centered .eyebrow::before {
+  content: "";
+  width: 25px;
+  height: 2px;
+  flex: 0 0 auto;
+  background: currentColor;
+}
+.inventory-page .decision .flow-centered h2 ,
+.inventory-page .faq .flow-centered h2 {
+  margin-top: 18px;
+  font-size: clamp(40px, 3.5vw, 52px);
+  line-height: 1.02;
+  letter-spacing: -0.045em;
+  font-weight: 650;
+}
+.inventory-page .decision .flow-centered h2 span ,
+.inventory-page .faq .flow-centered h2 span {
+  display: block;
+}
+.inventory-page .decision .flow-centered > p ,
+.inventory-page .faq .flow-centered > p {
+  max-width: 680px;
+  margin: 18px auto 0;
+  font-size: 1.13rem;
+  line-height: 1.6;
+}
+@media (max-width: 760px) {
+  .inventory-page .decision .flow-centered ,
+  .inventory-page .faq .flow-centered {
+    margin-bottom: 44px;
+  }
+  .inventory-page .decision .flow-centered .eyebrow ,
+  .inventory-page .faq .flow-centered .eyebrow {
+    justify-content: flex-start;
+  }
+  .inventory-page .decision .flow-centered h2 ,
+  .inventory-page .faq .flow-centered h2 {
+    font-size: clamp(32px, 9vw, 42px);
+  }
+  .inventory-page .decision .flow-centered h2 span ,
+  .inventory-page .faq .flow-centered h2 span {
+    display: inline;
+  }
+}
+
+/* "DropSkip recommends. Your team decides." gets the orange-rule callout
+   used for the site's other closing lines. */
+.inventory-page .decision .operator-line {
+  margin-top: 32px;
+}
+.inventory-page .decision .operator-line strong {
+  padding-left: 20px;
+  border-left: 3px solid var(--orange);
+  color: var(--t-heading);
+  font: 750 1.1rem/1.5 var(--display);
+  letter-spacing: -0.01em;
+}
+
+/* ------------------------------------ Works with your existing systems --
+   Matches the product page's version: the hero's column split with both
+   columns one height (copy centred, rows spread), the label rule, the
+   same type and an orange-rule "No rip and replace" callout. */
+.inventory-page .systems {
+  padding-block: var(--section);
+}
+@media (min-width: 761px) {
+  .inventory-page .systems .systems-layout {
+    grid-template-columns: minmax(0, 1.04fr) minmax(0, 0.96fr);
+    gap: clamp(40px, 5vw, 88px);
+    align-items: stretch;
+  }
+}
+.inventory-page .systems .systems-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.inventory-page .systems .systems-copy .eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.inventory-page .systems .systems-copy .eyebrow::before {
+  content: "";
+  width: 25px;
+  height: 2px;
+  flex: 0 0 auto;
+  background: currentColor;
+}
+.inventory-page .systems .systems-copy h2 {
+  max-width: 12em;
+  margin: 18px 0 0;
+  font-size: clamp(40px, 3.5vw, 52px);
+  line-height: 1.02;
+  letter-spacing: -0.045em;
+  font-weight: 650;
+  text-wrap: balance;
+}
+.inventory-page .systems .systems-copy > p.copy {
+  max-width: 600px;
+  margin-top: 24px;
+  font-size: 1.13rem;
+  line-height: 1.6;
+}
+.inventory-page .systems .no-rip {
+  margin-top: 28px;
+  padding-left: 20px;
+  border-left: 3px solid var(--orange);
+  color: var(--t-heading);
+  font-size: 1.1rem;
+  font-weight: 750;
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+}
+/* The systems list keeps its original styling, centred beside the copy. */
+.inventory-page .systems .system-list {
+  align-self: center;
+}
+@media (max-width: 720px) {
+  .inventory-page .systems .systems-copy h2 {
+    font-size: clamp(32px, 9vw, 42px);
+  }
+}
+
+/* Closing section: a leading rule on the label, and the heading on exactly
+   two lines at the 52px cap used by the other two-line headings. */
+.inventory-page .flow-closing .closing-grid {
+  max-width: 1240px;
+}
+.inventory-page .flow-closing .eyebrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.inventory-page .flow-closing .eyebrow::before {
+  content: "";
+  width: 25px;
+  height: 2px;
+  flex: 0 0 auto;
+  background: currentColor;
+}
+.inventory-page .flow-closing h2 {
+  max-width: none;
+  margin-top: 18px;
+  font-size: clamp(40px, 3.5vw, 52px);
+  line-height: 1.02;
+  letter-spacing: -0.045em;
+  font-weight: 650;
+}
+.inventory-page .flow-closing h2 span {
+  display: block;
+}
+@media (max-width: 760px) {
+  .inventory-page .flow-closing h2 {
+    font-size: clamp(32px, 9vw, 42px);
+  }
+  .inventory-page .flow-closing h2 span {
+    display: inline;
+  }
+}
+
+/* Closing email: a clickable address, styled like the product page's. */
+.inventory-page .flow-closing .closing-note {
+  margin-top: 16px;
+  font-size: 0.9rem;
+}
+.inventory-page .flow-closing .closing-note a {
+  color: #fff;
+  font-weight: 700;
 }

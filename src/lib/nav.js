@@ -1,7 +1,7 @@
 export const navLinks = [
   { href: "/about", label: "About" },
   { href: "/product", label: "Product" },
-  { href: "/inventory-planning", label: "Inventory Planning" },
+  { href: "/why-dropskip", label: "Why DropSkip" },
   {
     label: "Resources",
     children: [
@@ -22,7 +22,7 @@ export const footerGroups = [
     title: "Platform",
     links: [
       { href: "/product", label: "Product" },
-      { href: "/inventory-planning", label: "Inventory Planning" },
+      { href: "/why-dropskip", label: "Why DropSkip" },
     ],
   },
   {

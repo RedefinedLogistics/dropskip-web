@@ -16,7 +16,7 @@ const SITE = "https://dropskip.ai";
 const PAGES = [
   { path: "", changeFrequency: "weekly", priority: 1 },
   { path: "/product", changeFrequency: "monthly", priority: 0.9 },
-  { path: "/inventory-planning", changeFrequency: "monthly", priority: 0.9 },
+  { path: "/why-dropskip", changeFrequency: "monthly", priority: 0.9 },
   { path: "/shopify", changeFrequency: "monthly", priority: 0.9 },
   { path: "/about", changeFrequency: "monthly", priority: 0.7 },
   { path: "/blogs", changeFrequency: "weekly", priority: 0.8 },

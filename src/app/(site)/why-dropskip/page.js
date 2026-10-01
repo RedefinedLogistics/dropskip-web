@@ -1,5 +1,7 @@
+import Image from "next/image";
 import DecisionExample from "@/components/inventory/DecisionExample";
 import BookDemoButton from "@/components/BookDemoButton";
+import { asset } from "@/lib/asset";
 import "@/styles/inventory.css";
 
 /**
@@ -31,12 +33,12 @@ export default function InventoryPlanningPage() {
           <div className="hero-intro">
             <p className="eyebrow">AI-enabled inventory planning for DTC brands</p>
             <h1 id="hero-title">
-              Plan the right inventory. <span>Protect cash flow and margins.</span>
+              <span>Every supply chain problem ends up as</span>{" "}
+              <span>a stockout or an overstock.</span>
             </h1>
             <p className="hero-lede">
-              DropSkip connects live demand, inventory, incoming supply, and network constraints to
-              show what needs attention, why it matters, and what to do next across replenishment,
-              transfers, audits, and excess stock.
+              Across global retail, stockouts and overstocks cost about 6.2% of sales on average.
+              DropSkip shows which inventory decisions protect your sales, cash, and margin first.
             </p>
             <div className="hero-actions">
               <BookDemoButton className="button primary">
@@ -53,12 +55,24 @@ export default function InventoryPlanningPage() {
               </a>
             </div>
           </div>
-          <div className="hero-foot">
-            <strong>One connected position. Clear next moves.</strong>
-            <span>Replenish</span>
-            <span>Transfer</span>
-            <span>Audit</span>
-            <span>Reduce</span>
+          {/* The cost of getting it wrong, sized for a typical brand. */}
+          <div className="hero-impact">
+            <Image
+              src={asset("/why-dropskip-impact-share.png")}
+              alt="6.2% of sales lost to stockouts and overstocks, on average"
+              width={1049}
+              height={480}
+              sizes="(max-width: 760px) calc(100vw - 32px), 600px"
+              priority
+            />
+            <Image
+              src={asset("/why-dropskip-impact-cost.png")}
+              alt="About $3.1M impact per year for a $50M brand"
+              width={991}
+              height={477}
+              sizes="(max-width: 760px) calc(100vw - 32px), 570px"
+              priority
+            />
           </div>
         </div>
       </section>
@@ -70,7 +84,7 @@ export default function InventoryPlanningPage() {
             <div className="problem-copy">
               <p className="eyebrow">The inventory planning problem</p>
               <h2 id="problem-title">
-                Inventory is not one number, and planning is not one report.
+                Inventory is not one number, and planning cannot be guesswork.
               </h2>
               <p className="copy">
                 Your ERP records purchases. Your WMS tracks physical stock. Your sales channels show
@@ -111,7 +125,7 @@ export default function InventoryPlanningPage() {
             <article>
               <span className="eyebrow">Margin</span>
               <h3>Avoid unnecessary cost.</h3>
-              <p>Review transfers and reductions before another purchase or markdown.</p>
+              <p>Review inventory position before another PO or markdown.</p>
             </article>
           </div>
         </div>
@@ -172,13 +186,13 @@ export default function InventoryPlanningPage() {
             <div>
               <p className="eyebrow">Inventory planning capabilities</p>
               <h2 id="capabilities-title">
-                Make every inventory decision with demand, cash, and margin in view.
+                <span>Make every inventory decision</span>{" "}
+                <span>with demand, cash, and margin in view.</span>
               </h2>
             </div>
             <p>
               Each view uses the same connected position to answer a different operational question.
             </p>
-            <small className="example-caption">Selected product views</small>
           </div>
           <div className="feature-list alternating-features">
             <article className="feature">
@@ -311,7 +325,10 @@ export default function InventoryPlanningPage() {
           <div className="section-head flow-centered">
             <div>
               <p className="eyebrow">Product in action</p>
-              <h2 id="product-title">Move from a warning to a decision, with the why attached.</h2>
+              <h2 id="product-title">
+                <span>Move from a warning to a decision,</span>{" "}
+                <span>with the why attached.</span>
+              </h2>
             </div>
             <p>
               Follow one SKU from a coverage gap to a recommended next move your team can inspect,
@@ -375,10 +392,13 @@ export default function InventoryPlanningPage() {
       {/* The objections that come up in every demo call, answered up front. */}
       <section className="section faq" id="faq" aria-labelledby="faq-title">
         <div className="wrap">
-          <div className="section-head">
+          <div className="section-head flow-centered">
             <div>
               <p className="eyebrow">Frequently asked questions</p>
-              <h2 id="faq-title">Questions about inventory planning with DropSkip.</h2>
+              <h2 id="faq-title">
+                <span>Questions about inventory</span>{" "}
+                <span>planning with DropSkip.</span>
+              </h2>
             </div>
             <p>
               Clear answers about where DropSkip fits, how the position stays current, and who
@@ -442,7 +462,10 @@ export default function InventoryPlanningPage() {
         <div className="wrap closing-grid">
           <div>
             <p className="eyebrow">Turn signals into decisions</p>
-            <h2 id="demo-title">See where inventory is putting sales, cash, and margin at risk.</h2>
+            <h2 id="demo-title">
+              <span>See where inventory is putting</span>{" "}
+              <span>sales, cash, and margin at risk.</span>
+            </h2>
           </div>
           <div>
             <p className="copy">
@@ -455,7 +478,9 @@ export default function InventoryPlanningPage() {
                 ↗
               </span>
             </BookDemoButton>
-            <p className="closing-note">Contact our team at contact@dropskip.ai</p>
+            <p className="closing-note">
+              Or email <a href="mailto:contact@dropskip.ai">contact@dropskip.ai</a>
+            </p>
           </div>
         </div>
       </section>

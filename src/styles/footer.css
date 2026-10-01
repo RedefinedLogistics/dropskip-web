@@ -200,27 +200,6 @@
   flex-wrap: wrap;
 }
 
-/* The four words the product is organised around, as quiet chips rather than
-   one run-on line. */
-.footer-rhythm {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.footer-rhythm li {
-  padding: 4px 12px;
-  border: 1px solid var(--f-line);
-  border-radius: 999px;
-  font-size: 0.75rem;
-  font-weight: 650;
-  letter-spacing: 0.04em;
-  color: var(--f-muted);
-}
-
 /* -------------------------------------------------------------- narrow --- */
 
 @media (max-width: 980px) {

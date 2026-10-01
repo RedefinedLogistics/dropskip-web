@@ -321,40 +321,66 @@
     box-shadow: 0 0 0 0 rgba(255, 107, 44, 0);
   }
 }
+/* Type sizes and column split match the home page hero. The bottom padding
+   replaces the strip that used to close the hero. */
 .product-page .hero {
   overflow: hidden;
-  padding: 78px 0 0;
+  padding: 78px 0 clamp(72px, 7vw, 112px);
 }
 .product-page .hero-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1.02fr) minmax(410px, 0.98fr);
-  gap: 72px;
-  align-items: center;
+  grid-template-columns: minmax(0, 1.04fr) minmax(0, 0.96fr);
+  gap: clamp(40px, 5vw, 88px);
+  /* Stretch, so the card is always exactly as tall as the copy column. */
+  align-items: stretch;
+}
+/* The copy sits centred in its column when the card sets the row height. */
+.product-page .hero-grid > :first-child {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 .product-page .hero h1 {
-  max-width: 720px;
+  max-width: 12.5em;
   margin: 18px 0 24px;
-  font-size: clamp(52px, 6vw, 82px);
+  font-size: clamp(52px, 4.5vw, 76px);
   line-height: 0.98;
+  letter-spacing: -0.065em;
+  font-weight: 620;
   text-wrap: balance;
 }
 .product-page .hero h1 span {
   color: var(--t-heading);
 }
+/* The label gets the short leading rule used on the home hero. */
+.product-page .hero .eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.product-page .hero .eyebrow::before {
+  content: "";
+  width: 25px;
+  height: 2px;
+  flex: 0 0 auto;
+  background: currentColor;
+}
 .product-page .hero-lede {
-  max-width: 690px;
+  max-width: 640px;
   color: var(--t-muted);
-  font-size: 18px;
-  line-height: 1.65;
+  font-size: 1.13rem;
+  line-height: 1.6;
 }
 .product-page .hero-actions {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 24px;
-  margin-top: 30px;
+  gap: 12px;
+  margin-top: 32px;
 }
 .product-page .decision-console {
+  display: flex;
+  flex-direction: column;
   position: relative;
   border-radius: var(--radius);
   overflow: hidden;
@@ -374,7 +400,7 @@
   align-items: center;
   justify-content: space-between;
   gap: 15px;
-  padding: 16px 20px;
+  padding: 13px 20px;
   background: var(--s-dark);
   color: var(--muted-inverse);
   font-size: 13px;
@@ -395,8 +421,19 @@
   border-radius: 50%;
   background: var(--orange);
 }
+/* The body fills the card; any spare height is shared between the three
+   steps, and the outcome stays pinned to the bottom. */
 .product-page .console-body {
-  padding: 28px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: clamp(18px, 1.8vw, 26px) clamp(20px, 2vw, 28px);
+}
+.product-page .hero-path {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
 }
 .product-page .decision-label {
   color: var(--orange-text);
@@ -406,23 +443,19 @@
   text-transform: uppercase;
 }
 .product-page .console-body h2 {
-  margin: 10px 0 12px;
-  font-size: clamp(28px, 3vw, 41px);
+  margin: 8px 0 10px;
+  font-size: clamp(22px, 2.1vw, 34px);
   line-height: 1.06;
 }
-.product-page .console-body > p {
-  color: var(--t-muted);
-  font-size: 14px;
-}
 .product-page .hero-path {
-  margin-top: 22px;
+  margin-top: 16px;
   border-top: 1px solid var(--b-line);
 }
 .product-page .hero-path-step {
   display: grid;
   grid-template-columns: 34px 1fr;
   gap: 12px;
-  padding: 14px 0;
+  padding: clamp(8px, 0.8vw, 12px) 0;
   border-bottom: 1px solid var(--b-line);
 }
 .product-page .hero-path-step span {
@@ -441,8 +474,8 @@
   font-size: 13px;
 }
 .product-page .hero-result {
-  margin-top: 18px;
-  padding: 15px 17px;
+  margin-top: 14px;
+  padding: 12px 16px;
   border-left: 3px solid var(--orange);
   background: var(--orange-wash);
 }
@@ -456,27 +489,6 @@
 .product-page .hero-result strong {
   display: block;
   margin-top: 4px;
-  font-size: 14px;
-}
-.product-page .hero-foot {
-  display: grid;
-  grid-template-columns: 1.2fr repeat(4, 1fr);
-  align-items: center;
-  margin-top: 58px;
-  border-top: 1px solid var(--b-strong);
-  padding: 22px 0 25px;
-}
-.product-page .hero-foot strong {
-  font-size: 18px;
-  padding-right: 22px;
-}
-.product-page .hero-foot span {
-  display: flex;
-  min-height: 42px;
-  align-items: center;
-  border-left: 1px solid var(--b-strong);
-  padding-left: 20px;
-  color: var(--t-muted);
   font-size: 14px;
 }
 .product-page .section-head {
@@ -503,99 +515,132 @@
 .product-page .premise {
   background: var(--s-card);
 }
+.product-page .center-head {
+  max-width: 1240px;
+  margin: 0 auto 72px;
+  text-align: center;
+}
+.product-page .center-head .eyebrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.product-page .center-head .eyebrow::before {
+  content: "";
+  width: 25px;
+  height: 2px;
+  background: currentColor;
+}
+/* Centred section heading, shared by The missing layer and Capabilities.
+   Same headline scale as the home page's "Understand your position." */
+/* Sized so the longest line ("DropSkip helps your team decide what to do
+   next.") fits on one line, keeping both centred headings to two lines. */
+.product-page .center-head h2 {
+  margin-top: 18px;
+  font-size: clamp(40px, 3.5vw, 52px);
+  line-height: 1.02;
+  text-wrap: balance;
+}
+.product-page .center-head h2 span {
+  display: block;
+}
+/* :not(.eyebrow) keeps the orange label out of the description style. */
+.product-page .center-head > p:not(.eyebrow) {
+  max-width: 680px;
+  margin: 18px auto 0;
+  color: var(--t-muted);
+  font-size: 1.13rem;
+}
+/* The three source systems are cards, styled like the home page pillars. */
 .product-page .system-cols {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  border-block: 1px solid var(--b-line);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
 }
 .product-page .system-col {
-  padding: 28px;
+  position: relative;
+  padding: 26px 24px 28px;
+  background: var(--s-card);
+  border: 1px solid var(--b-line);
+  border-radius: 16px;
+  box-shadow: var(--card-shadow, 0 10px 30px rgba(4, 25, 39, 0.06));
+  transition:
+    transform 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.28s ease;
 }
-.product-page .system-col + .system-col {
-  border-left: 1px solid var(--b-line);
+.product-page .system-col:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 18px 45px rgba(4, 25, 39, 0.1);
+  border-color: rgba(255, 107, 44, 0.35);
 }
-.product-page .system-col span {
+.product-page .system-icon {
+  display: inline-grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  margin-bottom: 20px;
+  border-radius: 14px;
+  color: var(--orange);
+  background: rgba(255, 107, 44, 0.1);
+}
+.product-page .system-icon svg {
+  width: 26px;
+  height: 26px;
+}
+.product-page .system-num {
+  position: absolute;
+  top: 30px;
+  right: 24px;
+  color: var(--t-muted);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  opacity: 0.7;
+}
+.product-page .system-kicker {
+  display: block;
   color: var(--orange-text);
-  font-size: 13px;
+  font-size: 0.75rem;
   font-weight: 800;
-  letter-spacing: 0.07em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 .product-page .system-col h3 {
-  margin: 13px 0 8px;
-  font-size: clamp(17.94px, calc(15.96px + 0.55vw), 23px);
-  line-height: 1.15;
+  margin: 8px 0 10px;
+  font-size: clamp(17.41px, calc(16.209px + 0.334vw), 20.48px);
+  line-height: 1.2;
 }
 .product-page .system-col p {
   color: var(--t-muted);
-  font-size: 14px;
+  font-size: 0.9rem;
+  line-height: 1.6;
 }
+/* The closing line is styled like the home page's "What is at risk?"
+   callout: bold text behind an orange rule, starting at the first card's
+   left edge. */
 .product-page .premise-close {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 40px;
-  margin-top: 32px;
+  justify-content: flex-start;
+  margin-top: 64px;
 }
+@media (max-width: 720px) {
+  .product-page .premise-close {
+    margin-top: 40px;
+  }
+}
+/* No width cap, so the sentence stays on one line wherever it fits. */
 .product-page .premise-close strong {
-  max-width: 760px;
+  max-width: none;
+  padding-left: 20px;
+  border-left: 3px solid var(--orange);
   color: var(--t-heading);
-  font-size: clamp(23px, 2.7vw, 35px);
-  line-height: 1.25;
-  letter-spacing: -0.035em;
-}
-.product-page .premise-close span {
-  color: var(--t-muted);
-  font-size: 14px;
-  font-weight: 700;
-}
-.product-page .workflow {
-  padding-bottom: 86px;
-}
-.product-page .workflow-shell {
-  display: grid;
-  grid-template-columns: 270px minmax(0, 1fr);
-  overflow: hidden;
-  border: 1px solid var(--navy-line);
-  border-radius: var(--radius);
-  background: var(--s-dark-2);
-}
-.product-page .workflow-tabs {
-  padding: 18px;
-  background: var(--s-dark);
-}
-.product-page .workflow-tabs p {
-  margin: 4px 10px 14px;
-  color: var(--muted-inverse);
-  font-size: 13px;
-  font-weight: 800;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-.product-page .workflow-tab {
-  display: flex;
-  width: 100%;
-  align-items: center;
-  justify-content: space-between;
-  gap: 15px;
-  padding: 14px 11px;
-  border: 0;
-  border-left: 3px solid transparent;
-  background: transparent;
-  color: var(--muted-inverse);
+  font-size: 1.1rem;
+  font-weight: 750;
+  line-height: 1.5;
+  letter-spacing: -0.01em;
   text-align: left;
-  font-size: 14px;
-}
-.product-page .workflow-tab:hover {
-  background: #ffffff0a;
-}
-.product-page .workflow-tab[aria-selected="true"] {
-  border-left-color: var(--orange);
-  background: #ffffff0d;
-  color: var(--white);
-}
-.product-page .workflow-panel {
-  padding: 34px;
 }
 .product-page .panel-top {
   display: flex;
@@ -615,16 +660,6 @@
 .product-page .panel-top b {
   font-size: 13px;
   font-weight: 650;
-  color: var(--muted-inverse);
-}
-.product-page .workflow-panel h3 {
-  max-width: 760px;
-  margin: 26px 0 13px;
-  font-size: clamp(31px, 3.8vw, 49px);
-  line-height: 1.04;
-}
-.product-page .workflow-panel > p {
-  max-width: 780px;
   color: var(--muted-inverse);
 }
 .product-page .panel-metrics {
@@ -669,19 +704,22 @@
 .product-page .capabilities {
   background: var(--s-card);
 }
+/* Cards and type match the Demand / Inventory / Execution cards above. */
 .product-page .cap-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
 }
 .product-page .cap-card {
+  position: relative;
   display: flex;
-  min-height: 300px;
+  min-height: 0;
   flex-direction: column;
-  padding: 27px;
+  padding: 26px 24px 28px;
   border: 1px solid var(--b-line);
   background: var(--s-card);
   border-radius: 16px;
+  box-shadow: var(--card-shadow, 0 10px 30px rgba(4, 25, 39, 0.06));
   transition:
     transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
     box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1),
@@ -692,25 +730,36 @@
   box-shadow: 0 18px 45px rgba(4, 25, 39, 0.1);
   border-color: rgba(255, 107, 44, 0.35);
 }
+/* Number in the top-right corner, as on the Demand / Inventory cards. */
 .product-page .cap-no {
-  color: var(--orange-text);
-  font-size: 13px;
-  font-weight: 800;
+  position: absolute;
+  top: 30px;
+  right: 24px;
+  color: var(--t-muted);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  opacity: 0.7;
+}
+.product-page .cap-card .system-icon {
+  margin-bottom: 20px;
 }
 .product-page .cap-card h3 {
-  margin: 22px 0 12px;
-  font-size: clamp(21.06px, calc(18.736px + 0.646vw), 27px);
-  line-height: 1.08;
+  margin: 0 0 10px;
+  font-size: clamp(17.41px, calc(16.209px + 0.334vw), 20.48px);
+  line-height: 1.2;
 }
 .product-page .cap-card p {
   color: var(--t-muted);
-  font-size: 14px;
+  font-size: 0.9rem;
+  line-height: 1.6;
 }
 .product-page .cap-card strong {
   margin-top: auto;
   padding-top: 22px;
   color: var(--t-heading);
-  font-size: 14px;
+  font-size: 0.9rem;
+  line-height: 1.5;
 }
 .product-page .cap-card.action-cap {
   border-top: 4px solid var(--orange);
@@ -840,56 +889,54 @@
   color: var(--mint-text);
   text-decoration: underline;
 }
-.product-page .control {
-  background: var(--s-card);
-}
-.product-page .control-flow {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  border-block: 1px solid var(--b-line);
-}
-.product-page .control-step {
-  min-height: 190px;
-  padding: 26px 22px;
-}
-.product-page .control-step + .control-step {
-  border-left: 1px solid var(--b-line);
-}
-.product-page .control-step span {
-  color: var(--orange-text);
-  font-size: 13px;
-  font-weight: 800;
-}
-.product-page .control-step h3 {
-  margin: 15px 0 8px;
-  font-size: clamp(17.85px, calc(16.617px + 0.342vw), 21px);
-}
-.product-page .control-step p {
-  color: var(--t-muted);
-  font-size: 14px;
-}
 .product-page .integration {
   background: var(--s-page);
 }
-.product-page .integration-grid {
+/* Same column split and gap as the hero. Columns stretch to one height:
+   the copy centres vertically and the list beside it spreads its rows. */
+.product-page .integration-grid,
+.product-page .implementation-head {
   display: grid;
-  grid-template-columns: 0.82fr 1.18fr;
-  gap: 76px;
-  align-items: start;
+  grid-template-columns: minmax(0, 1.04fr) minmax(0, 0.96fr);
+  gap: clamp(40px, 5vw, 88px);
+  align-items: stretch;
+}
+.product-page .integration-grid > :first-child,
+.product-page .implementation-head > :first-child {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+/* Short leading rule on the label, as on the hero. */
+.product-page .integration-grid .eyebrow,
+.product-page .implementation-head .eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.product-page .integration-grid .eyebrow::before,
+.product-page .implementation-head .eyebrow::before {
+  content: "";
+  width: 25px;
+  height: 2px;
+  flex: 0 0 auto;
+  background: currentColor;
+}
+.product-page .systems-list,
+.product-page .steps {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
 }
 .product-page .integration h2 {
   max-width: 600px;
   margin: 12px 0 19px;
-  font-size: clamp(38px, 4.7vw, 60px);
-  line-height: 1.04;
+  font-size: clamp(40px, 3.5vw, 52px);
+  line-height: 1.02;
 }
-.product-page .no-rip {
-  margin-top: 22px;
-  color: var(--t-heading);
-  font-weight: 800;
-}
-.product-page .systems-list {
-  border-top: 1px solid var(--b-strong);
+/* "No rip and replace." sits on its own line of the heading. */
+.product-page .integration h2 span:first-child {
+  display: block;
 }
 .product-page .system-row {
   display: flex;
@@ -900,29 +947,22 @@
   border-bottom: 1px solid var(--b-line);
 }
 .product-page .system-row strong {
-  font-size: 14px;
+  font-size: 0.95rem;
 }
 .product-page .system-row span {
   color: var(--t-muted);
-  font-size: 13px;
+  font-size: 0.85rem;
 }
 .product-page .implementation {
   margin-top: 64px;
   padding-top: 52px;
   border-top: 1px solid var(--b-line);
 }
-.product-page .implementation-head {
-  display: grid;
-  grid-template-columns: 0.8fr 1.2fr;
-  gap: 74px;
-}
+
 .product-page .implementation h3 {
   margin-top: 12px;
-  font-size: clamp(31px, 3.6vw, 47px);
+  font-size: clamp(32px, 2.8vw, 42px);
   line-height: 1.06;
-}
-.product-page .steps {
-  border-top: 1px solid var(--b-strong);
 }
 .product-page .step {
   display: grid;
@@ -937,7 +977,15 @@
   font-weight: 800;
 }
 .product-page .step strong {
-  font-size: 14px;
+  font-size: 0.95rem;
+}
+/* Body copy at the hero description size. */
+.product-page .integration .copy {
+  font-size: 1.13rem;
+  line-height: 1.6;
+}
+.product-page .implementation .copy {
+  margin-top: 14px;
 }
 .product-page .faq {
   background: var(--s-card);
@@ -978,25 +1026,25 @@
 .product-page .closing {
   padding: 84px 0;
 }
-.product-page .closing-grid {
-  display: grid;
-  grid-template-columns: 1.15fr 0.85fr;
-  gap: 78px;
+.product-page .closing .center-head {
+  margin-bottom: 36px;
+}
+.product-page .closing .center-head > p:not(.eyebrow) {
+  color: var(--muted-inverse);
+}
+.product-page .closing-actions {
+  display: flex;
+  flex-direction: column;
   align-items: center;
-}
-.product-page .closing h2 {
-  max-width: 720px;
-  margin-top: 12px;
-  font-size: clamp(42px, 5.2vw, 70px);
-  line-height: 1;
-}
-.product-page .closing .copy {
-  margin-bottom: 25px;
+  gap: 16px;
 }
 .product-page .closing-note {
-  margin-top: 15px;
   color: var(--muted-inverse);
-  font-size: 13px;
+  font-size: 0.9rem;
+}
+.product-page .closing-note a {
+  color: #fff;
+  font-weight: 700;
 }
 .product-page .toast {
   position: fixed;
@@ -1024,15 +1072,14 @@
   .product-page .hero-grid,
   .product-page .section-head,
   .product-page .integration-grid,
-  .product-page .implementation-head,
-  .product-page .closing-grid {
+  .product-page .implementation-head {
     grid-template-columns: 1fr;
   }
   .product-page .hero-grid {
     gap: 45px;
   }
-  .product-page .workflow-shell {
-    grid-template-columns: 220px minmax(0, 1fr);
+  .product-page .hero h1 {
+    font-size: clamp(46px, 6.6vw, 60px);
   }
   .product-page .cap-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -1047,18 +1094,8 @@
   .product-page .section-head {
     gap: 24px;
   }
-  .product-page .premise-close {
-    align-items: flex-start;
-    flex-direction: column;
-  }
-  .product-page .control-flow {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  .product-page .control-step:nth-child(3) {
-    border-left: 0;
-  }
-  .product-page .control-step:nth-child(n + 3) {
-    border-top: 1px solid var(--b-line);
+  .product-page .center-head h2 {
+    font-size: clamp(34px, 4.6vw, 44px);
   }
 }
 @media (max-width: 760px) {
@@ -1089,54 +1126,26 @@
     grid-template-columns: 1fr;
   }
   .product-page .hero h1 {
-    font-size: clamp(44px, 14vw, 52px);
+    font-size: clamp(38px, 10.5vw, 48px);
+    line-height: 1;
   }
   .product-page .decision-console {
     border-radius: 13px;
-  }
-  .product-page .hero-foot {
-    grid-template-columns: 1fr 1fr;
-  }
-  .product-page .hero-foot strong {
-    grid-column: 1/-1;
-    padding-bottom: 15px;
-  }
-  .product-page .hero-foot span {
-    border-left: 0;
-    border-top: 1px solid var(--b-line);
-    padding: 12px 5px;
   }
   .product-page .system-cols,
   .product-page .cap-grid {
     grid-template-columns: 1fr;
   }
-  .product-page .system-col + .system-col {
-    border-left: 0;
-    border-top: 1px solid var(--b-line);
+  .product-page .center-head {
+    margin-bottom: 44px;
   }
-  .product-page .workflow-shell {
-    grid-template-columns: 1fr;
+  .product-page .center-head h2 {
+    font-size: clamp(32px, 9vw, 44px);
+    line-height: 1.02;
   }
-  .product-page .workflow-tabs {
-    display: flex;
-    overflow-x: auto;
-    gap: 4px;
-  }
-  .product-page .workflow-tabs p {
-    display: none;
-  }
-  .product-page .workflow-tab {
-    flex: 0 0 auto;
-    width: auto;
-    border-left: 0;
-    border-bottom: 3px solid transparent;
-  }
-  .product-page .workflow-tab[aria-selected="true"] {
-    border-left-color: transparent;
-    border-bottom-color: var(--orange);
-  }
-  .product-page .workflow-panel {
-    padding: 24px;
+  /* Too narrow for one sentence per line, so let the heading wrap freely. */
+  .product-page .center-head h2 span {
+    display: inline;
   }
   .product-page .panel-metrics {
     grid-template-columns: 1fr;
@@ -1151,14 +1160,6 @@
   }
   .product-page .decision-context {
     grid-template-columns: 1fr;
-  }
-  .product-page .control-flow {
-    grid-template-columns: 1fr;
-  }
-  .product-page .control-step + .control-step,
-  .product-page .control-step:nth-child(3) {
-    border-left: 0;
-    border-top: 1px solid var(--b-line);
   }
   .product-page .signal-inner {
     flex-wrap: wrap;
@@ -1185,32 +1186,14 @@
    min-width block on purpose: at 1440px and below nothing here applies and
    the existing sizes are untouched. */
 @media (min-width: 1440px) {
-  .product-page .hero h1 {
-    font-size: clamp(82px, calc(57.4px + 1.71vw), 90.2px);
-  }
   .product-page .console-body h2 {
-    font-size: clamp(41px, calc(28.7px + 0.85vw), 45.1px);
+    font-size: clamp(34px, 2.3vw, 38px);
   }
   .product-page .section-head h2 {
     font-size: clamp(64px, calc(44.8px + 1.33vw), 70.4px);
   }
-  .product-page .premise-close strong {
-    font-size: clamp(35px, calc(24.5px + 0.73vw), 38.5px);
-  }
-  .product-page .workflow-panel h3 {
-    font-size: clamp(49px, calc(34.3px + 1.02vw), 53.9px);
-  }
   .product-page .action-main h3 {
     font-size: clamp(49px, calc(34.3px + 1.02vw), 53.9px);
-  }
-  .product-page .integration h2 {
-    font-size: clamp(60px, calc(42px + 1.25vw), 66px);
-  }
-  .product-page .implementation h3 {
-    font-size: clamp(47px, calc(32.9px + 0.98vw), 51.7px);
-  }
-  .product-page .closing h2 {
-    font-size: clamp(70px, calc(49px + 1.46vw), 77px);
   }
 }
 
@@ -1229,7 +1212,8 @@
    visitor taps elsewhere, so the card lift sticks. Card hover is a
    pointer-only affordance; buttons keep their feedback either way. */
 @media (hover: none) {
-  .product-page .cap-card:hover {
+  .product-page .cap-card:hover,
+  .product-page .system-col:hover {
     transform: none;
   }
 }

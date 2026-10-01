@@ -29,7 +29,7 @@ export default function Home() {
               <span className="accent">cash flow and margins.</span>
             </h1>
             <p className="hero-copy">
-              DropSkip connects for demand, sales, inventory and fulfillment to
+              DropSkip® connects for demand, sales, inventory and fulfillment to
               help you decide what to buy, how much, when, and where. See what
               needs attention, understand the reasoning, and act with
               confidence.
@@ -42,7 +42,7 @@ export default function Home() {
                 Book a Demo <span className="arrow">↗</span>
               </BookDemoButton>
               <Link className="btn btn-ghost" href="#how-it-works">
-                See How It Works <span className="arrow">↓</span>
+                See a sample decision <span className="arrow">↓</span>
               </Link>
             </div>
             <p className="built-for">
@@ -51,15 +51,25 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="hero-visual">
-            <Image
-              src={asset("/hero.png")}
-              alt="DropSkip action feed showing a reorder recommendation for FaceOil and a delayed shipment alert"
-              width={1000}
-              height={794}
-              sizes="(max-width: 980px) min(100vw, 620px), 46vw"
-              priority
-            />
+          {/* A compact product window: navy title bar, then the action feed. */}
+          <div
+            className="hero-visual"
+            aria-label="How DropSkip turns signals into action"
+          >
+            <div className="hero-card-head">
+              <span className="hero-card-title">From signal to action</span>
+              <span className="hero-card-status">Operator controlled</span>
+            </div>
+            <div className="hero-card-body">
+              <Image
+                src={asset("/hero.png")}
+                alt="DropSkip action feed showing a reorder recommendation for FaceOil and a delayed shipment alert"
+                width={892}
+                height={686}
+                sizes="(max-width: 980px) min(100vw, 600px), 44vw"
+                priority
+              />
+            </div>
           </div>
 
           {/* <div
@@ -129,36 +139,36 @@ export default function Home() {
       {/* The questions an operator is actually trying to answer. */}
       <section className="section questions" id="product">
         <div className="wrap">
-          <div className="question-row">
-            <div className="question-tag">One connected operating view</div>
-            <div>
-              <h2 className="section-title">
-                Understand your position. Decide what comes next.
-              </h2>
-              <p className="section-intro">
-                Connect everyday inventory decisions with the bigger questions
-                of demand, capital, and growth.
-              </p>
-            </div>
+          <div className="questions-head">
+            <p className="eyebrow">One connected operating view</p>
+            <h2 className="section-title">
+              <span>Understand your position.</span>{" "}
+              <span>Decide what comes next.</span>
+            </h2>
+            <p className="section-intro">
+              Connect everyday inventory decisions with the bigger questions of
+              demand, capital, and growth.
+            </p>
           </div>
 
           <div className="pillar-grid">
             <article className="pillar">
+              <span className="pillar-icon-wrap">
+                <svg
+                  className="pillar-icon"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12Z" />
+                  <circle cx="12" cy="12" r="3" />
+                </svg>
+              </span>
               <span className="pillar-num">01</span>
-              <svg className="pillar-icon" viewBox="0 0 48 48" fill="none">
-                <circle
-                  cx="24"
-                  cy="24"
-                  r="17"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                />
-                <path
-                  d="M12 25h24M24 12c5 5 7 11 7 18M24 12c-5 5-7 11-7 18"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                />
-              </svg>
               <h3>Visibility</h3>
               <p>
                 See sales, returns, seasonality, inventory position and health,
@@ -168,16 +178,22 @@ export default function Home() {
             </article>
 
             <article className="pillar">
-              <span className="pillar-num">02</span>
-              <svg className="pillar-icon" viewBox="0 0 48 48" fill="none">
-                <path
-                  d="M10 33 19 22l8 6 11-15"
+              <span className="pillar-icon-wrap">
+                <svg
+                  className="pillar-icon"
+                  viewBox="0 0 24 24"
+                  fill="none"
                   stroke="currentColor"
-                  strokeWidth="2.5"
-                />
-                <circle cx="19" cy="22" r="3" fill="currentColor" />
-                <circle cx="38" cy="13" r="3" fill="currentColor" />
-              </svg>
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M9 18h6M10 21h4" />
+                  <path d="M12 3a6 6 0 0 0-3.6 10.8c.6.5 1 1.2 1 2V16h5.2v-.2c0-.8.4-1.5 1-2A6 6 0 0 0 12 3Z" />
+                </svg>
+              </span>
+              <span className="pillar-num">02</span>
               <h3>Insights</h3>
               <p>
                 Learn what changed in the supply chain and why, what needs
@@ -210,36 +226,54 @@ export default function Home() {
             </article> */}
 
             <article className="pillar">
-              <span className="pillar-num">03</span>
-              <svg className="pillar-icon" viewBox="0 0 48 48" fill="none">
-                <path
-                  d="M9 35V20m10 15V13m10 22V24m10 11V8"
+              <span className="pillar-icon-wrap">
+                <svg
+                  className="pillar-icon"
+                  viewBox="0 0 24 24"
+                  fill="none"
                   stroke="currentColor"
-                  strokeWidth="3"
-                />
-              </svg>
-              <h3>Demand Planning &amp; Forecasting</h3>
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  aria-hidden="true"
+                >
+                  <rect x="3" y="4.5" width="18" height="16" rx="2.5" />
+                  <path d="M3 9.5h18M8 2.5v4M16 2.5v4" />
+                  <path d="m8.5 15 2.2 2.2 4.8-4.7" />
+                </svg>
+              </span>
+              <span className="pillar-num">03</span>
+              <h3>Planning</h3>
               <p>
-                Evaluate purchase options by product, channel, and location
-                against demand signals and supplier constraints, then commit
-                capital before shortages or excess inventory build up.
+                Evaluate purchase plan by product, channel, and location against
+                demand signals and supplier constraints, before committing
+                capital.
               </p>
             </article>
 
             <article className="pillar">
-              <span className="pillar-num">04</span>
-              <svg className="pillar-icon" viewBox="0 0 48 48" fill="none">
-                <path
-                  d="M8 15 24 7l16 8-16 8-16-8Zm0 9 16 8 16-8M8 33l16 8 16-8"
+              <span className="pillar-icon-wrap">
+                <svg
+                  className="pillar-icon"
+                  viewBox="0 0 24 24"
+                  fill="none"
                   stroke="currentColor"
-                  strokeWidth="2"
-                />
-              </svg>
-              <h3>Inventory Positioning</h3>
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  aria-hidden="true"
+                >
+                  <circle cx="12" cy="12" r="8.5" />
+                  <circle cx="12" cy="12" r="4.5" />
+                  <circle cx="12" cy="12" r="1" fill="currentColor" />
+                  <path d="M12 1.5v3M12 19.5v3M1.5 12h3M19.5 12h3" />
+                </svg>
+              </span>
+              <span className="pillar-num">04</span>
+              <h3>Positioning</h3>
               <p>
-                Align stock with expected demand and lock in purchase orders
-                using allocation and rebalancing recommendations your team can
-                act on right away
+                Align stock with expected demand and lock-in purchase orders
+                using recommendations that your team can act on right away
               </p>
             </article>
           </div>
@@ -250,7 +284,7 @@ export default function Home() {
       <section className="section problem">
         <div className="wrap problem-grid">
           <div className="problem-copy">
-            <p className="eyebrow dark">The inventory problem</p>
+            <p className="eyebrow">The inventory problem</p>
             <h2 className="section-title">
               More stock does not always mean better availability.
             </h2>
@@ -271,15 +305,17 @@ export default function Home() {
 
           <div className="problem-visual">
             <Image
-              src={asset("/inventory-health.png")}
+              src={asset("/inventory-health-overview.png")}
               alt="DropSkip inventory health view showing SKUs by risk level and the products with the highest revenue at risk"
-              width={1200}
-              height={778}
-              sizes="(max-width: 980px) min(100vw, 720px), 46vw"
+              width={2400}
+              height={1557}
+              // Served as the original PNG: the optimiser's lossy re-encode
+              // blurs the small table text in this screenshot.
+              unoptimized
             />
           </div>
 
-          {/* Hidden for now; the section shows inventory-health.png instead.
+          {/* Hidden for now; the section shows inventory-health-overview.png instead.
           <div className="stock-visual">
             <div className="stock-head">
               <strong>Network stock position</strong>
@@ -346,48 +382,70 @@ export default function Home() {
       {/* What each of those decisions is worth in cash and margin. */}
       <section className="section financial">
         <div className="wrap">
-          <p className="eyebrow dark">Capital-aware planning</p>
-          <h2 className="section-title">
-            Every inventory decision has a financial consequence.
-          </h2>
+          <div className="questions-head">
+            <p className="eyebrow">Capital-aware planning</p>
+            <h2 className="section-title">
+              <span>Every inventory decision</span>{" "}
+              <span>has a financial consequence.</span>
+            </h2>
+          </div>
 
           <div className="impact-grid">
             <article className="impact-card">
               <div className="impact-art">
-                <svg viewBox="0 0 320 135" fill="none" aria-hidden="true">
+                {/* Excess stock converting back into cash. */}
+                <svg viewBox="16 0 320 135" fill="none" aria-hidden="true">
                   <rect
-                    x="23"
-                    y="89"
-                    width="45"
-                    height="24"
-                    rx="5"
-                    fill="var(--chart-1)"
-                  />
-                  <rect
-                    x="77"
-                    y="70"
-                    width="45"
-                    height="43"
-                    rx="5"
+                    x="62"
+                    y="76"
+                    width="46"
+                    height="42"
+                    rx="6"
                     fill="var(--chart-2)"
                   />
                   <rect
-                    x="131"
-                    y="47"
-                    width="45"
-                    height="66"
-                    rx="5"
+                    x="112"
+                    y="76"
+                    width="46"
+                    height="42"
+                    rx="6"
                     fill="var(--chart-3)"
                   />
-                  <path
-                    d="M194 94c37-42 58-54 100-66"
-                    stroke="#071c2d"
-                    strokeWidth="3"
+                  <rect
+                    x="87"
+                    y="30"
+                    width="46"
+                    height="42"
+                    rx="6"
+                    fill="var(--chart-1)"
                   />
                   <path
-                    d="m283 25 12 2-4 12"
-                    stroke="#071c2d"
+                    d="M77 76v10M127 76v10M102 30v10"
+                    stroke="#fff"
                     strokeWidth="3"
+                    strokeLinecap="round"
+                  />
+                  <path
+                    d="M176 74h40m-12-12 12 12-12 12"
+                    stroke="var(--t-heading)"
+                    strokeWidth="3"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                  <circle cx="258" cy="74" r="32" fill="#ff6b2c" />
+                  <circle
+                    cx="258"
+                    cy="74"
+                    r="24"
+                    stroke="#fff"
+                    strokeOpacity="0.45"
+                    strokeWidth="2"
+                  />
+                  <path
+                    d="M266 62c-2-3-5-4-8-4-5 0-9 3-9 7 0 9 18 5 18 14 0 4-4 7-9 7-4 0-7-1-9-4M258 53v6m0 30v6"
+                    stroke="#fff"
+                    strokeWidth="3.5"
+                    strokeLinecap="round"
                   />
                 </svg>
               </div>
@@ -400,15 +458,60 @@ export default function Home() {
 
             <article className="impact-card">
               <div className="impact-art">
+                {/* Demand by location, with the strongest one protected. */}
                 <svg viewBox="0 0 320 135" fill="none" aria-hidden="true">
-                  <path
-                    d="M24 91c41-4 49-54 87-44 33 9 28 45 67 41 43-4 48-62 118-69"
-                    stroke="#2459e0"
-                    strokeWidth="4"
+                  <path d="M60 118h200" stroke="#c2cdd4" strokeWidth="2" />
+                  <rect
+                    x="72"
+                    y="90"
+                    width="28"
+                    height="28"
+                    rx="5"
+                    fill="#c2cdd4"
                   />
-                  <path d="M24 112h272" stroke="#c2cdd4" />
-                  <circle cx="111" cy="47" r="7" fill="#ff6b2c" />
-                  <circle cx="178" cy="88" r="7" fill="#ff6b2c" />
+                  <rect
+                    x="110"
+                    y="72"
+                    width="28"
+                    height="46"
+                    rx="5"
+                    fill="#c2cdd4"
+                  />
+                  <rect
+                    x="148"
+                    y="56"
+                    width="28"
+                    height="62"
+                    rx="5"
+                    fill="#2459e0"
+                  />
+                  <rect
+                    x="186"
+                    y="76"
+                    width="28"
+                    height="42"
+                    rx="5"
+                    fill="#c2cdd4"
+                  />
+                  <rect
+                    x="224"
+                    y="94"
+                    width="28"
+                    height="24"
+                    rx="5"
+                    fill="#c2cdd4"
+                  />
+                  <path
+                    d="M162 6l20 8v13c0 12-9 20-20 23-11-3-20-11-20-23V14l20-8Z"
+                    fill="#ff6b2c"
+                  />
+                  <path
+                    d="m153 27 6 6 12-12"
+                    stroke="#fff"
+                    strokeWidth="3.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
                 </svg>
               </div>
               <h3>Protect sales where demand is strongest.</h3>
@@ -457,7 +560,7 @@ export default function Home() {
       <section className="section reasoning">
         <div className="wrap reason-grid">
           <div className="reason-copy">
-            <p className="eyebrow dark">Operator control</p>
+            <p className="eyebrow">Operator control</p>
             <h2 className="section-title">
               Clear reasoning. Your team stays in control.
             </h2>
@@ -474,10 +577,8 @@ export default function Home() {
 
           <div
             className="reason-stack"
-            aria-label="Layered example recommendation cards"
+            aria-label="Example recommendation card"
           >
-            <div className="reason-card back" />
-            <div className="reason-card mid" />
             <div className="reason-card front">
               <div className="rec-top">
                 <span>Recommended inventory action</span>
@@ -523,14 +624,12 @@ export default function Home() {
       {/* How to adopt it without replacing the stack. #shopify is linked from the nav. */}
       <section className="section adoption" id="shopify">
         <div className="wrap">
-          <div className="adoption-head">
-            <div>
-              <p className="eyebrow">Practical adoption</p>
-              <h2 className="section-title">
-                Build on top of the systems you already use
-              </h2>
-            </div>
-            <p>
+          <div className="questions-head">
+            <p className="eyebrow">Practical adoption</p>
+            <h2 className="section-title">
+              Build on top of the systems you already use
+            </h2>
+            <p className="section-intro">
               A focused route from connected data to useful supply chain
               decisions, without replacing the operational stack your team
               relies on.

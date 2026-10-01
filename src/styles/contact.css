@@ -645,3 +645,29 @@
     font-size: clamp(54px, calc(37.8px + 1.12vw), 59.4px);
   }
 }
+
+/* ------------------------------------------------------ hero type --
+   Headline and subheading match the home page hero, so every page opens
+   with the same type. This sits last so it overrides the hero sizes above,
+   including the tablet, phone and 1440px+ ones. */
+.contact-page .intro-head h1 {
+  font-size: clamp(52px, 4.5vw, 76px);
+  line-height: 0.98;
+  letter-spacing: -0.065em;
+  font-weight: 620;
+}
+.contact-page .intro-head p {
+  font-size: 1.13rem;
+  line-height: 1.6;
+}
+@media (max-width: 980px) {
+  .contact-page .intro-head h1 {
+    font-size: clamp(46px, 6.6vw, 60px);
+  }
+}
+@media (max-width: 720px) {
+  .contact-page .intro-head h1 {
+    font-size: clamp(38px, 10.5vw, 48px);
+    line-height: 1;
+  }
+}

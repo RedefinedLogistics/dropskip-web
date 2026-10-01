@@ -1,4 +1,3 @@
-import WorkflowExplorer from "@/components/product/WorkflowExplorer";
 import DecisionBoard from "@/components/product/DecisionBoard";
 import BookDemoButton from "@/components/BookDemoButton";
 import "@/styles/product.css";
@@ -23,7 +22,7 @@ export const metadata = {
 export default function ProductPage() {
   return (
     <div className="product-page">
-      <a className="skip" href="#workflow">
+      <a className="skip" href="#premise">
         Skip to content
       </a>
 
@@ -36,7 +35,7 @@ export default function ProductPage() {
                 AI-enabled demand planning and supply-chain decision platform
               </p>
               <h1 id="hero-title">
-                Turn supply-chain signals into decisions your team can act on.
+                Turn demand signals into supply‑chain decisions your team can act on.
               </h1>
               <p className="hero-lede">
                 DropSkip connects demand, inventory, incoming supply, purchasing, and fulfilment
@@ -49,7 +48,7 @@ export default function ProductPage() {
                     ↗
                   </span>
                 </BookDemoButton>
-                <a className="text-link" href="#action">
+                <a className="button outline" href="#action">
                   See a sample decision{" "}
                   <span className="arr" aria-hidden="true">
                     ↓
@@ -65,10 +64,6 @@ export default function ProductPage() {
               <div className="console-body">
                 <span className="decision-label">What DropSkip connects</span>
                 <h2>One path from operating signal to approved action.</h2>
-                <p>
-                  Planning context and execution data stay connected while the operator remains in
-                  control.
-                </p>
                 <div className="hero-path">
                   <div className="hero-path-step">
                     <span>01</span>
@@ -99,72 +94,86 @@ export default function ProductPage() {
               </div>
             </div>
           </div>
-          <div className="hero-foot">
-            <strong>Connected planning from demand to delivery.</strong>
-            <span>Demand</span>
-            <span>Inventory</span>
-            <span>Purchasing</span>
-            <span>Fulfilment</span>
-          </div>
         </div>
       </section>
 
       {/* The gap: planning tools stop where the operating decision starts. */}
-      <section className="section premise" aria-labelledby="premise-title">
+      <section className="section premise" id="premise" aria-labelledby="premise-title">
         <div className="wrap">
-          <div className="section-head">
-            <div>
-              <p className="eyebrow">The missing layer</p>
-              <h2 id="premise-title">
-                Your systems record activity. DropSkip helps your team decide what to do next.
-              </h2>
-            </div>
-            <p>
-              Most operating systems explain one part of the supply chain. The decision still has to
-              be assembled across reports, spreadsheets, and teams.
-            </p>
+          {/* Centred like the home page's "One connected operating view". */}
+          <div className="center-head">
+            <p className="eyebrow">The missing layer</p>
+            <h2 id="premise-title">
+              <span>Your systems record activity.</span>{" "}
+              <span>DropSkip helps your team decide what to do next.</span>
+            </h2>
           </div>
           <div className="system-cols">
             <article className="system-col">
-              <span>Demand</span>
+              <span className="system-icon" aria-hidden="true">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M3 17l5-5 4 4 8-8" />
+                  <path d="M15 8h5v5" />
+                </svg>
+              </span>
+              <span className="system-num">01</span>
+              <span className="system-kicker">Demand</span>
               <h3>Commerce and planning tools</h3>
               <p>Show what customers are buying and what the business expects to sell.</p>
             </article>
             <article className="system-col">
-              <span>Inventory</span>
+              <span className="system-icon" aria-hidden="true">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M21 8 12 3 3 8v8l9 5 9-5V8Z" />
+                  <path d="m3 8 9 5 9-5M12 13v8" />
+                </svg>
+              </span>
+              <span className="system-num">02</span>
+              <span className="system-kicker">Inventory</span>
               <h3>Inventory systems</h3>
               <p>Show what is available, committed, incoming, and where it sits.</p>
             </article>
             <article className="system-col">
-              <span>Execution</span>
+              <span className="system-icon" aria-hidden="true">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M2 6h11v10H2zM13 10h4l4 3v3h-8" />
+                  <circle cx="6" cy="17.5" r="1.8" />
+                  <circle cx="17" cy="17.5" r="1.8" />
+                </svg>
+              </span>
+              <span className="system-num">03</span>
+              <span className="system-kicker">Execution</span>
               <h3>ERP, WMS, and 3PL systems</h3>
               <p>Record movement, purchasing, fulfilment, and operational execution.</p>
             </article>
           </div>
           <div className="premise-close">
             <strong>
-              DropSkip turns fragmented inputs into a shared operating picture, and highlights where
-              a decision is required.
+              DropSkip turns fragmented inputs into complete operating picture, and drives where a
+              decision is required.
             </strong>
-            <span>Connected data · Clear priorities · Controlled action</span>
           </div>
-        </div>
-      </section>
-
-      {/* The signal-to-action path, walked one step at a time. Client component. */}
-      <section className="section workflow dark" id="workflow" aria-labelledby="workflow-title">
-        <div className="wrap">
-          <div className="section-head">
-            <div>
-              <p className="eyebrow">Connected workflow</p>
-              <h2 id="workflow-title">Move from plan to prioritized action in one workflow.</h2>
-            </div>
-            <p>
-              Explore how demand, inventory, and purchasing context carries through to an
-              operator-approved decision.
-            </p>
-          </div>
-          <WorkflowExplorer />
         </div>
       </section>
 
@@ -175,13 +184,12 @@ export default function ProductPage() {
         aria-labelledby="capabilities-title"
       >
         <div className="wrap">
-          <div className="section-head">
-            <div>
-              <p className="eyebrow">Capabilities</p>
-              <h2 id="capabilities-title">
-                Plan across the supply chain without losing sight of the decision.
-              </h2>
-            </div>
+          <div className="center-head">
+            <p className="eyebrow">Capabilities</p>
+            <h2 id="capabilities-title">
+              <span>Plan across the supply chain</span>{" "}
+              <span>without losing sight of the decision.</span>
+            </h2>
             <p>
               Each capability uses the same connected operating context, so changes in one plan
               carry into the decisions that follow.
@@ -189,58 +197,133 @@ export default function ProductPage() {
           </div>
           <div className="cap-grid">
             <article className="cap-card">
+              <span className="system-icon" aria-hidden="true">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12Z" />
+                  <circle cx="12" cy="12" r="3" />
+                </svg>
+              </span>
               <span className="cap-no">01</span>
-              <h3>Demand planning and forecasting</h3>
+              <h3>360° Visibility</h3>
               <p>
-                Compare plans with current signals and see what changed demand means for inventory
-                and cash.
+                See sales, demand signals, seasonality, inventory health, and incoming stock in one
+                connected view.
               </p>
-              <strong>Demand becomes a decision input, not an isolated number.</strong>
             </article>
             <article className="cap-card">
+              <span className="system-icon" aria-hidden="true">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M9 18h6M10 21h4" />
+                  <path d="M12 3a6 6 0 0 0-3.6 10.8c.6.5 1 1.2 1 2V16h5.2v-.2c0-.8.4-1.5 1-2A6 6 0 0 0 12 3Z" />
+                </svg>
+              </span>
               <span className="cap-no">02</span>
-              <h3>Inventory planning</h3>
+              <h3>Insights &amp; Reasoning</h3>
               <p>
-                Connect expected demand with available and incoming stock to surface coverage,
-                excess, and audit requirements.
+                Understand exceptions, root causes, wins, misses, risks, and opportunities behind
+                your inventory position.
               </p>
-              <strong>See the inventory position the next decision depends on.</strong>
             </article>
             <article className="cap-card">
+              <span className="system-icon" aria-hidden="true">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M3 3v18h18" />
+                  <path d="m7 15 4-4 3 3 5-6" />
+                </svg>
+              </span>
               <span className="cap-no">03</span>
-              <h3>Multi-warehouse planning</h3>
+              <h3>Demand Planning</h3>
               <p>
-                Compare products and requirements across warehouses, 3PLs, channels, and fulfilment
-                locations.
+                Align product and inventory plans with expected market demand and your business
+                goals.
               </p>
-              <strong>Use the network before buying more.</strong>
             </article>
             <article className="cap-card">
+              <span className="system-icon" aria-hidden="true">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M3 17c3-1 4-8 7-8s3 5 5 5 3-3 6-6" />
+                  <path d="M3 21h18" strokeDasharray="2 3" />
+                </svg>
+              </span>
               <span className="cap-no">04</span>
-              <h3>Open-to-Buy</h3>
+              <h3>Forecasting</h3>
               <p>
-                Bring inventory needs, commitments, and purchasing capacity into one view to protect
-                working capital.
+                Simulate future inventory positions by product, channel, and location as demand and
+                supply conditions change.
               </p>
-              <strong>See what the business needs and can responsibly commit.</strong>
             </article>
             <article className="cap-card">
+              <span className="system-icon" aria-hidden="true">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <circle cx="9" cy="20" r="1.5" />
+                  <circle cx="18" cy="20" r="1.5" />
+                  <path d="M2 3h3l2.6 12.4a1.5 1.5 0 0 0 1.5 1.1h8.8a1.5 1.5 0 0 0 1.5-1.1L21 7H6" />
+                </svg>
+              </span>
               <span className="cap-no">05</span>
-              <h3>Replenishment and purchasing</h3>
+              <h3>Purchase Decisions</h3>
               <p>
-                Review what to buy, how much, when, and where, with evidence behind the
-                recommendation.
+                Decide what to buy, how much, when, and where while protecting growth, cash, and
+                margin.
               </p>
-              <strong>Move approved decisions into the next workflow.</strong>
             </article>
             <article className="cap-card action-cap">
+              <span className="system-icon" aria-hidden="true">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <rect x="3" y="3" width="7" height="9" rx="1.5" />
+                  <rect x="14" y="3" width="7" height="5" rx="1.5" />
+                  <rect x="14" y="12" width="7" height="9" rx="1.5" />
+                  <rect x="3" y="16" width="7" height="5" rx="1.5" />
+                </svg>
+              </span>
               <span className="cap-no">06</span>
               <h3>Command Center</h3>
               <p>
-                Prioritize immediate risks, upcoming requirements, and opportunities to release cash
-                or protect margin.
+                See what needs attention now, what’s changing, and what requires action before it
+                impacts the business.
               </p>
-              <strong>Start with the decisions that matter now.</strong>
             </article>
           </div>
         </div>
@@ -249,57 +332,18 @@ export default function ProductPage() {
       {/* A real decision being made, board and all. Client component. */}
       <section className="section product-action" id="action" aria-labelledby="action-title">
         <div className="wrap">
-          <div className="section-head">
-            <div>
-              <p className="eyebrow">Product in action</p>
-              <h2 id="action-title">
-                See what changed, why it matters, and the recommended next move.
-              </h2>
-            </div>
+          <div className="center-head">
+            <p className="eyebrow">Product in action</p>
+            <h2 id="action-title">
+              <span>See what changed, why it matters,</span>{" "}
+              <span>and the recommended next move.</span>
+            </h2>
             <p>
               The evidence, recommendation, and operator controls stay together in one focused
               decision view.
             </p>
           </div>
           <DecisionBoard />
-        </div>
-      </section>
-
-      {/* Who decides: the recommendation is a proposal, the operator approves it. */}
-      <section className="section control" aria-labelledby="control-title">
-        <div className="wrap">
-          <div className="section-head">
-            <div>
-              <p className="eyebrow">Operator control</p>
-              <h2 id="control-title">Keep the reasoning visible from signal to decision.</h2>
-            </div>
-            <p>
-              AI helps interpret operating signals and surface recommendations. Your operators keep
-              control of the final action.
-            </p>
-          </div>
-          <div className="control-flow">
-            <article className="control-step">
-              <span>01</span>
-              <h3>What changed</h3>
-              <p>See the operating signal that created the recommendation.</p>
-            </article>
-            <article className="control-step">
-              <span>02</span>
-              <h3>Why it matters</h3>
-              <p>Understand the operational and economic consequence.</p>
-            </article>
-            <article className="control-step">
-              <span>03</span>
-              <h3>Recommended next move</h3>
-              <p>Review the proposed action and supporting evidence.</p>
-            </article>
-            <article className="control-step">
-              <span>04</span>
-              <h3>What the operator decided</h3>
-              <p>Record approved, adjusted, or dismissed recommendations.</p>
-            </article>
-          </div>
         </div>
       </section>
 
@@ -310,15 +354,13 @@ export default function ProductPage() {
             <div>
               <p className="eyebrow">Works with your existing systems</p>
               <h2 id="integration-title">
-                Add a decision layer across the systems already running your supply chain.
+                <span>No rip and replace.</span>{" "}
+                <span>Connect around one focused decision problem.</span>
               </h2>
               <p className="copy">
-                Your existing systems continue to record transactions and run execution. DropSkip
-                connects their signals, turns them into prioritized recommendations, and moves
-                approved decisions into the next workflow.
-              </p>
-              <p className="no-rip">
-                No rip and replace. Connect around one focused decision problem.
+                Your current systems keep recording transactions and running operations. DropSkip
+                connects their data into real-time, end-to-end visibility, then turns the insights
+                into prioritized recommendations for what to do next.
               </p>
             </div>
             <div className="systems-list" aria-label="Example connected systems">
@@ -384,11 +426,12 @@ export default function ProductPage() {
       {/* The objections that come up in every demo call, answered up front. */}
       <section className="section faq" id="faq" aria-labelledby="faq-title">
         <div className="wrap">
-          <div className="section-head">
-            <div>
-              <p className="eyebrow">Frequently asked questions</p>
-              <h2 id="faq-title">Questions operations and planning teams ask about DropSkip.</h2>
-            </div>
+          <div className="center-head">
+            <p className="eyebrow">Frequently asked questions</p>
+            <h2 id="faq-title">
+              <span>Questions operations and planning teams</span>{" "}
+              <span>ask about DropSkip.</span>
+            </h2>
             <p>
               Clear answers about how DropSkip fits, how AI supports the workflow, and what
               implementation involves.
@@ -398,49 +441,61 @@ export default function ProductPage() {
             <details>
               <summary>How does DropSkip work with our existing systems?</summary>
               <p>
+                Your existing systems keep recording transactions and running operations. DropSkip
+                pulls data from all of them and connects the signals into one real-time view and
+                insights for your supply chain. It then turns insights into prioritized
+                recommendations, so you know which action to take next.
+              </p>
+            </details>
+            <details>
+              <summary>Which systems and data sources does DropSkip integrate with?</summary>
+              <p>
                 DropSkip connects operating signals from Shopify, NetSuite, other ERP environments,
-                WMS or 3PL systems, spreadsheets, and API-based sources. The connection approach is
-                agreed during implementation based on your stack and data structure.
+                WMS or 3PL systems, spreadsheets, Open API and EDI-based sources. The connection
+                approach is agreed during implementation based on your technology stack and data
+                structure.
               </p>
             </details>
             <details>
               <summary>What makes DropSkip different from planning software?</summary>
               <p>
-                Planning tools typically produce plans, forecasts, or reports. DropSkip connects
-                those outputs with current operating signals, prioritizes the decisions that matter,
-                and explains the recommended next move.
+                Typical planning tools rely on historical data and averages to produce static plans,
+                forecasts, and reports. DropSkip goes further. It combines historical seasonality
+                and sales health with market insights, demand catalysts, and supplier constraints,
+                then forecasts demand and stock positions and recommends the critical next moves.
               </p>
             </details>
             <details>
               <summary>Who makes the final decision?</summary>
               <p>
-                The operator does. Teams can review the evidence and reasoning, adjust relevant
-                assumptions or the proposed action, approve it, or dismiss it with a recorded
-                reason.
+                Your operations team does. Every DropSkip recommendation comes with its evidence and
+                reasoning. Your team can adjust assumptions, simulate and compare the potential
+                operational and financial outcomes, and act on the option that delivers the best
+                result.
               </p>
             </details>
             <details>
               <summary>How does AI support the decision process?</summary>
               <p>
-                AI helps connect and interpret operating signals, identify material changes, and
-                surface recommendations. The relevant evidence and reasoning remain visible, and
-                operators stay in control of the final decision.
-              </p>
-            </details>
-            <details>
-              <summary>Can DropSkip support multiple warehouses and sales channels?</summary>
-              <p>
-                Yes. DropSkip can compare demand and inventory requirements across fulfilment
-                locations and bring together signals from multiple systems or channels. The final
-                setup depends on your network and data sources.
+                AI connects and interprets your operating signals, flags material changes, and
+                explains the root causes. It then shows how those changes affect your supply chain,
+                financial health, customer experience, and growth, now and in the future, and
+                surfaces recommendations. The evidence and reasoning stay visible, and your
+                operations team keeps the final decision.
               </p>
             </details>
             <details>
               <summary>What does implementation involve?</summary>
               <p>
-                Implementation starts with a focused decision question and agreed value measures. It
-                can include data mapping, connections or imports, configuration of assumptions,
-                operator validation, and rollout into the working process.
+                Implementation starts with the specific decisions you want to improve and the
+                success metrics you&apos;ll measure them by. From there, we connect your data
+                sources, map your data, configure assumptions, train our models and agents, and
+                validate results with your operations team before rolling DropSkip out into your
+                daily workflow.
+              </p>
+              <p>
+                There&apos;s no rip-and-replace and no/low IT effort on your side. Expect first
+                insights within the first week and measurable results within 30-60 days.
               </p>
             </details>
           </div>
@@ -449,25 +504,29 @@ export default function ProductPage() {
 
       {/* The closing ask. #demo is linked from the nav and from other pages. */}
       <section className="closing dark" id="demo" aria-labelledby="demo-title">
-        <div className="wrap closing-grid">
-          <div>
+        <div className="wrap">
+          {/* Centred like the Capabilities heading, with the actions under it. */}
+          <div className="center-head">
             <p className="eyebrow">Bring one decision to the demo</p>
             <h2 id="demo-title">
-              See how DropSkip works through a challenge your team faces today.
+              <span>See how DropSkip works through</span>{" "}
+              <span>a challenge your team faces today.</span>
             </h2>
-          </div>
-          <div>
-            <p className="copy">
+            <p>
               We’ll map the relevant inputs, show how the recommendation is assembled, and identify
               where DropSkip can create measurable operating value.
             </p>
+          </div>
+          <div className="closing-actions">
             <BookDemoButton className="button primary">
               Book a demo{" "}
               <span className="arr" aria-hidden="true">
                 ↗
               </span>
             </BookDemoButton>
-            <p className="closing-note">Contact contact@dropskip.ai</p>
+            <p className="closing-note">
+              Or email <a href="mailto:contact@dropskip.ai">contact@dropskip.ai</a>
+            </p>
           </div>
         </div>
       </section>

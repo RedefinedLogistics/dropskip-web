@@ -21,6 +21,7 @@ const team = [
     photo: "/team/rajeeb-mohapatra.jpg",
     width: 400,
     height: 400,
+    linkedin: "https://www.linkedin.com/in/rajeebmohapatra/",
     bio: "Rajeeb has spent 20+ years leading retail, ecommerce, logistics, and global supply chains. He previously held leadership roles at Quince, Pitney Bowes, and Office Depot, with additional experience at PayPal and Dell.",
   },
   {
@@ -29,7 +30,8 @@ const team = [
     photo: "/team/kevin-nohl.jpg",
     width: 800,
     height: 800,
-    bio: "Kevin brings 20+ years in global supply-chain operations, including leadership roles at Aterian, Rent the Runway, Bed Bath & Beyond, and Amazon.",
+    linkedin: "https://www.linkedin.com/in/kevin-nohl-92518144/",
+    bio: "Kevin brings 20+ years running complex global supply chain operations — lead integration partnership at Pipe17, SVP of Global Supply Chain at Aterian, and leadership roles across Rent the Runway, Bed Bath & Beyond and Amazon.",
   },
   {
     name: "Surajbhan Satpathy",
@@ -37,6 +39,7 @@ const team = [
     photo: "/team/surajbhan-satpathy.jpg",
     width: 800,
     height: 800,
+    linkedin: "https://www.linkedin.com/in/surajbhansatpathy/",
     bio: "Surajbhan is an AI/ML leader and published researcher with 15+ years building fintech, edtech, and supply-chain platforms. A former Morgan Stanley technology leader, he founded Kaman.AI and leads DropSkip's engineering and agentic AI infrastructure.",
   },
 ];
@@ -86,9 +89,10 @@ export default function AboutPage() {
           <span className="eyebrow">About DropSkip</span>
           <h1>Built by operators who&apos;ve lived your chaos.</h1>
           <p className="hero-lede">
-            DropSkip grew out of decades spent inside retail, ecommerce, logistics, and supply-chain
-            operations. Across companies and categories, our founders kept seeing the same problem:
-            more systems and more data, but no clearer way to decide what to do next.
+            DropSkip grew out of decades spent in retail, ecommerce, supply-chain, and logistics
+            operations. Across companies and categories, our founders saw the same problem again and
+            again: more systems and more data, but no clearer way to decide what matters and what to
+            do next.
           </p>
           <div className="hero-actions">
             <a className="text-link" href="#team">
@@ -124,8 +128,8 @@ export default function AboutPage() {
               assembling the picture than acting on it.
             </p>
             <p>
-              That experience shaped DropSkip: connect the signals, make the reasoning clear, and
-              help operators move with confidence.
+              That experience shaped how we built DropSkip: connect the signals, show the reasoning,
+              and help operators act with confidence.
             </p>
           </div>
         </div>
@@ -153,7 +157,10 @@ export default function AboutPage() {
         <div className="wrap">
           <div className="section-heading center">
             <span className="eyebrow">The team</span>
-            <h2>Experience across operations, supply chain, and AI.</h2>
+            <h2 className="team-heading">
+              <span>Experience across retail ecommerce, product development,</span>{" "}
+              <span>supply chain and logistics operations, and AI.</span>
+            </h2>
           </div>
           <div className="team-grid">
             {team.map((person) => (
@@ -167,6 +174,20 @@ export default function AboutPage() {
                     sizes="80px"
                   />
                 </span>
+                <a
+                  className="team-linkedin"
+                  href={person.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`${person.name} on LinkedIn`}
+                >
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path
+                      fill="currentColor"
+                      d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0Z"
+                    />
+                  </svg>
+                </a>
                 <span className="name">{person.name}</span>
                 <span className="role">{person.role}</span>
                 <p>{person.bio}</p>
