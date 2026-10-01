@@ -29,7 +29,7 @@ export default function Home() {
               <span className="accent">cash flow and margins.</span>
             </h1>
             <p className="hero-copy">
-              DropSkip® connects demand, sales, inventory,purchase and
+              DropSkip® connects demand, sales, inventory, purchase and
               fulfillment to help you decide what to buy, how much, when, and
               where. See what needs attention, understand the reasoning, and act
               with confidence.

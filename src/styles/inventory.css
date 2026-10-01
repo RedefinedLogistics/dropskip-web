@@ -2899,3 +2899,28 @@
 .inventory-page .capability-brief strong {
   align-self: end;
 }
+
+/* Decision example figures (Available to sell / Current coverage / Supplier
+   lead time / Unexplained difference): each box spans a shared label row and
+   value row via subgrid, so when one label wraps to two lines the values
+   still sit on one line — at four, two or one column. */
+.inventory-page .decision-data {
+  grid-auto-rows: auto;
+}
+.inventory-page .decision-data > div {
+  display: grid;
+  grid-row: span 2;
+  grid-template-rows: subgrid;
+  row-gap: 0;
+}
+.inventory-page .decision-data > div strong {
+  align-self: start;
+}
+
+/* Tablet (two columns): the third capability brief would sit beside an empty
+   cell showing the grid's line colour, so it spans the full row instead. */
+@media (min-width: 768px) and (max-width: 991px) {
+  .inventory-page .capability-brief:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+  }
+}
