@@ -1,8 +1,15 @@
 import { Inter } from "next/font/google";
+import Script from "next/script";
 import { asset } from "@/lib/asset";
 import "./globals.css";
 import "../styles/site.css";
 import "../styles/theme.css";
+
+// Google Analytics 4. Loaded only in production builds so local development
+// visits are not counted. GA4's enhanced measurement records client-side
+// route changes, so every page view is tracked without extra code.
+const GA_ID = "G-8VCC40H2HS";
+const loadAnalytics = process.env.NODE_ENV === "production";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -80,7 +87,23 @@ export default function RootLayout({ children }) {
           }}
         />
       </head>
-      <body>{children}</body>
+      <body>
+        {children}
+        {loadAnalytics && (
+          <>
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
+              strategy="afterInteractive"
+            />
+            <Script id="google-analytics" strategy="afterInteractive">
+              {`window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', '${GA_ID}');`}
+            </Script>
+          </>
+        )}
+      </body>
     </html>
   );
 }

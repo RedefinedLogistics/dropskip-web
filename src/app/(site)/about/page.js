@@ -89,10 +89,11 @@ export default function AboutPage() {
           <span className="eyebrow">About DropSkip</span>
           <h1>Built by operators who&apos;ve lived your chaos.</h1>
           <p className="hero-lede">
-            DropSkip grew out of decades spent in retail, ecommerce, supply-chain, and logistics
-            operations. Across companies and categories, our founders saw the same problem again and
-            again: more systems and more data, but no clearer way to decide what matters and what to
-            do next.
+            DropSkip grew out of decades spent in retail, ecommerce, supply
+            chain, and logistics operations. Across companies and categories,
+            our founders saw the same problem again and again: more systems and
+            more data, but no clearer way to decide what matters and what to do
+            next.
           </p>
           <div className="hero-actions">
             <a className="text-link" href="#team">
@@ -123,13 +124,14 @@ export default function AboutPage() {
           </div>
           <div className="copy-block">
             <p>
-              Forecasts lived in spreadsheets. Purchase orders lived in ERPs. Inventory came from
-              warehouses and 3PLs. Supplier updates arrived through email. Teams spent more time
-              assembling the picture than acting on it.
+              Forecasts lived in spreadsheets. Purchase orders lived in ERPs.
+              Inventory came from warehouses and 3PLs. Supplier updates arrived
+              through email. Teams spent more time assembling the picture than
+              acting on it.
             </p>
             <p>
-              That experience shaped how we built DropSkip: connect the signals, show the reasoning,
-              and help operators act with confidence.
+              That experience shaped how we built DropSkip: connect the signals,
+              show the reasoning, and help operators act with confidence.
             </p>
           </div>
         </div>
@@ -153,13 +155,21 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="section" style={{ background: "var(--mint)" }} id="team">
+      <section
+        className="section"
+        style={{ background: "var(--mint)" }}
+        id="team"
+      >
         <div className="wrap">
           <div className="section-heading center">
             <span className="eyebrow">The team</span>
             <h2 className="team-heading">
-              <span>Experience across retail ecommerce, supply chain and logistics</span>{" "}
-              <span>operations, product development, data and AI infrastructures.</span>
+              <span>
+                Experience across retail ecommerce, supply chain and logistics
+              </span>{" "}
+              <span>
+                operations, product development, data and AI infrastructures.
+              </span>
             </h2>
           </div>
           <div className="team-grid">
@@ -205,8 +215,9 @@ export default function AboutPage() {
           </div>
           <div className="copy-block tight">
             <p>
-              Our ambition is to help growing brands protect cash, margins, and customer trust by
-              making supply-chain decisions earlier and with greater confidence.
+              Our ambition is to help growing brands protect cash, margins, and
+              customer trust by making supply chain decisions earlier and with
+              greater confidence.
             </p>
           </div>
         </div>
@@ -216,10 +227,13 @@ export default function AboutPage() {
         <span className="eyebrow">What we&apos;re building</span>
         <h2>See the thinking behind DropSkip in action.</h2>
         <p className="copy">
-          Explore how DropSkip turns connected supply-chain signals into clearer decisions.
+          Explore how DropSkip turns connected supply chain signals into clearer
+          decisions.
         </p>
         <div className="hero-actions">
-          <BookDemoButton className="button primary">Book a demo</BookDemoButton>
+          <BookDemoButton className="button primary">
+            Book a demo
+          </BookDemoButton>
           <Link className="text-link" href="/product">
             See the product{" "}
             <span className="arr" aria-hidden="true">
