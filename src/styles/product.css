@@ -763,9 +763,6 @@
   font-size: 0.9rem;
   line-height: 1.5;
 }
-.product-page .cap-card.action-cap {
-  border-top: 4px solid var(--orange);
-}
 .product-page .product-action {
   background: var(--s-page);
 }

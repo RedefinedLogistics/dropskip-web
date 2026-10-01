@@ -303,7 +303,7 @@ export default function ProductPage() {
                 margin.
               </p>
             </article>
-            <article className="cap-card action-cap">
+            <article className="cap-card">
               <span className="system-icon" aria-hidden="true">
                 <svg
                   viewBox="0 0 24 24"
