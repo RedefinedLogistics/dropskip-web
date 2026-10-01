@@ -35,11 +35,12 @@ export default function ProductPage() {
                 AI-enabled demand planning and supply-chain decision platform
               </p>
               <h1 id="hero-title">
-                Turn demand signals into supply‑chain decisions your team can act on.
+                Turn demand signals into supply chain decisions that your team can act on.
               </h1>
               <p className="hero-lede">
-                DropSkip connects demand, inventory, incoming supply, purchasing, and fulfilment
-                data, then shows operators the priority, the rationale, and the recommended action.
+                DropSkip connects demand, sales, inventory, purchasing, and fulfillment data into a
+                single workflow, then shows operators the priority, the rationale, and the
+                recommended action.
               </p>
               <div className="hero-actions">
                 <BookDemoButton className="button primary">
@@ -69,7 +70,7 @@ export default function ProductPage() {
                     <span>01</span>
                     <div>
                       <strong>Connect</strong>
-                      <small>Demand, inventory, supply, and purchasing data</small>
+                      <small>Demand, sales, inventory, purchasing, and fulfillment</small>
                     </div>
                   </div>
                   <div className="hero-path-step">
@@ -390,7 +391,7 @@ export default function ProductPage() {
             <div className="implementation-head">
               <div>
                 <p className="eyebrow">Implementation</p>
-                <h3>Start with one focused decision problem.</h3>
+                <h3>Start with one focused supply chain problem.</h3>
                 <p className="copy">
                   Agree the value outcome first, then connect only the data and workflow needed to
                   support it.

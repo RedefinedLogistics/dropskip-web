@@ -31,14 +31,17 @@ export default function InventoryPlanningPage() {
       <section className="hero flow-hero" aria-labelledby="hero-title">
         <div className="wrap">
           <div className="hero-intro">
-            <p className="eyebrow">AI-enabled inventory planning for DTC brands</p>
+            <p className="eyebrow">
+              AI-enabled inventory planning for DTC brands
+            </p>
             <h1 id="hero-title">
               <span>Every supply chain problem ends up as</span>{" "}
               <span>a stockout or an overstock.</span>
             </h1>
             <p className="hero-lede">
-              Across global retail, stockouts and overstocks cost about 6.2% of sales on average.
-              DropSkip shows which inventory decisions protect your sales, cash, and margin first.
+              Across global retail, stockouts and overstocks cost about 6.2% of
+              sales on average. DropSkip shows which inventory decisions protect
+              your sales, cash, and margin first.
             </p>
             <div className="hero-actions">
               <BookDemoButton className="button primary">
@@ -58,18 +61,18 @@ export default function InventoryPlanningPage() {
           {/* The cost of getting it wrong, sized for a typical brand. */}
           <div className="hero-impact">
             <Image
-              src={asset("/why-dropskip-impact-share.png")}
+              src={asset("/why-dropskip-impact-share-v2.png")}
               alt="6.2% of sales lost to stockouts and overstocks, on average"
-              width={1049}
-              height={480}
+              width={1046}
+              height={472}
               sizes="(max-width: 760px) calc(100vw - 32px), 600px"
               priority
             />
             <Image
-              src={asset("/why-dropskip-impact-cost.png")}
+              src={asset("/why-dropskip-impact-cost-v2.png")}
               alt="About $3.1M impact per year for a $50M brand"
-              width={991}
-              height={477}
+              width={990}
+              height={474}
               sizes="(max-width: 760px) calc(100vw - 32px), 570px"
               priority
             />
@@ -84,26 +87,34 @@ export default function InventoryPlanningPage() {
             <div className="problem-copy">
               <p className="eyebrow">The inventory planning problem</p>
               <h2 id="problem-title">
-                Inventory is not one number, and planning cannot be guesswork.
+                Inventory is not one number, and planning cannot be a guesswork.
               </h2>
               <p className="copy">
-                Your ERP records purchases. Your WMS tracks physical stock. Your sales channels show
-                where demand is moving. None alone can tell you whether inventory will meet demand
-                at the right place and time.
+                Your ERP records purchases. Your WMS tracks physical stock. Your
+                sales channels show where demand is moving. None alone can tell
+                you whether inventory will meet demand at the right place and
+                time.
               </p>
             </div>
-            <div className="questions" aria-label="Questions inventory teams need to answer">
+            <div
+              className="questions"
+              aria-label="Questions inventory teams need to answer"
+            >
               <div className="question">
                 <span className="mono">01</span>
                 <span>What is actually available to sell?</span>
               </div>
               <div className="question">
                 <span className="mono">02</span>
-                <span>Will incoming inventory arrive before stock runs out?</span>
+                <span>
+                  Will incoming inventory arrive before stock runs out?
+                </span>
               </div>
               <div className="question">
                 <span className="mono">03</span>
-                <span>Which location needs more stock, and which has excess?</span>
+                <span>
+                  Which location needs more stock, and which has excess?
+                </span>
               </div>
               <div className="question">
                 <span className="mono">04</span>
@@ -111,7 +122,10 @@ export default function InventoryPlanningPage() {
               </div>
             </div>
           </div>
-          <div className="outcome-strip" aria-label="Why connected inventory planning matters">
+          <div
+            className="outcome-strip"
+            aria-label="Why connected inventory planning matters"
+          >
             <article>
               <span className="eyebrow">Availability</span>
               <h3>Protect sales.</h3>
@@ -132,44 +146,57 @@ export default function InventoryPlanningPage() {
       </section>
 
       {/* The connected position, and the four steps from it to the next move. */}
-      <section className="section position dark" id="position" aria-labelledby="position-title">
+      <section
+        className="section position dark"
+        id="position"
+        aria-labelledby="position-title"
+      >
         <div className="wrap">
           <div className="section-head">
             <div>
               <p className="eyebrow">From signals to decisions</p>
-              <h2 id="position-title">One connected position. Four steps to the next move.</h2>
+              <h2 id="position-title">
+                One connected position. Four steps to the next move.
+              </h2>
             </div>
             <p>
-              DropSkip brings demand, supply, inventory, and operating constraints into one
-              decision-ready view, so teams can move from visibility to action.
+              DropSkip brings demand, supply, inventory, and operating
+              constraints into one decision-ready view, so teams can move from
+              visibility to action.
             </p>
-          </div>
-          <div className="inputs" aria-label="High-level planning inputs">
-            <span>Demand signals</span>
-            <span>Stock position</span>
-            <span>Incoming supply</span>
-            <span>Network &amp; operating constraints</span>
           </div>
           <div className="journey-flow">
             <article>
               <span className="mono">01</span>
               <h3>Visibility</h3>
-              <p>See the current and future inventory position across products and locations.</p>
+              <p>
+                See the current and future inventory position across products
+                and locations.
+              </p>
             </article>
             <article>
               <span className="mono">02</span>
               <h3>Insights</h3>
-              <p>Understand what needs attention, why it matters, and what is driving it.</p>
+              <p>
+                Understand what needs attention, why it matters, and what is
+                driving it.
+              </p>
             </article>
             <article>
               <span className="mono">03</span>
-              <h3>Plan</h3>
-              <p>Compare what to buy, transfer, audit, reduce, or leave unchanged.</p>
+              <h3>Planning</h3>
+              <p>
+                Compare what to buy, transfer, audit, reduce, or leave
+                unchanged.
+              </p>
             </article>
             <article>
               <span className="mono">04</span>
-              <h3>Act</h3>
-              <p>Adjust, approve, or dismiss the recommendation. Your team stays in control.</p>
+              <h3>Positioning</h3>
+              <p>
+                Adjust, approve, or dismiss the recommendation. Your team stays
+                in control.
+              </p>
             </article>
           </div>
         </div>
@@ -191,7 +218,8 @@ export default function InventoryPlanningPage() {
               </h2>
             </div>
             <p>
-              Each view uses the same connected position to answer a different operational question.
+              Each view uses the same connected position to answer a different
+              operational question.
             </p>
           </div>
           <div className="feature-list alternating-features">
@@ -200,8 +228,9 @@ export default function InventoryPlanningPage() {
                 <p className="eyebrow">Inventory and demand</p>
                 <h3>See stockout risk before it becomes lost sales.</h3>
                 <p className="copy">
-                  Compare available and incoming inventory with expected demand. See where coverage
-                  is tightening while there is still time to act.
+                  Compare available and incoming inventory with expected demand.
+                  See where coverage is tightening while there is still time to
+                  act.
                 </p>
                 <div className="feature-points">
                   <span>Expected demand</span>
@@ -210,7 +239,10 @@ export default function InventoryPlanningPage() {
                   <span>Coverage risk</span>
                 </div>
               </div>
-              <div className="product-mini" aria-label="Illustrative inventory sufficiency table">
+              <div
+                className="product-mini"
+                aria-label="Illustrative inventory sufficiency table"
+              >
                 <div className="mini-bar">
                   <span>Inventory sufficiency</span>
                   <b>2 need attention</b>
@@ -254,8 +286,9 @@ export default function InventoryPlanningPage() {
                 <p className="eyebrow">Location-level planning</p>
                 <h3>Use inventory across the network before buying more.</h3>
                 <p className="copy">
-                  You can have enough inventory overall and still run short where demand is
-                  strongest. Compare locations to see whether a transfer can resolve the gap.
+                  You can have enough inventory overall and still run short
+                  where demand is strongest. Compare locations to see whether a
+                  transfer can resolve the gap.
                 </p>
                 <div className="feature-points">
                   <span>Days of cover by location</span>
@@ -264,7 +297,10 @@ export default function InventoryPlanningPage() {
                   <span>Residual source coverage</span>
                 </div>
               </div>
-              <div className="product-mini" aria-label="Illustrative transfer opportunity">
+              <div
+                className="product-mini"
+                aria-label="Illustrative transfer opportunity"
+              >
                 <div className="mini-bar">
                   <span>Network position</span>
                   <b>Transfer candidate</b>
@@ -281,7 +317,9 @@ export default function InventoryPlanningPage() {
                     <span>17.8 days of cover</span>
                   </div>
                 </div>
-                <div className="transfer">Review whether a transfer resolves the gap →</div>
+                <div className="transfer">
+                  Review whether a transfer resolves the gap →
+                </div>
               </div>
             </article>
           </div>
@@ -293,8 +331,8 @@ export default function InventoryPlanningPage() {
               <span className="eyebrow">Replenishment planning</span>
               <h3>Buy what demand justifies.</h3>
               <p>
-                Review what to order, how much, when, and where, with the reasoning visible before
-                approval.
+                Review what to order, how much, when, and where, with the
+                reasoning visible before approval.
               </p>
               <strong>Protect availability without overbuying.</strong>
             </article>
@@ -302,8 +340,8 @@ export default function InventoryPlanningPage() {
               <span className="eyebrow">Inventory auditing</span>
               <h3>Fix the position before it distorts the plan.</h3>
               <p>
-                Identify unexplained differences by SKU and location, then plan from the reconciled
-                position.
+                Identify unexplained differences by SKU and location, then plan
+                from the reconciled position.
               </p>
               <strong>Decide from inventory you can trust.</strong>
             </article>
@@ -311,7 +349,8 @@ export default function InventoryPlanningPage() {
               <span className="eyebrow">Overstock and capital</span>
               <h3>Act before excess erodes margin.</h3>
               <p>
-                Review purchasing, redistribution, and markdown options against the demand ahead.
+                Review purchasing, redistribution, and markdown options against
+                the demand ahead.
               </p>
               <strong>Release cash before the problem grows.</strong>
             </article>
@@ -320,7 +359,11 @@ export default function InventoryPlanningPage() {
       </section>
 
       {/* A warning turned into a decision, with the reasoning attached. */}
-      <section className="section decision" id="product" aria-labelledby="product-title">
+      <section
+        className="section decision"
+        id="product"
+        aria-labelledby="product-title"
+      >
         <div className="wrap">
           <div className="section-head flow-centered">
             <div>
@@ -331,8 +374,8 @@ export default function InventoryPlanningPage() {
               </h2>
             </div>
             <p>
-              Follow one SKU from a coverage gap to a recommended next move your team can inspect,
-              adjust, approve, or dismiss.
+              Follow one SKU from a coverage gap to a recommended next move your
+              team can inspect, adjust, approve, or dismiss.
             </p>
           </div>
           <DecisionExample />
@@ -344,14 +387,21 @@ export default function InventoryPlanningPage() {
       </section>
 
       {/* Where DropSkip sits among the systems the team already runs. */}
-      <section className="systems" id="integration" aria-labelledby="systems-title">
+      <section
+        className="systems"
+        id="integration"
+        aria-labelledby="systems-title"
+      >
         <div className="wrap systems-layout">
           <div className="systems-copy">
             <p className="eyebrow">Works with your existing systems</p>
-            <h2 id="systems-title">Add a decision layer across the systems you already use.</h2>
+            <h2 id="systems-title">
+              Add a decision layer across the systems you already use.
+            </h2>
             <p className="copy">
-              Your ERP, WMS, 3PL, and commerce platforms keep recording and executing transactions.
-              DropSkip connects their signals so your team can plan and decide across them.
+              Your ERP, WMS, 3PL, and commerce platforms keep recording and
+              executing transactions. DropSkip connects their signals so your
+              team can plan and decide across them.
             </p>
             <p className="no-rip">No rip and replace. Connect in days.</p>
           </div>
@@ -379,7 +429,10 @@ export default function InventoryPlanningPage() {
           </div>
         </div>
         <div className="wrap integration-close">
-          <p>Connection methods depend on your systems and integration environment.</p>
+          <p>
+            Connection methods depend on your systems and integration
+            environment.
+          </p>
           <a className="text-link" href="#demo">
             Discuss your setup{" "}
             <span className="arr" aria-hidden="true">
@@ -401,56 +454,70 @@ export default function InventoryPlanningPage() {
               </h2>
             </div>
             <p>
-              Clear answers about where DropSkip fits, how the position stays current, and who
-              controls the final action.
+              Clear answers about where DropSkip fits, how the position stays
+              current, and who controls the final action.
             </p>
           </div>
           <div className="faq-list">
             <details>
               <summary>What does AI-enabled inventory planning mean?</summary>
               <p>
-                DropSkip uses AI to evaluate connected demand, inventory, incoming supply, lead
-                times, locations, and operating constraints. It surfaces risks and recommends next
-                moves with the reasoning visible, while operators keep control of the final
+                DropSkip uses AI to evaluate connected demand, inventory,
+                incoming supply, lead times, locations, and operating
+                constraints. It surfaces risks and recommends next moves with
+                the reasoning visible, while operators keep control of the final
                 decision.
               </p>
             </details>
             <details>
-              <summary>How is DropSkip different from inventory management?</summary>
+              <summary>
+                How is DropSkip different from inventory management?
+              </summary>
               <p>
-                Inventory management systems record and control what the business owns. DropSkip
-                looks ahead across demand and supply to help the team decide what should be
-                replenished, transferred, audited, reduced, or reviewed.
+                Inventory management systems record and control what the
+                business owns. DropSkip looks ahead across demand and supply to
+                help the team decide what should be replenished, transferred,
+                audited, reduced, or reviewed.
               </p>
             </details>
             <details>
-              <summary>Does DropSkip replace our ERP, WMS, or 3PL systems?</summary>
+              <summary>
+                Does DropSkip replace our ERP, WMS, or 3PL systems?
+              </summary>
               <p>
-                No. Those systems continue running transactions and execution. DropSkip connects
-                their information to support planning and decision-making across them.
+                No. Those systems continue running transactions and execution.
+                DropSkip connects their information to support planning and
+                decision-making across them.
               </p>
             </details>
             <details>
-              <summary>Can DropSkip support multiple warehouses and 3PLs?</summary>
+              <summary>
+                Can DropSkip support multiple warehouses and 3PLs?
+              </summary>
               <p>
-                Yes. DropSkip can compare inventory, coverage, and expected demand across multiple
-                warehouses, 3PLs, and fulfillment locations to surface location-level risks and
-                possible replenishment, transfer, or allocation decisions.
+                Yes. DropSkip can compare inventory, coverage, and expected
+                demand across multiple warehouses, 3PLs, and fulfillment
+                locations to surface location-level risks and possible
+                replenishment, transfer, or allocation decisions.
               </p>
             </details>
             <details>
               <summary>Is inventory information updated in real time?</summary>
               <p>
-                DropSkip can use real-time and event-driven data from connected systems. The
-                connection method depends on the systems and integration environment involved.
+                DropSkip can use real-time and event-driven data from connected
+                systems. The connection method depends on the systems and
+                integration environment involved.
               </p>
             </details>
             <details>
-              <summary>Does DropSkip automatically execute inventory decisions?</summary>
+              <summary>
+                Does DropSkip automatically execute inventory decisions?
+              </summary>
               <p>
-                DropSkip surfaces the recommendation and its reasoning. Operators can inspect,
-                adjust, approve, or dismiss the recommendation, keeping the final action under the
-                team’s control.
+                DropSkip surfaces the recommendation and its reasoning.
+                Operators can inspect, adjust, approve, or dismiss the
+                recommendation, keeping the final action under the team’s
+                control.
               </p>
             </details>
           </div>
@@ -458,7 +525,11 @@ export default function InventoryPlanningPage() {
       </section>
 
       {/* The closing ask. #demo is linked from the nav and from other pages. */}
-      <section className="closing dark flow-closing" id="demo" aria-labelledby="demo-title">
+      <section
+        className="closing dark flow-closing"
+        id="demo"
+        aria-labelledby="demo-title"
+      >
         <div className="wrap closing-grid">
           <div>
             <p className="eyebrow">Turn signals into decisions</p>
@@ -469,8 +540,9 @@ export default function InventoryPlanningPage() {
           </div>
           <div>
             <p className="copy">
-              Connect your demand, inventory, and purchasing information to see which decisions
-              deserve attention across products, warehouses, and fulfillment locations.
+              Connect your demand, inventory, and purchasing information to see
+              which decisions deserve attention across products, warehouses, and
+              fulfillment locations.
             </p>
             <BookDemoButton className="button primary">
               Book a demo{" "}
@@ -479,7 +551,8 @@ export default function InventoryPlanningPage() {
               </span>
             </BookDemoButton>
             <p className="closing-note">
-              Or email <a href="mailto:contact@dropskip.ai">contact@dropskip.ai</a>
+              Or email{" "}
+              <a href="mailto:contact@dropskip.ai">contact@dropskip.ai</a>
             </p>
           </div>
         </div>

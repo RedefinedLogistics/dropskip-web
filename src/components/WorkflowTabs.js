@@ -29,7 +29,7 @@ const panels = [
   },
   {
     id: "plan",
-    label: "Plan",
+    label: "Planning",
     kicker: "03 · Compare options",
     title: "Compare a transfer with a new purchase.",
     body: "Review quantity, timing, stock availability, and how much new cash each path commits.",
@@ -41,7 +41,7 @@ const panels = [
   },
   {
     id: "act",
-    label: "Act",
+    label: "Positioning",
     kicker: "04 · Keep control",
     title: "Review the recommendation. Choose your next move.",
     body: "Approve, adjust, or dismiss the proposed action with the supporting rationale in view.",
@@ -105,7 +105,7 @@ export default function WorkflowTabs() {
             </div>
           </div>
         ))}
-        <span className="flow-progress">Visibility · Insights · Plan · Act</span>
+        <span className="flow-progress">Visibility · Insights · Planning · Positioning</span>
       </div>
     </div>
   );

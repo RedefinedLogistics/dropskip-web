@@ -636,11 +636,13 @@
   padding-left: 20px;
   border-left: 3px solid var(--orange);
   color: var(--t-heading);
-  font-size: 1.1rem;
-  font-weight: 750;
-  line-height: 1.5;
-  letter-spacing: -0.01em;
+  /* Same type as the card titles above ("Commerce and planning tools"). */
+  font-size: clamp(17.41px, calc(16.209px + 0.334vw), 20.48px);
+  font-weight: 650;
+  line-height: 1.35;
+  letter-spacing: -0.045em;
   text-align: left;
+  text-wrap: balance;
 }
 .product-page .panel-top {
   display: flex;

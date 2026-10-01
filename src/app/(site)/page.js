@@ -25,14 +25,14 @@ export default function Home() {
               AI-ENABLED SUPPLY CHAIN DECISION LAYER FOR DTC BRANDS
             </p>
             <h1>
-              Supply-chain decisions that scale{" "}
+              Supply chain decisions that scale{" "}
               <span className="accent">cash flow and margins.</span>
             </h1>
             <p className="hero-copy">
-              DropSkip® connects for demand, sales, inventory and fulfillment to
-              help you decide what to buy, how much, when, and where. See what
-              needs attention, understand the reasoning, and act with
-              confidence.
+              DropSkip® connects for demand, sales, inventory ,Purchase and
+              fulfillment to help you decide what to buy, how much, when, and
+              where. See what needs attention, understand the reasoning, and act
+              with confidence.
             </p>
             <p className="capital-line">
               Put your capital behind the products and locations that need it.

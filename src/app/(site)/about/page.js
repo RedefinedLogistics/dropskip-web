@@ -22,7 +22,7 @@ const team = [
     width: 400,
     height: 400,
     linkedin: "https://www.linkedin.com/in/rajeebmohapatra/",
-    bio: "Rajeeb has spent 20+ years leading retail, ecommerce, logistics, and global supply chains. He previously held leadership roles at Quince, Pitney Bowes, and Office Depot, with additional experience at PayPal and Dell.",
+    bio: "Rajeeb has spent 20+ years leading retail, ecommerce, logistics, and global supply chain operations. He previously held leadership roles at Quince, Pitney Bowes, and Office Depot, with product development roles at PayPal and Dell.",
   },
   {
     name: "Kevin Nohl",
@@ -31,7 +31,7 @@ const team = [
     width: 800,
     height: 800,
     linkedin: "https://www.linkedin.com/in/kevin-nohl-92518144/",
-    bio: "Kevin brings 20+ years running complex global supply chain operations — lead integration partnership at Pipe17, SVP of Global Supply Chain at Aterian, and leadership roles across Rent the Runway, Bed Bath & Beyond and Amazon.",
+    bio: "Kevin brings 20+ years running complex global supply chain operations — led integration partnership at Pipe17, SVP of Global Supply Chain at Aterian, and leadership roles across Rent the Runway, Bed Bath & Beyond and Amazon.",
   },
   {
     name: "Surajbhan Satpathy",
@@ -158,8 +158,8 @@ export default function AboutPage() {
           <div className="section-heading center">
             <span className="eyebrow">The team</span>
             <h2 className="team-heading">
-              <span>Experience across retail ecommerce, product development,</span>{" "}
-              <span>supply chain and logistics operations, and AI.</span>
+              <span>Experience across retail ecommerce, supply chain and logistics</span>{" "}
+              <span>operations, product development, data and AI infrastructures.</span>
             </h2>
           </div>
           <div className="team-grid">

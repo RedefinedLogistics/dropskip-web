@@ -190,7 +190,7 @@
    to sit on exactly two lines, one span per line. */
 .about-page .section-heading.center h2.team-heading {
   max-width: none;
-  font-size: clamp(28px, 2.9vw, 42px);
+  font-size: clamp(26px, 2.5vw, 38px);
 }
 .about-page .team-heading span {
   display: block;

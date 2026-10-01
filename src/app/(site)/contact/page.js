@@ -63,10 +63,10 @@ export default function ContactPage() {
           <div className="contact-intro">
             <div className="intro-head">
               <span className="eyebrow">Contact DropSkip</span>
-              <h1>Let’s make your next inventory decision clearer.</h1>
+              <h1>Let’s make your next supply chain decision easier.</h1>
               <p>
-                Tell us a little about your operation and what you are trying to
-                solve. Whether you want to explore DropSkip, install the Shopify
+                Tell us a little about your supply chain operation and what you
+                are trying to solve. Whether you want to explore DropSkip, install the Shopify
                 app or ask a product question, we’ll connect you with the right
                 person.
               </p>

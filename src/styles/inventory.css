@@ -2462,7 +2462,7 @@
 /* Two cards, sized in proportion to each image so they share one height. */
 .inventory-page .hero-impact {
   display: grid;
-  grid-template-columns: 1049fr 991fr;
+  grid-template-columns: 1046fr 990fr;
   gap: 16px;
   max-width: 1180px;
   margin: clamp(48px, 5vw, 72px) auto 0;
@@ -2881,4 +2881,21 @@
 .inventory-page .flow-closing .closing-note a {
   color: #fff;
   font-weight: 700;
+}
+
+/* Replenishment / Inventory auditing / Overstock and capital: each brief
+   spans four shared rows (label, title, description, closing line) via
+   subgrid, so a one-line title reserves the same height as a two-line one
+   and every row starts on the same line across the three columns. */
+.inventory-page .capability-briefs {
+  grid-auto-rows: auto;
+}
+.inventory-page .capability-brief {
+  display: grid;
+  grid-row: span 4;
+  grid-template-rows: subgrid;
+  row-gap: 0;
+}
+.inventory-page .capability-brief strong {
+  align-self: end;
 }

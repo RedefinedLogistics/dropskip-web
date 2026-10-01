@@ -22,7 +22,7 @@ export default function Footer() {
               />
             </Link>
             <p className="footer-tagline">
-              Demand planning and supply-chain decisions for DTC operators.
+              Supply chain decisions without the guesswork.
             </p>
             <a className="footer-mail" href="mailto:contact@dropskip.ai">
               <svg
@@ -57,7 +57,7 @@ export default function Footer() {
           <div className="footer-cta">
             <h2 className="footer-col-title">Start with one decision</h2>
             <p>
-              Tell us the inventory question your team is stuck on. We keep the demo focused on that
+              Tell us the supply chain question your team is stuck on. We keep the demo focused on that
               one.
             </p>
             <BookDemoButton className="btn btn-primary footer-demo">

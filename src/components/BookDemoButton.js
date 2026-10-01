@@ -159,7 +159,7 @@ export default function BookDemoButton({
         <aside className="demo-aside">
           <p className="demo-eyebrow">Product demo</p>
           <p className="demo-pitch">
-            See what DropSkip would change about your next inventory decision.
+            See what DropSkip would change about your next supply chain decision.
           </p>
 
           <ul className="demo-promises">

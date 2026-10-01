@@ -1,7 +1,6 @@
 export const navLinks = [
-  { href: "/about", label: "About" },
-  { href: "/product", label: "Product" },
   { href: "/why-dropskip", label: "Why DropSkip" },
+  { href: "/product", label: "Product" },
   {
     label: "Resources",
     children: [
@@ -12,6 +11,7 @@ export const navLinks = [
       },
     ],
   },
+  { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
 ];
 
