@@ -60,10 +60,15 @@
   text-decoration: none;
 }
 
+/* dropskip-logo.png carries transparent padding (about 21% of its height
+   above the mark, 25% below and 3% to the left). Pulling those margins in
+   puts the visible logo flush with the top of the other columns' headings
+   and the left edge of the text below it. Values are for the 168px width. */
 .footer-logo-img {
   display: block;
   width: 168px;
   height: auto;
+  margin: -18px 0 -21px -6px;
   transition: opacity 0.2s ease;
 }
 
