@@ -26,10 +26,20 @@ export const metadata = {
   },
   description:
     "DropSkip connects demand, inventory, and incoming supply so DTC operators can make confident supply-chain decisions.",
-  // favicon.png is the 1254px master and is not served: a browser renders the
-  // tab icon at 32px, so shipping the full-size file cost 329KB on every page
-  // load for a 2KB result.
-  icons: { icon: asset("/favicon-32.png"), apple: asset("/apple-icon.png") },
+  // favicon.png is the 1254px master and is not served; these are sized from
+  // it. Google Search shows a site icon only when one is square and a multiple
+  // of 48px (48, 96, 192…) — with just the 32px file it falls back to a globe.
+  // favicon.ico at the root covers crawlers and browsers that look there first.
+  icons: {
+    icon: [
+      { url: asset("/favicon.ico"), sizes: "48x48" },
+      { url: asset("/favicon-32.png"), sizes: "32x32", type: "image/png" },
+      { url: asset("/icon-48.png"), sizes: "48x48", type: "image/png" },
+      { url: asset("/icon-96.png"), sizes: "96x96", type: "image/png" },
+      { url: asset("/icon-192.png"), sizes: "192x192", type: "image/png" },
+    ],
+    apple: asset("/apple-icon.png"),
+  },
 
   // Each route resolves "./" against its own URL, so every page gets a
   // canonical pointing at itself without repeating the host per page.
