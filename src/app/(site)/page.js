@@ -14,9 +14,46 @@ import "@/styles/home.css";
  * the ones home.css and the header's nav links expect.
  */
 
+// Organization and WebSite structured data. It tells search engines which
+// company dropskip.ai belongs to, its name and its logo, so results (and AI
+// summaries) are less likely to mix it up with similarly named businesses.
+// Absolute URLs on purpose: crawlers read this outside the page's base path.
+const SITE_URL = "https://dropskip.ai";
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": `${SITE_URL}/#organization`,
+      name: "DropSkip",
+      url: SITE_URL,
+      logo: {
+        "@type": "ImageObject",
+        url: `${SITE_URL}/icon-192.png`,
+        width: 192,
+        height: 192,
+      },
+      email: "contact@dropskip.ai",
+      description:
+        "AI-enabled supply chain decision platform for DTC brands: demand, sales, inventory, purchasing and fulfillment in one workflow.",
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${SITE_URL}/#website`,
+      name: "DropSkip",
+      url: SITE_URL,
+      publisher: { "@id": `${SITE_URL}/#organization` },
+    },
+  ],
+};
+
 export default function Home() {
   return (
     <div className="home-page">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
       {/* The promise, and the first invitation to book a demo. */}
       <section className="hero">
         <div className="wrap hero-grid">
