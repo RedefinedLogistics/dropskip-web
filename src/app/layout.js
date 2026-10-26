@@ -30,7 +30,7 @@ export const metadata = {
   // (16/32/48px), src/app/icon.png (192px, a multiple of 48 as Google Search
   // requires) and src/app/apple-icon.png. Next.js emits their <link> tags and
   // applies basePath itself, so nothing is declared here. All three are sized
-  // from public/favicon.png, the 1254px master of the DropSkip mark.
+  // from public/favicon.png, the 512px master of the DropSkip mark.
 
   // Each route resolves "./" against its own URL, so every page gets a
   // canonical pointing at itself without repeating the host per page.
