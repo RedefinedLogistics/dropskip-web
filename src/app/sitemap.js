@@ -9,7 +9,8 @@ import { getBlogs } from "@/lib/strapi";
  * on a live revalidation it throws, and the last good sitemap keeps serving.
  *
  * /thank-you is deliberately absent: it is the post-submission page and has
- * nothing to offer a search result.
+ * nothing to offer a search result. /shopify is absent too: it is noindexed
+ * (see its layout) and reached only by direct link.
  */
 const SITE = "https://dropskip.ai";
 
@@ -17,7 +18,6 @@ const PAGES = [
   { path: "", changeFrequency: "weekly", priority: 1 },
   { path: "/product", changeFrequency: "monthly", priority: 0.9 },
   { path: "/why-dropskip", changeFrequency: "monthly", priority: 0.9 },
-  { path: "/shopify", changeFrequency: "monthly", priority: 0.9 },
   { path: "/about", changeFrequency: "monthly", priority: 0.7 },
   { path: "/blogs", changeFrequency: "weekly", priority: 0.8 },
   { path: "/contact", changeFrequency: "yearly", priority: 0.6 },
