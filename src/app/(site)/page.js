@@ -75,7 +75,8 @@ export default function Home() {
               Put your capital behind the products and locations that need it.
             </p>
             <div className="hero-actions">
-              <BookDemoButton className="btn btn-primary">
+              {/* /book-demo redirects to /?demo=1, which opens this one. */}
+              <BookDemoButton className="btn btn-primary" openOnQuery="demo">
                 Book a Demo <span className="arrow">↗</span>
               </BookDemoButton>
               <Link className="btn btn-ghost" href="#how-it-works">

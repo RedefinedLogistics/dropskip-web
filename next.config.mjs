@@ -135,6 +135,9 @@ const nextConfig = {
       { source: "/blog/:slug", destination: "/blogs/:slug", permanent: true },
       // The Inventory Planning page was renamed Why DropSkip.
       { source: "/inventory-planning", destination: "/why-dropskip", permanent: true },
+      // Book a Demo is only the popup now. The home page opens it for ?demo=1
+      // (see BookDemoButton's openOnQuery), so old links still reach the form.
+      { source: "/book-demo", destination: "/?demo=1", statusCode: 301 },
       // Strapi cut this post's title-derived slug short. The slug is changed
       // in the CMS admin; this keeps the old, already-discovered URL working.
       {

@@ -69,10 +69,14 @@ const PROMISES = [
  * bands, which set `color:#fff` and restyle `.btn` for their own contents — and
  * those scoped rules would otherwise repaint the popup. In <body> it inherits
  * only the :root tokens, so every placement opens the same dialog.
+ *
+ * `openOnQuery` names a query parameter that opens the dialog on load when it
+ * is "1". Give it to one button per page only, or several dialogs would open.
  */
 export default function BookDemoButton({
   className = "btn btn-primary",
   style,
+  openOnQuery,
   children,
 }) {
   const dialogRef = useRef(null);
@@ -96,6 +100,23 @@ export default function BookDemoButton({
   };
 
   const close = () => dialogRef.current?.close();
+
+  // Read from window.location rather than useSearchParams so the page using
+  // this stays statically rendered. The parameter is then dropped from the
+  // address bar, so a reload or a copied link does not reopen the dialog. Both
+  // happen in the next frame, which a remount (Strict Mode) cancels cleanly.
+  useEffect(() => {
+    if (!openOnQuery) return;
+    const url = new URL(window.location.href);
+    if (url.searchParams.get(openOnQuery) !== "1") return;
+
+    const frame = requestAnimationFrame(() => {
+      url.searchParams.delete(openOnQuery);
+      window.history.replaceState(window.history.state, "", url);
+      setIsOpen(true);
+    });
+    return () => cancelAnimationFrame(frame);
+  }, [openOnQuery]);
 
   // The dialog element fills the viewport, so a click that lands on it rather
   // than on the card inside is a click on the backdrop.

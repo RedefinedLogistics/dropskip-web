@@ -21,7 +21,6 @@ const PAGES = [
   { path: "/about", changeFrequency: "monthly", priority: 0.7 },
   { path: "/blogs", changeFrequency: "weekly", priority: 0.8 },
   { path: "/contact", changeFrequency: "yearly", priority: 0.6 },
-  { path: "/book-demo", changeFrequency: "yearly", priority: 0.6 },
 ];
 
 export default async function sitemap() {
