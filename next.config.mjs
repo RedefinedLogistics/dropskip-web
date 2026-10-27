@@ -135,6 +135,13 @@ const nextConfig = {
       { source: "/blog/:slug", destination: "/blogs/:slug", permanent: true },
       // The Inventory Planning page was renamed Why DropSkip.
       { source: "/inventory-planning", destination: "/why-dropskip", permanent: true },
+      // Strapi cut this post's title-derived slug short. The slug is changed
+      // in the CMS admin; this keeps the old, already-discovered URL working.
+      {
+        source: "/blogs/the-strategic",
+        destination: "/blogs/strategic-chess-game-temu-shein",
+        statusCode: 301,
+      },
     ];
   },
 };

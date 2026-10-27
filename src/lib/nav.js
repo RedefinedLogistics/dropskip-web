@@ -23,6 +23,7 @@ export const footerGroups = [
     links: [
       { href: "/product", label: "Product" },
       { href: "/why-dropskip", label: "Why DropSkip" },
+      { href: "/shopify", label: "Shopify app" },
     ],
   },
   {
@@ -31,6 +32,9 @@ export const footerGroups = [
       { href: "/about", label: "About" },
       { href: "/blogs", label: "Blog" },
       { href: "/contact", label: "Contact" },
+      // The header and footer buttons open the demo dialog, which crawlers
+      // cannot follow, so the page itself needs a real link somewhere.
+      { href: "/book-demo", label: "Book a demo" },
     ],
   },
 ];

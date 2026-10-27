@@ -12,6 +12,9 @@ export const metadata = {
   // A 404 has nothing worth indexing, and indexing it competes with the real
   // pages for the same terms.
   robots: { index: false, follow: true },
+  // The root layout's self-referencing canonical would otherwise tell Google
+  // this missing URL is the preferred one, contradicting the noindex above.
+  alternates: { canonical: null },
 };
 
 /**

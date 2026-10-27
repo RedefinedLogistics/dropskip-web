@@ -14,6 +14,14 @@ const REVALIDATE = Number(process.env.STRAPI_REVALIDATE ?? 60);
 
 export const strapiConfigured = Boolean(STRAPI_URL);
 
+// Set by `next build`. See getBlogs() for why a build and a live request treat
+// an unreachable CMS differently.
+const isBuild = process.env.NEXT_PHASE === "phase-production-build";
+
+// Local development without a CMS is normal; a production server without one
+// is a broken deploy and must not be mistaken for an empty blog.
+const devWithoutCms = !STRAPI_URL && process.env.NODE_ENV !== "production";
+
 /**
  * Browser-facing URL for a media file. Strapi returns local uploads as
  * /uploads/..., which are served through this site's /cms-media route (see
@@ -193,12 +201,14 @@ const byDateDesc = (a, b) => b.date.localeCompare(a.date);
 /**
  * Published blogs, newest first.
  *
- * Returns an empty list rather than throwing when the CMS is unreachable: a
- * production build on Vercel should not fail because Strapi is briefly down,
- * and the already-rendered pages keep serving until the next revalidation.
+ * During a build, an unreachable CMS gives an empty list rather than an error:
+ * a deploy should not fail because Strapi is briefly down. On a live request
+ * it throws instead. A revalidation that throws keeps serving the last good
+ * page, whereas an empty list would be cached and would drop every post from
+ * the listing and the sitemap until the CMS came back.
  */
 export async function getBlogs() {
-  if (!STRAPI_URL) {
+  if (devWithoutCms) {
     console.warn("[strapi] STRAPI_URL is not set; the blog will be empty.");
     return [];
   }
@@ -215,12 +225,24 @@ export async function getBlogs() {
       .sort(byDateDesc);
   } catch (error) {
     console.error(`[strapi] could not load blogs: ${error.message}`);
-    return [];
+    if (isBuild) return [];
+    throw error;
   }
 }
 
+/**
+ * One published blog, or null when the CMS has no such post.
+ *
+ * A CMS failure throws rather than returning null. The post page turns null
+ * into notFound(), and Next marks that response noindex. ISR caches it, so a
+ * brief Strapi outage used to leave real posts excluded from Google.
+ *
+ * The exception is a build, as in getBlogs(): a deploy should not fail because
+ * Strapi is briefly down. The page prerendered then is replaced on the first
+ * revalidation once the CMS answers.
+ */
 export async function getBlogBySlug(slug) {
-  if (!STRAPI_URL) return null;
+  if (devWithoutCms) return null;
 
   try {
     const json = await strapiFetch(
@@ -231,7 +253,8 @@ export async function getBlogBySlug(slug) {
     return entry ? normalise(entry) : null;
   } catch (error) {
     console.error(`[strapi] could not load blog "${slug}": ${error.message}`);
-    return null;
+    if (isBuild) return null;
+    throw error;
   }
 }
 

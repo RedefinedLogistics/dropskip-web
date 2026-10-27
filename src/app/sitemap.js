@@ -3,10 +3,10 @@ import { getBlogs } from "@/lib/strapi";
 /**
  * Generates /sitemap.xml.
  *
- * The blog entries come from the CMS. getBlogs() already answers with an empty
- * list when Strapi is unreachable, so a deploy that happens while the CMS is
- * down still produces a valid sitemap of the marketing pages rather than
- * failing the build.
+ * The blog entries come from the CMS and are refreshed with it, so a newly
+ * published post appears here without a redeploy. If Strapi is unreachable
+ * during a build, getBlogs() gives an empty list so the deploy still succeeds;
+ * on a live revalidation it throws, and the last good sitemap keeps serving.
  *
  * /thank-you is deliberately absent: it is the post-submission page and has
  * nothing to offer a search result.
