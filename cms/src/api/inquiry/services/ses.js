@@ -11,11 +11,10 @@
  *   AWS_ACCESS_KEY_ID      omit on EC2/ECS to use the instance's IAM role
  *   AWS_SECRET_ACCESS_KEY
  *   AWS_REGION             the region your SES identity lives in
- *   SES_FROM_EMAIL         sender of every notification; a verified SES identity
+ *   SES_FROM_EMAIL         sender of every email, including the visitor's
+ *                          acknowledgement; a verified SES identity
  *   SES_TO_EMAIL_DEMO      where Book a Demo requests are received
  *   SES_TO_EMAIL_CONTACT   where contact-page inquiries are received
- *   SES_ACK_FROM_EMAIL     optional sender of the visitor's acknowledgement;
- *                          falls back to SES_FROM_EMAIL. Visitors see it.
  */
 
 const { SESv2Client, SendEmailCommand } = require("@aws-sdk/client-sesv2");
@@ -360,10 +359,10 @@ async function sendInquiryNotification(inquiry) {
  * by inquiry id rather than by the visitor's address.
  */
 async function sendInquiryAcknowledgement(inquiry) {
-  const from = process.env.SES_ACK_FROM_EMAIL || process.env.SES_FROM_EMAIL;
+  const from = process.env.SES_FROM_EMAIL;
   if (!process.env.AWS_REGION || !from) {
     strapi.log.info(
-      "[ses] not configured; no acknowledgement sent. Set AWS_REGION and SES_FROM_EMAIL (or SES_ACK_FROM_EMAIL).",
+      "[ses] not configured; no acknowledgement sent. Set AWS_REGION and SES_FROM_EMAIL.",
     );
     return { sent: false, reason: "ses-not-configured" };
   }
