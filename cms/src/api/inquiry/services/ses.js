@@ -14,9 +14,12 @@
  *   SES_FROM_EMAIL         sender of every notification; a verified SES identity
  *   SES_TO_EMAIL_DEMO      where Book a Demo requests are received
  *   SES_TO_EMAIL_CONTACT   where contact-page inquiries are received
+ *   SES_ACK_FROM_EMAIL     optional sender of the visitor's acknowledgement;
+ *                          falls back to SES_FROM_EMAIL. Visitors see it.
  */
 
 const { SESv2Client, SendEmailCommand } = require("@aws-sdk/client-sesv2");
+const { buildAcknowledgement } = require("./acknowledgement");
 
 const escapeHtml = (value = "") =>
   String(value).replace(
@@ -349,6 +352,58 @@ async function sendInquiryNotification(inquiry) {
   }
 }
 
+/**
+ * Confirms to the visitor that their submission arrived. Separate
+ * from the team notification: its own sender, the visitor as the only
+ * recipient, and no internal address anywhere in it. Like the notification it
+ * resolves either way, since the inquiry is already saved; a failure is logged
+ * by inquiry id rather than by the visitor's address.
+ */
+async function sendInquiryAcknowledgement(inquiry) {
+  const from = process.env.SES_ACK_FROM_EMAIL || process.env.SES_FROM_EMAIL;
+  if (!process.env.AWS_REGION || !from) {
+    strapi.log.info(
+      "[ses] not configured; no acknowledgement sent. Set AWS_REGION and SES_FROM_EMAIL (or SES_ACK_FROM_EMAIL).",
+    );
+    return { sent: false, reason: "ses-not-configured" };
+  }
+  if (!EMAIL_SHAPE.test(String(inquiry.email ?? ""))) {
+    strapi.log.warn(`[ses] inquiry ${inquiry.id} has no usable address; no acknowledgement sent`);
+    return { sent: false, reason: "invalid-recipient" };
+  }
+
+  // replyTo is the public address of the form the visitor used (info@ for a
+  // demo request, contact@ otherwise), so a reply lands where they expect.
+  const { subject, text, html, replyTo } = buildAcknowledgement(inquiry);
+
+  try {
+    await getClient().send(
+      new SendEmailCommand({
+        FromEmailAddress: from,
+        Destination: { ToAddresses: [inquiry.email] },
+        ReplyToAddresses: [replyTo],
+        Content: {
+          Simple: {
+            Subject: { Data: subject, Charset: "UTF-8" },
+            Body: {
+              Text: { Data: text, Charset: "UTF-8" },
+              Html: { Data: html, Charset: "UTF-8" },
+            },
+          },
+        },
+      }),
+    );
+
+    strapi.log.info(`[ses] acknowledgement for inquiry ${inquiry.id} sent from ${from}`);
+    return { sent: true };
+  } catch (error) {
+    strapi.log.error(
+      `[ses] acknowledgement for inquiry ${inquiry.id} failed: ${describe(error)}`,
+    );
+    return { sent: false, reason: error.message };
+  }
+}
+
 /** SES rejections are easier to act on with the cause spelled out. */
 function describe(error) {
   const message = error.message ?? String(error);
@@ -368,4 +423,4 @@ function describe(error) {
   return message;
 }
 
-module.exports = { sendInquiryNotification, sesConfigured };
+module.exports = { sendInquiryNotification, sendInquiryAcknowledgement, sesConfigured };

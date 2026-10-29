@@ -13,7 +13,12 @@ import { createInquiry, strapiConfigured } from "@/lib/strapi";
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
-const GENERIC_ERROR = "We could not send that just now. Please email contact@dropskip.ai.";
+// Points at the address each form itself advertises: the Book a Demo popup
+// offers info@dropskip.ai, the contact page contact@dropskip.ai.
+const genericError = (source) =>
+  `We could not send that just now. Please email ${
+    source === "book-demo" ? "info@dropskip.ai" : "contact@dropskip.ai"
+  }.`;
 
 export async function POST(request) {
   let body;
@@ -30,7 +35,7 @@ export async function POST(request) {
 
   if (!strapiConfigured) {
     console.error("[contact] STRAPI_URL is not set; the form has nowhere to submit to.");
-    return NextResponse.json({ ok: false, error: GENERIC_ERROR }, { status: 503 });
+    return NextResponse.json({ ok: false, error: genericError(payload.source) }, { status: 503 });
   }
 
   try {
@@ -47,7 +52,7 @@ export async function POST(request) {
     }
 
     console.error(`[contact] submission failed: ${submitError.message}`);
-    return NextResponse.json({ ok: false, error: GENERIC_ERROR }, { status: 502 });
+    return NextResponse.json({ ok: false, error: genericError(payload.source) }, { status: 502 });
   }
 
   // Stored in Strapi. The SES email is sent there and must not hold up the
